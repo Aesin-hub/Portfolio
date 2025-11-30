@@ -1,0 +1,1 @@
+// search and filter projects slice for Redux store //

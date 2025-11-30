@@ -1,0 +1,1 @@
+// modal management slice for Redux store //

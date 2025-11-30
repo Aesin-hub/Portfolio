@@ -1,0 +1,1 @@
+// modal of project details component //
