@@ -1,1 +1,133 @@
 // Variables for light theme //
+
+// ────────────────────────────────────────────
+// ☀️ COLORS - LIGHT MODE
+// ────────────────────────────────────────────
+
+// Primary Colors
+$primary-light: #019A7D;
+$secondary-light: #86C5B2;
+$accent-light: #AB706A;
+
+// Background Colors
+$bg-main-light: #F1C3A9;
+$bg-alt-light: #EEDBBB;
+$bg-card-light: #FFFFFF;
+
+// Text Colors
+$text-primary-light: #2D2D2D;
+$text-secondary-light: #5A5A5A;
+$text-muted-light: #8A8A8A;
+
+// Status Colors
+$success-light: #10B981;
+$error-light: #EF4444;
+$warning-light: #F59E0B;
+$info-light: #3B82F6;
+
+// Border Colors
+$border-light: #E0E0E0;
+$border-hover-light: #CCCCCC;
+
+// ────────────────────────────────────────────
+// 🌙 COLORS - DARK MODE
+// ────────────────────────────────────────────
+
+// Primary Colors
+$primary-dark: #478A8B;
+$secondary-dark: #6DD5B8;
+$accent-dark: #75858A;
+
+// Background Colors
+$bg-main-dark: #0F2027;
+$bg-alt-dark: #203A43;
+$bg-card-dark: #2C394B;
+
+// Text Colors
+$text-primary-dark: #FFFFFF;
+$text-secondary-dark: #CCCCCC;
+$text-muted-dark: #999999;
+
+// Status Colors
+$success-light: #10B981;
+$error-light: #EF4444;
+$warning-light: #F59E0B;
+$info-light: #3B82F6;
+
+// Border Colors
+$border-dark: #333333;
+$border-hover-dark: #555555;
+
+// ────────────────────────────────────────────
+// 📏 SPACING (system 8px)
+// ────────────────────────────────────────────
+
+$space-0: 0;
+$space-xs: 0.5rem;   // 8px
+$space-sm: 1rem;     // 16px
+$space-md: 1.5rem;   // 24px
+$space-lg: 2rem;     // 32px
+$space-xl: 3rem;     // 48px
+$space-2xl: 4rem;    // 64px
+$space-3xl: 6rem;    // 96px
+$space-4xl: 8rem;    // 128px
+$space-5xl: 10rem;   // 160px
+
+// ────────────────────────────────────────────
+// 📱 BREAKPOINTS (Responsive)
+// ────────────────────────────────────────────
+
+$breakpoint-xs: 320px;     // Mobile petit
+$breakpoint-sm: 480px;     // Mobile
+$breakpoint-md: 768px;     // Tablet
+$breakpoint-lg: 1024px;    // Desktop
+$breakpoint-xl: 1280px;    // Desktop large
+$breakpoint-2xl: 1440px;   // Desktop très large
+$breakpoint-3xl: 1920px;   // Wide screen
+
+// ────────────────────────────────────────────
+// 🎨 DESIGN TOKENS (Radius, shadows, etc.)
+// ────────────────────────────────────────────
+
+// Border radius
+$radius-none: 0;
+$radius-sm: 0.25rem;   // 4px
+$radius-md: 0.5rem;    // 8px
+$radius-lg: 1rem;      // 16px
+$radius-xl: 1.5rem;    // 24px
+$radius-full: 9999px;  // Cercle complet
+
+// Box shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 300ms ease;
+$transition-slow: 500ms ease;
+
+// Z-index layers
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+
+// ────────────────────────────────────────────
+// 🌐 CONTAINER
+// ────────────────────────────────────────────
+
+$container-max-width: 1400px;
+$container-padding: $space-lg; // 32px
+
+// ────────────────────────────────────────────
+// 📐 LAYOUT
+// ────────────────────────────────────────────
+
+$header-height: 80px;
+$footer-height: 100px;
+$section-spacing: $space-3xl; // 96px entre sections

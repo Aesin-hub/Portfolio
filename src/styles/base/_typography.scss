@@ -1,0 +1,327 @@
+// ============================================
+// 🔤 TYPOGRAPHY
+// ============================================
+
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+// ────────────────────────────────────────────
+// Font Families
+// ────────────────────────────────────────────
+$font-display: 'Inter', sans-serif; // Hero Titles
+$font-heading: 'Inter', sans-serif; // Sections Titles
+$font-body: 'DM Sans', sans-serif; // Current text
+$font-accent: 'Space Mono', monospace; // accent text
+$font-code: 'JetBrains Mono', monospace; // code blocks
+
+// ────────────────────────────────────────────
+// Font sizes
+// ────────────────────────────────────────────
+$text-xs: 0.75rem;      // 12px
+$text-sm: 0.875rem;     // 14px
+$text-base: 1rem;       // 16px
+$text-lg: 1.125rem;     // 18px
+$text-xl: 1.25rem;      // 20px
+$text-2xl: 1.5rem;      // 24px
+$text-3xl: 1.875rem;    // 30px
+$text-4xl: 2.25rem;     // 36px
+$text-5xl: 3rem;        // 48px
+$text-6xl: 3.75rem;     // 60px
+$text-7xl: 4.5rem;      // 72px
+$text-8xl: 6rem;        // 96px
+
+// ────────────────────────────────────────────
+// Font weights
+// ────────────────────────────────────────────
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+$font-extrabold: 800;
+$font-black: 900;
+
+// ────────────────────────────────────────────
+// Line heights
+// ────────────────────────────────────────────
+$leading-tight: 1.2;
+$leading-normal: 1.5;
+$leading-relaxed: 1.75;
+
+// ────────────────────────────────────────────
+// Letter spacing
+// ────────────────────────────────────────────
+$tracking-tight: -0.02em;
+$tracking-normal: 0;
+$tracking-wide: 0.02em;
+
+// ────────────────────────────────────────────
+// 📝 GLOBAL TYPOGRAPHY STYLES
+// ────────────────────────────────────────────
+
+// Headings
+h1 {
+  font-family: $font-display;
+  font-size: $text-5xl;
+  font-weight: $font-extrabold;
+  line-height: $leading-tight;
+  letter-spacing: $tracking-tight;
+  color: var(--text-primary);
+  
+  @include respond-to('lg') {
+    font-size: $text-7xl;
+  }
+}
+
+h2 {
+  font-family: $font-heading;
+  font-size: $text-4xl;
+  font-weight: $font-bold;
+  line-height: $leading-tight;
+  color: var(--text-primary);
+  
+  @include respond-to('lg') {
+    font-size: $text-5xl;
+  }
+}
+
+h3 {
+  font-family: $font-heading;
+  font-size: $text-3xl;
+  font-weight: $font-semibold;
+  line-height: $leading-tight;
+  color: var(--text-primary);
+  
+  @include respond-to('lg') {
+    font-size: $text-4xl;
+  }
+}
+
+h4 {
+  font-family: $font-heading;
+  font-size: $text-2xl;
+  font-weight: $font-semibold;
+  color: var(--text-primary);
+  
+  @include respond-to('lg') {
+    font-size: $text-3xl;
+  }
+}
+
+h5 {
+  font-family: $font-heading;
+  font-size: $text-xl;
+  font-weight: $font-medium;
+  color: var(--text-primary);
+}
+
+h6 {
+  font-family: $font-heading;
+  font-size: $text-lg;
+  font-weight: $font-medium;
+  color: var(--text-primary);
+}
+
+// ────────────────────────────────────────────
+// Body text
+// ────────────────────────────────────────────
+p {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: $leading-relaxed;
+  color: var(--text-secondary);
+  
+  @include respond-to('lg') {
+    font-size: $text-lg;
+  }
+}
+
+// ────────────────────────────────────────────
+// Links
+// ────────────────────────────────────────────
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: var(--secondary);
+    text-decoration: underline;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+// ────────────────────────────────────────────
+// Quotes
+// ────────────────────────────────────────────
+blockquote {
+  font-family: $font-accent;
+  font-size: $text-xl;
+  font-style: italic;
+  padding-left: $space-lg;
+  border-left: 4px solid var(--primary);
+  color: var(--text-secondary);
+  margin: $space-lg 0;
+  
+  @include respond-to('lg') {
+    font-size: $text-2xl;
+    padding-left: $space-xl;
+  }
+}
+
+// ────────────────────────────────────────────
+// Lists
+// ────────────────────────────────────────────
+ul, ol {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: $leading-relaxed;
+  color: var(--text-secondary);
+  padding-left: $space-lg;
+  
+  li {
+    margin-bottom: $space-sm;
+    
+    &::marker {
+      color: var(--primary);
+    }
+  }
+  
+  @include respond-to('lg') {
+    font-size: $text-lg;
+  }
+}
+
+// ────────────────────────────────────────────
+// Code
+// ────────────────────────────────────────────
+code {
+  font-family: $font-code;
+  font-size: $text-sm;
+  background: var(--bg-alt);
+  color: var(--primary);
+  padding: 0.125rem 0.375rem;
+  border-radius: $radius-sm;
+}
+
+pre {
+  font-family: $font-code;
+  font-size: $text-sm;
+  background: var(--bg-alt);
+  color: var(--text-primary);
+  padding: $space-md;
+  border-radius: $radius-md;
+  overflow-x: auto;
+  margin: $space-lg 0;
+  
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+// ────────────────────────────────────────────
+// Strong & Emphasis
+// ────────────────────────────────────────────
+strong, b {
+  font-weight: $font-bold;
+  color: var(--text-primary);
+}
+
+em, i {
+  font-style: italic;
+}
+
+// ────────────────────────────────────────────
+// Small text
+// ────────────────────────────────────────────
+small {
+  font-size: $text-sm;
+  color: var(--text-muted);
+}
+
+// ────────────────────────────────────────────
+// Mark (highlight)
+// ────────────────────────────────────────────
+mark {
+  background-color: var(--warning);
+  color: var(--text-primary);
+  padding: 0.125rem 0.25rem;
+  border-radius: $radius-sm;
+}
+
+// ────────────────────────────────────────────
+// Horizontal rule
+// ────────────────────────────────────────────
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: $space-xl 0;
+}
+
+// ────────────────────────────────────────────
+// Utility classes
+// ────────────────────────────────────────────
+
+.text-display {
+  font-family: $font-display;
+  font-weight: $font-extrabold;
+  font-size: $text-6xl;
+  line-height: $leading-tight;
+  letter-spacing: $tracking-tight;
+  
+  @include respond-to('lg') {
+    font-size: $text-8xl;
+  }
+}
+
+.text-heading {
+  font-family: $font-heading;
+  font-weight: $font-bold;
+  font-size: $text-4xl;
+  line-height: $leading-tight;
+  
+  @include respond-to('lg') {
+    font-size: $text-5xl;
+  }
+}
+
+.text-body {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: $leading-relaxed;
+  
+  @include respond-to('lg') {
+    font-size: $text-lg;
+  }
+}
+
+.text-mono {
+  font-family: $font-code;
+}
+
+// Text alignment
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+// Text colors
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-accent { color: var(--primary); }
+
+// Font weights
+.font-light { font-weight: $font-light; }
+.font-regular { font-weight: $font-regular; }
+.font-medium { font-weight: $font-medium; }
+.font-semibold { font-weight: $font-semibold; }
+.font-bold { font-weight: $font-bold; }
+.font-extrabold { font-weight: $font-extrabold; }

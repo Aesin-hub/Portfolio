@@ -1,0 +1,220 @@
+// ============================================
+// ANIMATIONS - Keyframes réutilisables
+// ============================================
+
+// ────────────────────────────────────────────
+// 💫 FADE animations
+// ────────────────────────────────────────────
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ────────────────────────────────────────────
+// 🎯 SLIDE animations
+// ────────────────────────────────────────────
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// ────────────────────────────────────────────
+// 🔄 ROTATE & SPIN
+// ────────────────────────────────────────────
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// ────────────────────────────────────────────
+// 📈 SCALE animations
+// ────────────────────────────────────────────
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+// ────────────────────────────────────────────
+// 🎈 BOUNCE effect
+// ────────────────────────────────────────────
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// ────────────────────────────────────────────
+// ✨ SHIMMER effect (loading)
+// ────────────────────────────────────────────
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+// ────────────────────────────────────────────
+// 🌊 WAVE effect
+// ────────────────────────────────────────────
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+}
+
+// ────────────────────────────────────────────
+// 📍 SCROLL animations (avec Intersection Observer)
+// ────────────────────────────────────────────
+
+// Classes utilitaires pour animations au scroll
+.animate-on-scroll {
+  opacity: 0;
+  
+  &.is-visible {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+}
+
+.animate-slide-left {
+  opacity: 0;
+  
+  &.is-visible {
+    animation: slideInLeft 0.6s ease forwards;
+  }
+}
+
+.animate-slide-right {
+  opacity: 0;
+  
+  &.is-visible {
+    animation: slideInRight 0.6s ease forwards;
+  }
+}
+
+// ────────────────────────────────────────────
+// 🎯 UTILITY CLASSES
+// ────────────────────────────────────────────
+
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease;
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.bounce {
+  animation: bounce 1s ease infinite;
+}

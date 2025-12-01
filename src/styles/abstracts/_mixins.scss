@@ -1,0 +1,196 @@
+// ────────────────────────────────────────────
+// 📱 RESPONSIVE (Mobile-first)
+// ────────────────────────────────────────────
+
+// Usage: @include respond-to('md') { ... }
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (min-width: 320px) { @content; }
+  }
+  @else if $breakpoint == 'sm' {
+    @media (min-width: 480px) { @content; }
+  }
+  @else if $breakpoint == 'md' {
+    @media (min-width: 768px) { @content; }
+  }
+  @else if $breakpoint == 'lg' {
+    @media (min-width: 1024px) { @content; }
+  }
+  @else if $breakpoint == 'xl' {
+    @media (min-width: 1280px) { @content; }
+  }
+  @else if $breakpoint == '2xl' {
+    @media (min-width: 1440px) { @content; }
+  }
+  @else if $breakpoint == '3xl' {
+    @media (min-width: 1920px) { @content; }
+  }
+}
+
+// ────────────────────────────────────────────
+// 🎨 FLEXBOX helpers
+// ────────────────────────────────────────────
+
+// Centrer avec flexbox
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Flex entre (space-between)
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Flex colonne
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// ────────────────────────────────────────────
+// 🎭 TRANSITIONS & ANIMATIONS
+// ────────────────────────────────────────────
+
+// Transition simple
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease) {
+  transition: $properties $duration $timing;
+}
+
+// Hover lift effect (translation vers le haut)
+@mixin hover-lift($distance: -4px) {
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY($distance);
+  }
+}
+
+// ────────────────────────────────────────────
+// 📦 BOX (cards, containers)
+// ────────────────────────────────────────────
+
+// Card avec ombre
+@mixin card($padding: $space-lg, $radius: $radius-lg) {
+  background: var(--bg-card);
+  padding: $padding;
+  border-radius: $radius;
+  box-shadow: $shadow-md;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-4px);
+  }
+}
+
+// Container centré avec max-width
+@mixin container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+// ────────────────────────────────────────────
+// 🔤 TYPOGRAPHY helpers
+// ────────────────────────────────────────────
+
+// Truncate text avec ellipsis
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Clamp text (limitation de lignes)
+@mixin line-clamp($lines: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// ────────────────────────────────────────────
+// 🎯 UTILITIES
+// ────────────────────────────────────────────
+
+// Reset button styles
+@mixin reset-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+// Reset list styles
+@mixin reset-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Hide scrollbar
+@mixin hide-scrollbar {
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // IE/Edge
+  
+  &::-webkit-scrollbar {
+    display: none; // Chrome/Safari
+  }
+}
+
+// ────────────────────────────────────────────
+// 🌈 THEMING (Dark mode)
+// ────────────────────────────────────────────
+
+// Appliquer des styles spécifiques au dark mode
+@mixin dark-mode {
+  [data-theme='dark'] & {
+    @content;
+  }
+}
+
+// ────────────────────────────────────────────
+// 🎨 GLASSMORPHISM effect
+// ────────────────────────────────────────────
+
+@mixin glass($blur: 10px, $opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// ────────────────────────────────────────────
+// 📐 ASPECT RATIO
+// ────────────────────────────────────────────
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    display: block;
+    padding-top: ($height / $width) * 100%;
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,64 @@
+// ============================================
+// MAIN STYLESHEET - Point d'entrée
+// ============================================
+
+// 1. Abstracts (variables, mixins - pas de CSS généré)
+@import './abstracts/variables';
+@import './abstracts/mixins';
+
+// 2. Base (reset, typography - styles globaux)
+@import './base/reset';
+@import './base/typography';
+
+// 3. Animations
+@import './animations';
+
+// ────────────────────────────────────────────
+// 🌙 DARK MODE - CSS Custom Properties
+// ────────────────────────────────────────────
+
+:root {
+  // Light mode (par défaut)
+  --primary: #{$primary-light};
+  --secondary: #{$secondary-light};
+  --accent: #{$accent-light};
+  
+  --bg-main: #{$bg-main-light};
+  --bg-alt: #{$bg-alt-light};
+  --bg-card: #{$bg-card-light};
+  
+  --text-primary: #{$text-primary-light};
+  --text-secondary: #{$text-secondary-light};
+  --text-muted: #{$text-muted-light};
+  
+  --border: #{$border-light};
+  --border-hover: #{$border-hover-light};
+  
+  --success: #{$success-light};
+  --error: #{$error-light};
+  --warning: #{$warning-light};
+  --info: #{$info-light};
+}
+
+// Dark mode
+[data-theme='dark'] {
+  --primary: #{$primary-dark};
+  --secondary: #{$secondary-dark};
+  --accent: #{$accent-dark};
+  
+  --bg-main: #{$bg-main-dark};
+  --bg-alt: #{$bg-alt-dark};
+  --bg-card: #{$bg-card-dark};
+  
+  --text-primary: #{$text-primary-dark};
+  --text-secondary: #{$text-secondary-dark};
+  --text-muted: #{$text-muted-dark};
+  
+  --border: #{$border-dark};
+  --border-hover: #{$border-hover-dark};
+  
+  --success: #{$success-dark};
+  --error: #{$error-dark};
+  --warning: #{$warning-dark};
+  --info: #{$info-dark};
+}
