@@ -1,0 +1,185 @@
+{
+  "skillCategories": [
+    {
+      "id": "frontend",
+      "label": "Frontend Skills",
+      "icon": "/assets/icons/code.svg",
+      "color": "#02A586",
+      "description": "Technologies frontend et frameworks",
+      "skills": [
+        {
+          "id": "html",
+          "name": "HTML5",
+          "level": "advanced",
+          "icon": "/assets/icons/html.svg",
+          "description": "Sémantique, accessibilité, SEO"
+        },
+        {
+          "id": "css",
+          "name": "CSS3",
+          "level": "advanced",
+          "icon": "/assets/icons/css.svg",
+          "description": "Flexbox, Grid, Animations"
+        },
+        {
+          "id": "sass",
+          "name": "SASS",
+          "level": "advanced",
+          "icon": "/assets/icons/sass.svg",
+          "description": "Variables, mixins, architecture modulaire"
+        },
+        {
+          "id": "javascript",
+          "name": "JavaScript",
+          "level": "intermediate",
+          "icon": "/assets/icons/javascript.svg",
+          "description": "ES6+, DOM, Events, Async"
+        },
+        {
+          "id": "react",
+          "name": "React",
+          "level": "intermediate",
+          "icon": "/assets/icons/react.svg",
+          "description": "Components, Hooks, Router"
+        },
+        {
+          "id": "redux",
+          "name": "Redux",
+          "level": "intermediate",
+          "icon": "/assets/icons/redux.svg",
+          "description": "State management, Redux Toolkit"
+        },
+        {
+          "id": "tailwind",
+          "name": "Tailwind CSS",
+          "level": "beginner",
+          "icon": "/assets/icons/tailwind.svg",
+          "description": "Utility-first CSS framework"
+        }
+      ]
+    },
+    {
+      "id": "backend",
+      "label": "Backend & API",
+      "icon": "/assets/icons/server.svg",
+      "color": "#478A8B",
+      "description": "Backend et gestion de données",
+      "skills": [
+        {
+          "id": "nodejs",
+          "name": "Node.js",
+          "level": "beginner",
+          "icon": "/assets/icons/nodejs.svg",
+          "description": "Server-side JavaScript"
+        },
+        {
+          "id": "mongodb",
+          "name": "MongoDB",
+          "level": "beginner",
+          "icon": "/assets/icons/mongodb.svg",
+          "description": "Base de données NoSQL"
+        },
+        {
+          "id": "postman",
+          "name": "Postman",
+          "level": "intermediate",
+          "icon": "/assets/icons/postman.svg",
+          "description": "Tests API, documentation"
+        },
+        {
+          "id": "swagger",
+          "name": "Swagger",
+          "level": "beginner",
+          "icon": "/assets/icons/swagger.svg",
+          "description": "Documentation API REST"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "label": "Dev Tools & Workflow",
+      "icon": "/assets/icons/wrench.svg",
+      "color": "#AB706A",
+      "description": "Outils de développement et workflow",
+      "skills": [
+        {
+          "id": "git",
+          "name": "Git",
+          "level": "intermediate",
+          "icon": "/assets/icons/git.svg",
+          "description": "Versioning, branches, merge"
+        },
+        {
+          "id": "github",
+          "name": "GitHub",
+          "level": "intermediate",
+          "icon": "/assets/icons/github.svg",
+          "description": "Repositories, collaboration, Pages"
+        },
+        {
+          "id": "vscode",
+          "name": "VS Code",
+          "level": "advanced",
+          "icon": "/assets/icons/vscode.svg",
+          "description": "Éditeur de code, extensions"
+        },
+        {
+          "id": "figma",
+          "name": "Figma",
+          "level": "intermediate",
+          "icon": "/assets/icons/figma.svg",
+          "description": "Maquettes, design system"
+        },
+        {
+          "id": "vitejs",
+          "name": "Vite",
+          "level": "intermediate",
+          "icon": "/assets/icons/vitejs.svg",
+          "description": "Build tool, dev server"
+        },
+        {
+          "id": "npm",
+          "name": "npm",
+          "level": "intermediate",
+          "icon": "/assets/icons/npm.svg",
+          "description": "Package manager"
+        },
+        {
+          "id": "yarn",
+          "name": "Yarn",
+          "level": "beginner",
+          "icon": "/assets/icons/yarn.svg",
+          "description": "Package manager alternatif"
+        },
+        {
+          "id": "chrome",
+          "name": "Chrome DevTools",
+          "level": "intermediate",
+          "icon": "/assets/icons/chrome.svg",
+          "description": "Debug, performance, network"
+        },
+        {
+          "id": "notion",
+          "name": "Notion",
+          "level": "intermediate",
+          "icon": "/assets/icons/notion.svg",
+          "description": "Documentation, organisation"
+        }
+      ]
+    }
+  ],
+  "social": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "icon": "/assets/icons/github.svg",
+      "url": "https://github.com/Aesin-hub"
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "icon": "/assets/icons/linkedin.svg",
+      "url": "https://www.linkedin.com/in/lewis-bock-055051177/"
+    }
+  ]
+}

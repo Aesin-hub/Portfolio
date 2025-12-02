@@ -2,3 +2,111 @@
 @import '../../styles/abstracts/variables';
 @import '../../styles/abstracts/mixins';
 @import '../../styles/base/typography';
+
+// ────────────────────────────────────────────
+// Base button styles
+// ────────────────────────────────────────────
+.button {
+  @include reset-button;
+  @include transition(all, 0.3s, ease);
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  
+  font-family: $font-body;
+  font-weight: $font-semibold;
+  text-align: center;
+  white-space: nowrap;
+  
+  border-radius: $radius-md;
+  cursor: pointer;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+// ────────────────────────────────────────────
+// Variants
+// ────────────────────────────────────────────
+
+// Primary button (filled)
+.primary {
+  background: var(--primary);
+  color: white;
+  border: 2px solid var(--primary);
+  
+  &:hover:not(:disabled) {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+// Secondary button (subtle)
+.secondary {
+  background: var(--bg-alt);
+  color: var(--text-primary);
+  border: 2px solid transparent;
+  
+  &:hover:not(:disabled) {
+    background: var(--bg-card);
+    border-color: var(--border);
+    transform: translateY(-2px);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+// Outline button (ghost)
+.outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  
+  &:hover:not(:disabled) {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+// ────────────────────────────────────────────
+// Sizes
+// ────────────────────────────────────────────
+
+.small {
+  padding: $space-xs $space-md;
+  font-size: $text-sm;
+}
+
+.medium {
+  padding: $space-sm $space-lg;
+  font-size: $text-base;
+}
+
+.large {
+  padding: $space-md $space-xl;
+  font-size: $text-lg;
+}

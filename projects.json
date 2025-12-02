@@ -1,0 +1,160 @@
+{
+  "projects": [
+    {
+      "id": "booki",
+      "title": "Booki",
+      "subtitle": "Plateforme de réservation d'hébergements",
+      "category": ["html", "css", "responsive"],
+      "tags": ["HTML5", "CSS3", "Responsive Design", "Flexbox", "Grid"],
+      "thumbnail": "/assets/images/projects/booki/thumbnail.jpg",
+      "images": [
+        "/assets/images/projects/booki/screen-1.jpg",
+        "/assets/images/projects/booki/screen-2.jpg",
+        "/assets/images/projects/booki/screen-3.jpg"
+      ],
+      "description": {
+        "short": "Intégration de la page d'accueil d'une plateforme de réservation d'hébergements en mobile-first.",
+        "long": "Premier projet du parcours : intégration HTML/CSS d'une maquette Figma en mobile-first. Utilisation de Flexbox et CSS Grid pour créer une mise en page responsive et moderne. Respect des bonnes pratiques d'accessibilité et de sémantique HTML."
+      },
+      "challenge": "Maîtriser les bases de l'intégration responsive et comprendre l'approche mobile-first.",
+      "solution": "Utilisation de Flexbox pour les composants et CSS Grid pour la mise en page globale. Media queries pour adaptation desktop.",
+      "skills": ["Intégration HTML/CSS", "Responsive Design", "Mobile-first", "Sémantique HTML"],
+      "date": "2025-05",
+      "duration": "2 semaines",
+      "featured": false
+    },
+
+    {
+      "id": "ohmyfood",
+      "title": "OhMyFood!",
+      "subtitle": "Site de réservation de repas en ligne",
+      "category": ["html", "css", "sass", "responsive"],
+      "tags": ["HTML5", "CSS3", "Sass", "Responsive Design", "Animations CSS"],
+      "thumbnail": "/assets/images/projects/ohmyfood/thumbnail.jpg",
+      "images": [
+        "/assets/images/projects/ohmyfood/screen-1.jpg",
+        "/assets/images/projects/ohmyfood/screen-2.jpg",
+        "/assets/images/projects/ohmyfood/screen-3.jpg"
+      ],
+      "description": {
+        "short": "Intégration d'une page de réservation de repas avec animations CSS.",
+        "long": "Deuxième projet du parcours : intégration HTML/CSS d'une maquette Figma en mobile-first avec l'ajout d'animations CSS pour améliorer l'expérience utilisateur. Utilisation de Sass pour une gestion optimisée des styles et respect des bonnes pratiques d'accessibilité."
+      },
+      "challenge": "Créer des animations fluides et engageantes tout en maintenant une structure HTML sémantique.",
+      "solution": "Utilisation de keyframes CSS pour les animations et Sass pour organiser les styles de manière modulaire.",
+      "skills": ["Intégration HTML/CSS", "Sass", "Animations CSS", "Responsive Design"],
+      "links": {
+        "github": "https://github.com/Aesin-hub/OC-Projet-4---Ohmyfood"
+      },
+      "date": "2025-06",
+      "duration": "2 semaines",
+      "featured": false
+    },
+
+    {
+      "id": "print_it",
+      "title": "Print It",
+      "subtitle": "Site d'une imprimerie avec carrousel dynamique",
+      "category": ["javascript"],
+      "tags": ["JavaScript", "DOM", "Events", "HTML5", "CSS3"],
+      "thumbnail": "/assets/images/projects/print_it/thumbnail.jpg",
+      "images": [
+        "/assets/images/projects/print_it/screen-1.jpg",
+        "/assets/images/projects/print_it/screen-2.jpg"
+      ],
+      "description": {
+        "short": "Dynamisation du site d'une imprimerie avec un carrousel JavaScript.",
+        "long": "Troisième projet : ajout d'interactivité avec JavaScript vanilla. Création d'un carrousel d'images dynamique avec navigation et gestion des événements. Manipulation du DOM et compréhension du fonctionnement des event listeners."
+      },
+      "challenge": "Premiers pas en JavaScript : comprendre la manipulation du DOM et la gestion des événements.",
+      "solution": "Création d'un carrousel entièrement en JavaScript vanilla avec navigation par flèches et dots cliquables.",
+      "skills": ["JavaScript", "Manipulation DOM", "Gestion événements", "Algorithmie"],
+      "links": {
+        "github": "https://github.com/Aesin-hub/OC-Projet-5---Print-it-"
+      },
+      "date": "2025-06",
+      "duration": "2 semaines",
+      "featured": false
+    },
+
+    {
+      "id": "kasa",
+      "title": "Kasa",
+      "subtitle": "Plateforme de location d'appartements entre particuliers",
+      "category": ["react"],
+      "tags": ["React", "React Router", "JavaScript", "SASS", "Components"],
+      "thumbnail": "/assets/images/projects/kasa/thumbnail.jpg",
+      "images": [
+        "/assets/images/projects/kasa/screen-1.jpg",
+        "/assets/images/projects/kasa/screen-2.jpg"
+      ],
+      "description": {
+        "short": "Application web de location immobilière développée avec React et React Router.",
+        "long": "Refonte complète d'un site de location avec React. Création de composants réutilisables, mise en place du routing avec React Router, gestion de l'état, animations et transitions. Intégration de données JSON et respect des maquettes Figma."
+      },
+      "challenge": "Première application React complète : architecture de composants, routing et gestion de l'état.",
+      "solution": "Découpage en composants réutilisables (Card, Collapse, Carousel), React Router pour la navigation et hooks pour la gestion de l'état local.",
+      "skills": ["React", "React Router", "Composants", "Hooks", "SASS"],
+      "links": {
+        "github": "https://github.com/Aesin-hub/OC-Projet-7---Kasa"
+      },
+      "date": "2025-08",
+      "duration": "3 semaines",
+      "featured": true      
+    },
+
+    {
+      "id": "nina_carducci",
+      "title": "Nina Carducci",
+      "subtitle": "Portfolio d'une photographe - Optimisation SEO et performances",
+      "category": ["optimization"],
+      "tags": ["SEO", "Performance", "Lighthouse", "Accessibilité", "Optimisation"],
+      "thumbnail": "/assets/images/projects/nina_carducci/thumbnail.jpg",
+      "images": [
+        "/assets/images/projects/nina_carducci/screen-1.jpg",
+        "/assets/images/projects/nina_carducci/screen-2.jpg",
+        "/assets/images/projects/nina_carducci/screen-3.jpg"
+      ],
+      "description": {
+        "short": "Optimisation complète d'un site de photographe : SEO, performances et accessibilité.",
+        "long": "Audit et optimisation d'un site existant. Amélioration du référencement naturel (SEO), optimisation des performances (temps de chargement, images), correction des problèmes d'accessibilité. Passage d'un score Lighthouse de 60 à 95+."
+      },
+      "challenge": "Diagnostiquer et résoudre des problèmes de performances et de référencement sur un site existant.",
+      "solution": "Compression d'images, lazy loading, optimisation du code, ajout de balises sémantiques et métadonnées, amélioration de l'accessibilité (ARIA, contrastes).",
+      "skills": ["SEO", "Performance Web", "Accessibilité", "Lighthouse", "Optimisation"],
+      "links": {
+        "github": "https://github.com/Aesin-hub/OC-Projet-8---Nina-Carducci"
+      },
+      "date": "2025-10",
+      "duration": "3 semaines",
+      "featured": true
+    },
+
+    {
+      "id": "argent_bank",
+      "title": "Argent Bank",
+      "subtitle": "Application bancaire avec gestion d'état Redux",
+      "category": ["react"],
+      "tags": ["React", "Redux", "API REST", "Authentication", "State Management"],
+      "thumbnail": "/assets/images/projects/argent_bank/thumbnail.jpg",
+      "images": [
+        "/assets/images/projects/argent_bank/screen-1.jpg",
+        "/assets/images/projects/argent_bank/screen-2.jpg",
+        "/assets/images/projects/argent_bank/screen-3.jpg"
+      ],
+      "description": {
+        "short": "Application bancaire avec authentification et gestion globale de l'état avec Redux.",
+        "long": "Développement d'une application bancaire complète avec React et Redux. Mise en place d'un système d'authentification (login/logout), appels API REST, gestion de l'état global avec Redux, et design du système CRUD pour les transactions (spécifications Swagger)."
+      },
+      "challenge": "Maîtriser Redux pour la gestion d'état complexe et l'authentification avec JWT.",
+      "solution": "Architecture Redux avec slices (user, auth), middleware pour les appels API, persistance du token JWT, et documentation Swagger pour les futures fonctionnalités.",
+      "skills": ["React", "Redux", "API REST", "JWT", "State Management", "Swagger"],
+      "links": {
+        "github": "https://github.com/Aesin-hub/OC-Projet-10---Argent-Bank"
+      },
+      "date": "2025-11",
+      "duration": "3 semaines",
+      "featured": true
+    }
+  ]
+}
