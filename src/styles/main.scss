@@ -2,20 +2,13 @@
 // MAIN STYLESHEET - Point d'entrée
 // ============================================
 
-// 1. Abstracts (variables, mixins - pas de CSS généré)
 @import './abstracts/variables';
 @import './abstracts/mixins';
 
-// 2. Base (reset, typography - styles globaux)
 @import './base/reset';
 @import './base/typography';
 
-// 3. Animations
 @import './animations';
-
-// ────────────────────────────────────────────
-// 🌙 DARK MODE - CSS Custom Properties
-// ────────────────────────────────────────────
 
 :root {
   // Light mode (par défaut)
@@ -39,8 +32,10 @@
   --warning: #{$warning-light};
   --info: #{$info-light};
 
+  // RGB values for translucency
   --bg-main-rgb: 241, 195, 169;   // #F1C3A9 en RGB
   --primary-rgb: 2, 165, 134;     // #02A586 en RGB
+  --secondary-rgb: 134, 197, 178;  // #86C5B2 en RGB
 }
 
 // Dark mode
@@ -67,4 +62,5 @@
 
   --bg-main-rgb: 10, 10, 10;      // #0A0A0A en RGB
   --primary-rgb: 71, 138, 139;    // #478A8B en RGB
+  --secondary-rgb: 109, 213, 184;  // #6DD5B8 en RGB
 }

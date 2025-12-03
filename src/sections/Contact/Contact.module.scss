@@ -1,0 +1,282 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.contact {
+  padding: $space-4xl $space-lg;
+  background: var(--bg-main);
+  
+  @include respond-to('lg') {
+    padding: $space-5xl $space-xl;
+  }
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+// Header
+.header {
+  text-align: center;
+  margin-bottom: $space-3xl;
+}
+
+.title {
+  font-family: $font-heading;
+  font-size: $text-4xl;
+  font-weight: $font-bold;
+  color: var(--text-primary);
+  margin-bottom: $space-md;
+  
+  @include respond-to('lg') {
+    font-size: $text-5xl;
+  }
+}
+
+.subtitle {
+  font-size: $text-lg;
+  color: var(--text-secondary);
+}
+
+// Stepper (indicateur d'étapes)
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $space-3xl;
+  position: relative;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-sm;
+  position: relative;
+  flex: 1;
+}
+
+.stepCircle {
+  width: 48px;
+  height: 48px;
+  @include flex-center;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  border: 2px solid var(--border);
+  color: var(--text-muted);
+  font-weight: $font-bold;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  
+  // État actif
+  .step.active & {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.2);
+  }
+  
+  // État complété
+  .step.completed & {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+  }
+}
+
+.stepLabel {
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: var(--text-muted);
+  
+  .step.active & {
+    color: var(--primary);
+  }
+  
+  .step.completed & {
+    color: var(--success);
+  }
+}
+
+// Ligne de connexion entre les étapes
+.stepLine {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  z-index: 1;
+  
+  .step.completed & {
+    background: var(--success);
+  }
+}
+
+// Formulaire
+.form {
+  background: var(--bg-card);
+  border-radius: $radius-lg;
+  padding: $space-2xl;
+  box-shadow: $shadow-lg;
+}
+
+.formStep {
+  animation: fadeIn 0.3s ease;
+}
+
+.formTitle {
+  font-size: $text-2xl;
+  font-weight: $font-semibold;
+  color: var(--text-primary);
+  margin-bottom: $space-xl;
+}
+
+// Groupe de champ (label + input)
+.formGroup {
+  margin-bottom: $space-lg;
+  
+  label {
+    display: block;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    color: var(--text-primary);
+    margin-bottom: $space-sm;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: $space-md;
+    font-family: $font-body;
+    font-size: $text-base;
+    color: var(--text-primary);
+    background: var(--bg-alt);
+    border: 2px solid var(--border);
+    border-radius: $radius-md;
+    transition: all 0.3s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+    }
+    
+    &::placeholder {
+      color: var(--text-muted);
+    }
+    
+    // État d'erreur
+    &.error {
+      border-color: var(--error);
+    }
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+}
+
+// Message d'erreur
+.errorMessage {
+  display: block;
+  font-size: $text-sm;
+  color: var(--error);
+  margin-top: $space-xs;
+}
+
+// Compteur de caractères
+.charCount {
+  text-align: right;
+  font-size: $text-sm;
+  color: var(--text-muted);
+  margin-top: $space-xs;
+}
+
+// Récapitulatif
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  padding: $space-md;
+  background: var(--bg-alt);
+  border-radius: $radius-md;
+  
+  strong {
+    font-size: $text-sm;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  span {
+    font-size: $text-base;
+    color: var(--text-primary);
+  }
+}
+
+// Page de succès
+.success {
+  text-align: center;
+  padding: $space-3xl 0;
+}
+
+.successIcon {
+  font-size: 4rem;
+  margin-bottom: $space-lg;
+  animation: scaleIn 0.5s ease;
+}
+
+.successTitle {
+  font-size: $text-3xl;
+  font-weight: $font-bold;
+  color: var(--success);
+  margin-bottom: $space-md;
+}
+
+.successText {
+  font-size: $text-lg;
+  color: var(--text-secondary);
+  margin-bottom: $space-2xl;
+}
+
+// Actions (boutons Précédent/Suivant)
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-md;
+  margin-top: $space-2xl;
+  
+  button {
+    flex: 1;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

@@ -2,6 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from './store/slices/projectsSlice';
 import { setSkillCategory } from './store/slices/skillsSlice';
 import Header from './components/Header/Header.jsx';
+import Hero from './sections/Hero/Hero.jsx';
+import About from './sections/About/About.jsx';
+import Contact from './sections/Contact/Contact.jsx';
+import Footer from './components/Footer/Footer.jsx';
 import Button from './components/Button/Button.jsx';
 import ProjectCard from './components/ProjectCard/ProjectCard.jsx';
 import SkillCard from './components/SkillCard/SkillCard.jsx';
@@ -17,53 +21,15 @@ function App() {
     <>
       <Header />
       
-      <main style={{ marginTop: '80px' }}>
+      <main>
         {/* Hero Section */}
-        <section id="hero" style={{ 
-          minHeight: '100vh', 
-          padding: '4rem 2rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-          <div style={{ maxWidth: '800px', textAlign: 'center' }}>
-            <h1 style={{ fontSize: '4rem', marginBottom: '1rem' }}>
-              Lewis Bock
-            </h1>
-            <h2 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-secondary)' }}>
-              Développeur Frontend
-            </h2>
-            <p style={{ fontSize: '1.25rem', marginBottom: '2rem', color: 'var(--text-secondary)' }}>
-              De l'ingénierie industrielle au développement web : je mets ma rigueur technique et ma créativité au service d'interfaces utilisateur performantes.
-            </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              <Button variant="primary" size="large">
-                Voir mes projets
-              </Button>
-              <Button variant="outline" size="large">
-                Me contacter
-              </Button>
-            </div>
-          </div>
-        </section>
+        <Hero />
 
-        {/* About Section (placeholder) */}
-        <section id="about" style={{ 
-          minHeight: '100vh', 
-          padding: '4rem 2rem',
-          background: 'var(--bg-alt)'
-        }}>
-          <h2 style={{ textAlign: 'center', fontSize: '3rem', marginBottom: '2rem' }}>
-            À Propos
-          </h2>
-          <p style={{ maxWidth: '800px', margin: '0 auto', fontSize: '1.125rem' }}>
-            Section À propos (à venir)
-          </p>
-        </section>
+        {/* About Section */}
+        <About />
 
         {/* Skills Section */}
         <section id="skills" style={{ 
-          minHeight: '100vh', 
           padding: '4rem 2rem',
           maxWidth: '1400px',
           margin: '0 auto'
@@ -122,7 +88,6 @@ function App() {
 
         {/* Projects Section */}
         <section id="projects" style={{ 
-          minHeight: '100vh', 
           padding: '4rem 2rem',
           background: 'var(--bg-alt)',
           maxWidth: '1400px',
@@ -199,6 +164,10 @@ function App() {
             Section Contact (à venir)
           </p>
         </section>
+
+      <Contact />
+
+      <Footer />
       </main>
     </>
   );
