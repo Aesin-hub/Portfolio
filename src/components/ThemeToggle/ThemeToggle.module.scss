@@ -2,3 +2,55 @@
 @import '../../styles/abstracts/variables';
 @import '../../styles/abstracts/mixins';
 @import '../../styles/base/typography';
+
+.toggle {
+  @include reset-button;
+  cursor: pointer;
+}
+
+.track {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  background: var(--bg-alt);
+  border-radius: $radius-full;
+  border: 2px solid var(--border);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: var(--primary);
+  }
+  
+  &.dark {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+}
+
+.thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  @include flex-center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: $shadow-sm;
+  
+  .dark & {
+    left: calc(100% - 26px);
+    background: var(--bg-main);
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-primary);
+  
+  .dark & {
+    color: var(--primary);
+  }
+}

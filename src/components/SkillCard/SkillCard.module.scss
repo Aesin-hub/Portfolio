@@ -2,3 +2,92 @@
 @import '../../styles/abstracts/variables';
 @import '../../styles/abstracts/mixins';
 @import '../../styles/base/typography';
+
+.card {
+  background: var(--bg-card);
+  border-radius: $radius-lg;
+  padding: $space-lg;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: $shadow-sm;
+  border: 1px solid var(--border);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-md;
+    border-color: var(--primary);
+  }
+}
+
+// Icône
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto $space-md;
+  @include flex-center;
+  background: var(--bg-alt);
+  border-radius: $radius-md;
+  transition: all 0.3s ease;
+  
+  .card:hover & {
+    background: var(--primary);
+    transform: scale(1.1);
+  }
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  
+  .card:hover & {
+    filter: brightness(0) invert(1);
+  }
+}
+
+// Nom
+.name {
+  font-family: $font-heading;
+  font-size: $text-lg;
+  font-weight: $font-semibold;
+  color: var(--text-primary);
+  margin-bottom: $space-sm;
+}
+
+// Description
+.description {
+  font-size: $text-sm;
+  color: var(--text-secondary);
+  margin-bottom: $space-md;
+  min-height: 40px;
+}
+
+// Niveau (étoiles)
+.level {
+  display: flex;
+  justify-content: center;
+  gap: $space-xs;
+  margin-bottom: $space-sm;
+}
+
+.star {
+  font-size: $text-lg;
+  opacity: 0.2;
+  transition: all 0.3s ease;
+  
+  &.active {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+// Label niveau
+.levelLabel {
+  display: inline-block;
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  color: var(--text-muted);
+  padding: $space-xs $space-sm;
+  background: var(--bg-alt);
+  border-radius: $radius-sm;
+}

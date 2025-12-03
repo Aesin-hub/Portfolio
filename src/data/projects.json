@@ -6,11 +6,11 @@
       "subtitle": "Plateforme de réservation d'hébergements",
       "category": ["html", "css", "responsive"],
       "tags": ["HTML5", "CSS3", "Responsive Design", "Flexbox", "Grid"],
-      "thumbnail": "/assets/images/projects/booki/thumbnail.jpg",
+      "thumbnail": "/assets/images/projects/booki/thumbnail.webp",
       "images": [
-        "/assets/images/projects/booki/screen-1.jpg",
-        "/assets/images/projects/booki/screen-2.jpg",
-        "/assets/images/projects/booki/screen-3.jpg"
+        "/assets/images/projects/booki/screen-1.webp",
+        "/assets/images/projects/booki/screen-2.webp",
+        "/assets/images/projects/booki/screen-3.webp"
       ],
       "description": {
         "short": "Intégration de la page d'accueil d'une plateforme de réservation d'hébergements en mobile-first.",
@@ -30,11 +30,11 @@
       "subtitle": "Site de réservation de repas en ligne",
       "category": ["html", "css", "sass", "responsive"],
       "tags": ["HTML5", "CSS3", "Sass", "Responsive Design", "Animations CSS"],
-      "thumbnail": "/assets/images/projects/ohmyfood/thumbnail.jpg",
+      "thumbnail": "/assets/images/projects/ohmyfood/thumbnail.webp",
       "images": [
-        "/assets/images/projects/ohmyfood/screen-1.jpg",
-        "/assets/images/projects/ohmyfood/screen-2.jpg",
-        "/assets/images/projects/ohmyfood/screen-3.jpg"
+        "/assets/images/projects/ohmyfood/screen-1.webp",
+        "/assets/images/projects/ohmyfood/screen-2.webp",
+        "/assets/images/projects/ohmyfood/screen-3.webp"
       ],
       "description": {
         "short": "Intégration d'une page de réservation de repas avec animations CSS.",
@@ -57,10 +57,10 @@
       "subtitle": "Site d'une imprimerie avec carrousel dynamique",
       "category": ["javascript"],
       "tags": ["JavaScript", "DOM", "Events", "HTML5", "CSS3"],
-      "thumbnail": "/assets/images/projects/print_it/thumbnail.jpg",
+      "thumbnail": "/assets/images/projects/print_it/thumbnail.webp",
       "images": [
-        "/assets/images/projects/print_it/screen-1.jpg",
-        "/assets/images/projects/print_it/screen-2.jpg"
+        "/assets/images/projects/print_it/screen-1.webp",
+        "/assets/images/projects/print_it/screen-2.webp"
       ],
       "description": {
         "short": "Dynamisation du site d'une imprimerie avec un carrousel JavaScript.",
@@ -83,10 +83,10 @@
       "subtitle": "Plateforme de location d'appartements entre particuliers",
       "category": ["react"],
       "tags": ["React", "React Router", "JavaScript", "SASS", "Components"],
-      "thumbnail": "/assets/images/projects/kasa/thumbnail.jpg",
+      "thumbnail": "/assets/images/projects/kasa/thumbnail.webp",
       "images": [
-        "/assets/images/projects/kasa/screen-1.jpg",
-        "/assets/images/projects/kasa/screen-2.jpg"
+        "/assets/images/projects/kasa/screen-1.webp",
+        "/assets/images/projects/kasa/screen-2.webp"
       ],
       "description": {
         "short": "Application web de location immobilière développée avec React et React Router.",
@@ -109,11 +109,11 @@
       "subtitle": "Portfolio d'une photographe - Optimisation SEO et performances",
       "category": ["optimization"],
       "tags": ["SEO", "Performance", "Lighthouse", "Accessibilité", "Optimisation"],
-      "thumbnail": "/assets/images/projects/nina_carducci/thumbnail.jpg",
+      "thumbnail": "/assets/images/projects/nina_carducci/thumbnail.webp",
       "images": [
-        "/assets/images/projects/nina_carducci/screen-1.jpg",
-        "/assets/images/projects/nina_carducci/screen-2.jpg",
-        "/assets/images/projects/nina_carducci/screen-3.jpg"
+        "/assets/images/projects/nina_carducci/screen-1.webp",
+        "/assets/images/projects/nina_carducci/screen-2.webp",
+        "/assets/images/projects/nina_carducci/screen-3.webp"
       ],
       "description": {
         "short": "Optimisation complète d'un site de photographe : SEO, performances et accessibilité.",
@@ -136,11 +136,11 @@
       "subtitle": "Application bancaire avec gestion d'état Redux",
       "category": ["react"],
       "tags": ["React", "Redux", "API REST", "Authentication", "State Management"],
-      "thumbnail": "/assets/images/projects/argent_bank/thumbnail.jpg",
+      "thumbnail": "/assets/images/projects/argentbank/thumbnail.webp",
       "images": [
-        "/assets/images/projects/argent_bank/screen-1.jpg",
-        "/assets/images/projects/argent_bank/screen-2.jpg",
-        "/assets/images/projects/argent_bank/screen-3.jpg"
+        "/assets/images/projects/argentbank/screen-1.webp",
+        "/assets/images/projects/argentbank/screen-2.webp",
+        "/assets/images/projects/argentbank/screen-3.webp"
       ],
       "description": {
         "short": "Application bancaire avec authentification et gestion globale de l'état avec Redux.",

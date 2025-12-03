@@ -38,6 +38,9 @@
   --error: #{$error-light};
   --warning: #{$warning-light};
   --info: #{$info-light};
+
+  --bg-main-rgb: 241, 195, 169;   // #F1C3A9 en RGB
+  --primary-rgb: 2, 165, 134;     // #02A586 en RGB
 }
 
 // Dark mode
@@ -61,4 +64,7 @@
   --error: #{$error-dark};
   --warning: #{$warning-dark};
   --info: #{$info-dark};
+
+  --bg-main-rgb: 10, 10, 10;      // #0A0A0A en RGB
+  --primary-rgb: 71, 138, 139;    // #478A8B en RGB
 }
