@@ -1,0 +1,96 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.button {
+  @include reset-button;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: $space-sm;
+  width: 56px;
+  height: 72px;
+  padding-bottom: $space-xs;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 16px 16px; // Arrondis uniquement en bas (effet étiquette)
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  
+  &:hover {
+    border-color: var(--primary);
+    background: var(--bg-alt);
+    transform: translateY(2px);
+    
+    .icon {
+      background: var(--primary);
+      transform: scale(1.05);
+      
+      svg {
+        color: white;
+      }
+    }
+    
+    .label {
+      color: var(--primary);
+    }
+  }
+  
+  // État actif
+  &.active {
+    border-color: var(--primary);
+    background: rgba(var(--primary-rgb), 0.1);
+    
+    .icon {
+      background: var(--primary);
+      
+      svg {
+        color: white;
+      }
+    }
+  }
+  
+  // Variant pour les drapeaux (plus petit, sans label)
+  &.flag {
+    min-width: 48px;
+    height: 48px;
+    padding: $space-sm;
+    font-size: $text-2xl;
+    border-radius: $radius-md; // Radius normal pour les petits boutons
+    border-top: 2px solid var(--border); // Bordure normale
+    
+    &:hover {
+      transform: translateY(-2px) scale(1.05);
+    }
+  }
+}
+
+// Conteneur de l'icône (carré 40x40px comme MenuButton)
+.icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  border-radius: 20px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  
+  svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+}
+
+// Label texte
+.label {
+  font-family: $font-display;
+  font-size: $text-base;
+  font-weight: $font-semibold;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}

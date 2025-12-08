@@ -1,0 +1,54 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.menuButton {
+  @include reset-button;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 56px;
+  height: 72px;
+  padding-bottom: $space-xs;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 0 0 16px 16px; // Arrondis uniquement en bas (effet étiquette)
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  &:hover {
+    border-color: var(--primary);
+    background: var(--bg-alt);
+    transform: translateY(2px); // Légère descente au hover
+    
+    .icon {
+      background: var(--primary);
+      transform: scale(1.05);
+    }
+  }
+  
+  &.open {
+    border-color: var(--primary);
+    background: var(--bg-alt);
+    
+    .icon {
+      background: var(--primary);
+    }
+  }
+}
+
+// Icône LB (carré 40x40px)
+.icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  color: white;
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-weight: $font-black;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
