@@ -6,248 +6,165 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: $space-xl $space-lg;
-  padding-top: calc(80px + $space-xl); // Header height + padding
+  background: var(--bg-main);
+  padding: $space-2xl 0;
   position: relative;
-  overflow: hidden;
-  
-  // Background pattern (optionnel)
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-      radial-gradient(circle at 20% 50%, rgba(var(--primary-rgb), 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(var(--secondary-rgb), 0.1) 0%, transparent 50%);
-    z-index: 0;
-  }
 }
 
 .container {
-  max-width: 1200px;
+  @include container;
   width: 100%;
+}
+
+// Contenu : Texte à gauche || Image à droite
+.content {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: $space-3xl;
+  grid-template-columns: 1fr 1fr; // Deux colonnes égales
+  gap: $space-4xl;
   align-items: center;
-  position: relative;
-  z-index: 1;
   
-  @include respond-to('lg') {
-    grid-template-columns: 1fr 1fr;
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr; // Une colonne sur mobile/tablette
+    gap: $space-2xl;
   }
 }
 
-// Content
-.content {
-  animation: fadeInUp 0.8s ease;
+// Partie Gauche : Nom + Texte + Boutons + Social
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
 }
 
-.badge {
-  @include flex-center;
-  gap: $space-sm;
-  width: fit-content;
-  padding: $space-sm $space-lg;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: $radius-full;
-  margin-bottom: $space-xl;
-  animation: fadeIn 0.6s ease;
-}
-
-.badgeIcon {
-  font-size: $text-xl;
-  animation: wave 2s infinite;
-}
-
-.badgeText {
-  font-size: $text-sm;
-  font-weight: $font-medium;
-  color: var(--text-secondary);
-}
-
+// Nom principal (intégré à gauche)
 .title {
   font-family: $font-display;
-  font-size: $text-5xl;
+  font-size: $text-6xl;
   font-weight: $font-black;
   color: var(--text-primary);
-  margin-bottom: $space-md;
+  margin: 0;
   line-height: $leading-tight;
   
-  @include respond-to('md') {
-    font-size: $text-6xl;
-  }
-  
-  @include respond-to('lg') {
-    font-size: $text-7xl;
-  }
-}
-
-.subtitle {
-  font-family: $font-heading;
-  font-size: $text-2xl;
-  font-weight: $font-semibold;
-  color: var(--primary);
-  margin-bottom: $space-lg;
-  
-  @include respond-to('md') {
-    font-size: $text-3xl;
-  }
-  
-  @include respond-to('lg') {
+  @media (max-width: 768px) {
     font-size: $text-4xl;
   }
 }
 
-.description {
-  font-size: $text-lg;
-  line-height: $leading-relaxed;
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin-bottom: $space-2xl;
+.subtitle {
+  font-family: $font-display;
+  font-size: $text-3xl;
+  font-weight: $font-bold;
+  color: var(--primary);
+  margin: 0;
   
-  @include respond-to('md') {
-    font-size: $text-xl;
+  @media (max-width: 768px) {
+    font-size: $text-2xl;
   }
 }
 
+.description {
+  font-family: $font-body;
+  font-size: $text-lg;
+  color: var(--text-secondary);
+  line-height: $leading-relaxed;
+  margin: 0;
+  
+  @media (max-width: 768px) {
+    font-size: $text-base;
+  }
+}
+
+// Boutons CTA
 .actions {
   display: flex;
-  flex-wrap: wrap;
   gap: $space-md;
-  margin-bottom: $space-2xl;
+  flex-wrap: wrap;
+  margin-top: $space-md;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 // Social Links
 .social {
   display: flex;
   gap: $space-md;
+  margin-top: $space-sm;
 }
 
 .socialLink {
-  @include flex-center;
-  gap: $space-xs;
-  padding: $space-sm $space-md;
-  font-size: $text-sm;
-  font-weight: $font-medium;
-  color: var(--text-secondary);
-  text-decoration: none;
-  border: 1px solid var(--border);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
   border-radius: $radius-md;
+  color: var(--text-primary);
   transition: all 0.3s ease;
   
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-  
   &:hover {
-    color: var(--primary);
     border-color: var(--primary);
+    background: var(--primary);
+    color: white;
     transform: translateY(-2px);
     box-shadow: $shadow-md;
   }
 }
 
-// Illustration
-.illustration {
-  display: none;
+// Partie Droite : Image
+.imageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
-  @include respond-to('lg') {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @media (max-width: 1024px) {
+    order: -1; // Met l'image en premier sur mobile
   }
 }
 
-.placeholder {
-  width: 400px;
-  height: 400px;
-  @include flex-center;
-  background: var(--bg-card);
-  border: 2px dashed var(--border);
-  border-radius: $radius-lg;
-  animation: float 3s ease-in-out infinite;
+.photo {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  
+  @media (max-width: 768px) {
+    max-width: 350px;
+  }
 }
 
-.placeholderEmoji {
-  font-size: 8rem;
-}
-
-// Scroll Indicator
+// Scroll Indicator en bas
 .scrollIndicator {
   @include reset-button;
   position: absolute;
-  bottom: $space-2xl;
+  bottom: $space-xl;
   left: 50%;
   transform: translateX(-50%);
   width: 48px;
   height: 48px;
-  @include flex-center;
-  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  color: var(--text-primary);
   cursor: pointer;
-  animation: bounce 2s infinite;
   transition: all 0.3s ease;
+  animation: bounce 2s infinite;
   
   &:hover {
+    border-color: var(--primary);
     color: var(--primary);
-    transform: translateX(-50%) scale(1.1);
-  }
-  
-  svg {
-    width: 32px;
-    height: 32px;
+    transform: translateX(-50%) translateY(-4px);
   }
 }
 
-// Animations
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes wave {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  10%, 30% {
-    transform: rotate(14deg);
-  }
-  20%, 40% {
-    transform: rotate(-8deg);
-  }
-  50% {
-    transform: rotate(14deg);
-  }
-  60% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
+// Animation bounce pour le scroll indicator
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateX(-50%) translateY(0);

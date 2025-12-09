@@ -1,9 +1,18 @@
 // about section //
 
 import Button from '../../components/Button/Button';
+import ScrollIndicator from '../../components/ScrollIndicator/ScrollIndicator';
 import styles from './About.module.scss';
 
 function About() {
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section id="about" className={styles.about}>
       <div className={styles.container}>
@@ -20,7 +29,7 @@ function About() {
         <div className={styles.content}>
           {/* Groupe texte en haut */}
           <div className={styles.textContent}>
-            <h2>Front-end Developpeur</h2>
+            <h2>Developpeur Front-end</h2>
 
             <h5>Développeur frontend issu d'une reconversion réussie</h5>
 
@@ -64,6 +73,7 @@ function About() {
           </div>
         </div>
       </div>
+      <ScrollIndicator onClick={() => scrollToSection('skills')} /> 
     </section>
   );
 }
