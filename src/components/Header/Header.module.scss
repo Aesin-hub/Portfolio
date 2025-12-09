@@ -8,14 +8,13 @@
   right: 0;
   height: 80px;
   background: var(--bg-main);
-  border-bottom: 1px solid var(--border);
   z-index: $z-header;
   transition: all 0.3s ease;
   
   &.scrolled {
     box-shadow: $shadow-lg;
     backdrop-filter: blur(10px);
-    background: rgba(var(--bg-main-rgb), 0.9);
+    background: rgba(var(--bg-main-rgb));
   }
 }
 

@@ -3,17 +3,11 @@
 import { useDispatch } from 'react-redux';
 import Button from '../../components/Button/Button';
 import ScrollIndicator from '../../components/ScrollIndicator/ScrollIndicator';
+import { scrollToSection } from '../../utils/scroll';
 import styles from './Hero.module.scss';
 
 function Hero() {
   const dispatch = useDispatch();
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <section id="hero" className={styles.hero}>

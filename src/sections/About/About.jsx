@@ -2,16 +2,10 @@
 
 import Button from '../../components/Button/Button';
 import ScrollIndicator from '../../components/ScrollIndicator/ScrollIndicator';
+import { scrollToSection } from '../../utils/scroll';
 import styles from './About.module.scss';
 
 function About() {
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
 
   return (
     <section id="about" className={styles.about}>
@@ -31,7 +25,7 @@ function About() {
           <div className={styles.textContent}>
             <h2>Developpeur Front-end</h2>
 
-            <h5>Développeur frontend issu d'une reconversion réussie</h5>
+            <h5>Développeur front-end issu d'une reconversion réussie</h5>
 
             <div className={styles.paragraphs}>
               <p>

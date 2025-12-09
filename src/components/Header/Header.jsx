@@ -3,6 +3,7 @@ import MenuButton from '../MenuButton/MenuButton';
 import ActionButton from '../ActionButton/ActionButton';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import FlashBanner from '../FlashBanner/FlashBanner';
+import { scrollToSection } from '../../utils/scroll';
 import styles from './Header.module.scss';
 
 function Header() {
@@ -16,17 +17,6 @@ function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
-  };
 
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
