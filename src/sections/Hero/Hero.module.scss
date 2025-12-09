@@ -101,14 +101,14 @@
   align-items: center;
   justify-content: center;
   background: var(--bg-card);
-  border: 2px solid var(--border);
+  border: 2px solid var(--primary);
   border-radius: $radius-md;
   color: var(--text-primary);
   transition: all 0.3s ease;
   
   &:hover {
-    border-color: var(--primary);
-    background: var(--primary);
+    border-color: var(--secondary);
+    background: var(--secondary);
     color: white;
     transform: translateY(-2px);
     box-shadow: $shadow-md;

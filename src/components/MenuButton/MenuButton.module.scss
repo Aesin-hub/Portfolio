@@ -10,29 +10,30 @@
   height: 72px;
   padding-bottom: $space-xs;
   background: var(--bg-card);
-  border: 2px solid var(--border);
+  border: 2px solid var(--primary);
   border-radius: 0 0 16px 16px; // Arrondis uniquement en bas (effet étiquette)
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  top: -4px;
   
   &:hover {
-    border-color: var(--primary);
+    border-color: var(--secondary);
     background: var(--bg-alt);
     transform: translateY(2px); // Légère descente au hover
     
     .icon {
-      background: var(--primary);
+      background: var(--secondary);
       transform: scale(1.05);
     }
   }
   
   &.open {
-    border-color: var(--primary);
+    border-color: var(--secondary);
     background: var(--bg-alt);
     
     .icon {
-      background: var(--primary);
+      background: var(--secondary);
     }
   }
 }
@@ -44,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: var(--primary);
   color: white;
   font-family: $font-display;
   font-size: $text-lg;

@@ -14,16 +14,15 @@
   height: 32px;
   background: var(--bg-alt);
   border-radius: $radius-full;
-  border: 2px solid var(--border);
+  border: 2px solid var(--primary);
   transition: all 0.3s ease;
   
   &:hover {
-    border-color: var(--primary);
-  }
-  
-  &.dark {
-    background: var(--primary);
-    border-color: var(--primary);
+    border-color: var(--secondary);
+
+    .icon {
+    color: var(--secondary);
+    }
   }
 }
 
@@ -48,9 +47,5 @@
 .icon {
   width: 16px;
   height: 16px;
-  color: var(--text-primary);
-  
-  .dark & {
-    color: var(--primary);
-  }
+  color: var(--primary);
 }

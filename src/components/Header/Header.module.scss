@@ -102,6 +102,8 @@
   align-items: center;
   gap: $space-md;
   height: 100%;
+  position: relative;
+  top: -4px;
 }
 
 .toggleStack {
