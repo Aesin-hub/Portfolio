@@ -40,26 +40,28 @@ function Header() {
           {isMenuOpen && (
             <div className={styles.cascadeButtons}>
               <ActionButton
-                icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>}
+                icon={<img
+                  src="/assets/icons/about.webp" 
+                  alt="À propos"
+                  style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
                 onClick={() => scrollToSection('about')}
                 label="À propos"
               />
               
               <ActionButton
-                icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                </svg>}
+                icon={<img 
+                  src="/assets/icons/skill.webp" 
+                  alt="Compétences"
+                  style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
                 onClick={() => scrollToSection('skills')}
                 label="Compétences"
               />
               
               <ActionButton
-                icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
-                </svg>}
+                icon={<img 
+                  src="/assets/icons/project.webp" 
+                  alt="Projets" 
+                  style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
                 onClick={() => scrollToSection('projects')}
                 label="Projets"
               />
@@ -69,9 +71,10 @@ function Header() {
 
         <div className={styles.right}>
           <ActionButton
-            icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-            </svg>}
+            icon={<img 
+              src="/assets/icons/contact.webp" 
+              alt="Contact"
+              style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
             onClick={() => scrollToSection('contact')}
             label="Contact"
           />

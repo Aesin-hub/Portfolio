@@ -2,245 +2,185 @@
 @import '../../styles/abstracts/mixins';
 
 .about {
-  padding: $space-4xl $space-lg;
-  background: var(--bg-alt);
-  position: relative;
-  overflow: hidden;
-  
-  @include respond-to('lg') {
-    padding: $space-5xl $space-xl;
-  }
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-main);
+  padding: $space-xl;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: $container-max-width;
   margin: 0 auto;
+  width: 100%;
+  height: 80vh;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: $space-3xl;
-  align-items: center;
-  
-  @include respond-to('lg') {
-    grid-template-columns: 400px 1fr;
-    gap: $space-5xl;
-  }
-}
-
-// Image
-.imageWrapper {
-  position: relative;
-  @include flex-center;
-  animation: fadeIn 0.8s ease;
-}
-
-.imagePlaceholder {
-  width: 300px;
-  height: 300px;
-  @include flex-center;
-  background: var(--bg-card);
-  border: 3px solid var(--border);
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
+  grid-template-columns: 400px 1fr;
+  gap: 0;
+  border-radius: $radius-xl;
   overflow: hidden;
-  box-shadow: $shadow-xl;
+  background: var(--bg-card);
+  box-shadow: $shadow-2xl;
   
-  @include respond-to('lg') {
-    width: 400px;
-    height: 400px;
+  @media (max-width: 1024px) {
+    height: auto;
+    min-height: 80vh;
+    grid-template-columns: 1fr;
   }
 }
 
-.placeholderEmoji {
-  font-size: 8rem;
+.imageWrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.photoContainer {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-radius: $radius-xl 0 0 $radius-xl;
+  overflow: hidden;
   
-  @include respond-to('lg') {
-    font-size: 12rem;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary) 0%, transparent 100%);
+    opacity: 0.1;
+    z-index: 1;
   }
 }
 
-// Decorations
-.decoration1 {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: var(--primary);
-  opacity: 0.1;
-  border-radius: 50%;
-  top: -50px;
-  left: -50px;
-  z-index: 1;
-  animation: float 4s ease-in-out infinite;
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: center;
 }
 
-.decoration2 {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background: var(--secondary);
-  opacity: 0.1;
-  border-radius: 50%;
-  bottom: -30px;
-  right: -30px;
-  z-index: 1;
-  animation: float 3s ease-in-out infinite reverse;
-}
-
-// Content
+// Contenu principal
 .content {
-  animation: fadeInUp 0.8s ease 0.2s both;
-}
-
-.tag {
-  @include flex-center;
-  gap: $space-sm;
-  width: fit-content;
-  padding: $space-xs $space-md;
-  background: var(--primary);
-  color: white;
-  border-radius: $radius-full;
-  font-size: $text-sm;
-  font-weight: $font-semibold;
-  margin-bottom: $space-lg;
-}
-
-.tagDot {
-  width: 8px;
-  height: 8px;
-  background: white;
-  border-radius: 50%;
-  animation: pulse 2s ease infinite;
-}
-
-.title {
-  font-family: $font-heading;
-  font-size: $text-3xl;
-  font-weight: $font-bold;
-  color: var(--text-primary);
-  line-height: $leading-tight;
-  margin-bottom: $space-xl;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3xl;
+  padding: $space-2xl $space-3xl;
+  overflow: hidden;
+  height: 100%;
   
-  @include respond-to('md') {
-    font-size: $text-4xl;
-  }
-  
-  @include respond-to('lg') {
-    font-size: $text-5xl;
+  @media (max-width: 1024px) {
+    padding: $space-xl;
   }
 }
 
-.text {
-  font-size: $text-base;
-  line-height: $leading-relaxed;
-  color: var(--text-secondary);
-  margin-bottom: $space-2xl;
+// Groupe de texte en haut
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
   
-  @include respond-to('md') {
+  h2 {
+    font-family: $font-display;
     font-size: $text-lg;
+    font-weight: $font-bold;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: $tracking-wide;
+    margin: 0;
   }
   
-  p {
-    margin-bottom: $space-lg;
+  h5 {
+    font-family: $font-display;
+    font-size: $text-3xl;
+    font-weight: $font-black;
+    color: var(--text-primary);
+    line-height: $leading-tight;
+    margin: 0;
     
-    &:last-child {
-      margin-bottom: 0;
+    @media (max-width: 768px) {
+      font-size: $text-2xl;
     }
   }
+}
+
+// Conteneur des paragraphes
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
   
-  strong {
-    color: var(--text-primary);
-    font-weight: $font-bold;
+  p {
+    font-family: $font-body;
+    font-size: $text-base;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    
+    strong {
+      color: var(--text-primary);
+      font-weight: $font-bold;
+    }
   }
 }
 
-// Stats
+// Footer : Stats + Bouton sur la même ligne
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2xl;
+  flex-shrink: 0;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-lg;
+  }
+}
+
 .stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: $space-lg;
-  padding: $space-xl 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  margin-bottom: $space-2xl;
+  display: flex;
+  align-items: center;
+  gap: $space-2xl;
+  
+  @media (max-width: 768px) {
+    gap: $space-lg;
+  }
 }
 
 .stat {
-  text-align: center;
-  
-  @include respond-to('lg') {
-    text-align: left;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
 }
 
 .statNumber {
   font-family: $font-display;
   font-size: $text-4xl;
   font-weight: $font-black;
-  color: var(--primary);
+  color: var(--secondary);
   line-height: 1;
-  margin-bottom: $space-xs;
-  
-  @include respond-to('md') {
-    font-size: $text-5xl;
-  }
+  margin: 0;
 }
 
 .statLabel {
+  font-family: $font-body;
   font-size: $text-sm;
-  color: var(--text-muted);
-  font-weight: $font-medium;
+  color: var(--text-secondary);
+  line-height: $leading-normal;
+  max-width: 150px;
+  margin: 0;
 }
 
-// Actions
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $space-md;
+  flex-shrink: 0;
   
-  button {
-    display: flex;
-    align-items: center;
-    gap: $space-sm;
-  }
-}
-
-// Animations
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(5deg);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.8);
+  @media (max-width: 768px) {
+    width: 100%;
   }
 }

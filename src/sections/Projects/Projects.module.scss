@@ -2,6 +2,7 @@
 @import '../../styles/abstracts/mixins';
 
 .projects {
+  height: 100vh;
   padding: $space-4xl $space-lg;
   background: var(--bg-alt);
   
