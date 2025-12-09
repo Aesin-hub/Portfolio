@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import MenuButton from '../MenuButton/MenuButton';
 import ActionButton from '../ActionButton/ActionButton';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import FlashBanner from '../FlashBanner/FlashBanner';
 import styles from './Header.module.scss';
 
 function Header() {
@@ -68,6 +69,8 @@ function Header() {
             </div>
           )}
         </div>
+
+        <FlashBanner />
 
         <div className={styles.right}>
           <ActionButton

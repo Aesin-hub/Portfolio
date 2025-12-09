@@ -1,0 +1,93 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.flashBanner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 40%;
+  max-width: 800px;
+  height: 40px;
+  
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: 0;
+  
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(
+      90deg, 
+      var(--bg-main) 0%,
+      var(--bg-main) 30%,
+      transparent 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(
+      90deg, 
+      transparent 0%,
+      var(--bg-main) 70%,
+      var(--bg-main) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  @media (max-width: 1024px) {
+    width: 70%;
+  }
+  
+  @media (max-width: 768px) {
+    width: 80%;
+    height: 36px;
+  }
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 6rem;
+  white-space: nowrap;
+  animation: scroll 20s linear infinite;
+}
+
+.text {
+  font-family: $font-display;
+  font-size: $text-base;
+  font-weight: $font-bold;
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: $tracking-wide;
+  line-height: 1;
+  
+  @media (max-width: 768px) {
+    font-size: $text-sm;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
