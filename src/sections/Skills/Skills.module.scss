@@ -43,23 +43,23 @@
   }
 }
 
-.tupperware {
+.skillCategory {
   position: relative;
   min-height: 120px;
-  overflow: hidden;
+  overflow: visible; // Allow stars and names to extend outside
   border-radius: $radius-lg;
 
   &.open {
-    .lid {      
+    .categoryHeader {    
+      left: calc(100% - 120px);  
       width: 120px;
-      transform: translateX(calc(100% - 120px));
       border-radius: $radius-lg;
       justify-content: center;
       align-items: center;
       padding: 0;
       display: flex;
     }
-    .arrow {
+    .headerIcon {
       position: static;
       margin: 0;
 
@@ -76,13 +76,16 @@
   }
 }
 
-.container_ {
+.categoryContent {
   background: var(--bg-main);
   border: 2px solid var(--border);
   border-radius: $radius-lg;
   padding: $space-lg;
   min-height: 120px;
   opacity: 1;
+  position: relative;
+  z-index: 1;
+  overflow: visible; // Allow tooltips to extend outside
 }
 
 .iconGrid {
@@ -94,56 +97,162 @@
 
 .skillIcon {
   position: relative;
-  width: 48px;
-  height: 48px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  transition: all 0.3s ease;
   cursor: pointer;
+  width: 48px; // Icon width only
+  height: 48px; // Icon height only
 
-  img {
+  > img {
     width: 48px;
     height: 48px;
     object-fit: contain;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
   }
 
   &:hover {
-    transform: translateY(-4px) scale(1.1);
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    > img {
+      transform: translateY(-4px) scale(1.1);
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    }
 
     .skillTooltip {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
+      transform: translate(-50%, -8px);
+    }
+
+    .skillName {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .star {
+      &:nth-child(1) {
+        animation: starAppear 0.4s ease forwards;
+        animation-delay: 0.1s;
+      }
+      
+      &:nth-child(2) {
+        animation: starAppearCenter 0.4s ease forwards;
+        animation-delay: 0.2s;
+      }
+      
+      &:nth-child(3) {
+        animation: starAppear 0.4s ease forwards;
+        animation-delay: 0.3s;
+      }
     }
   }
 }
 
 .skillTooltip {
   position: absolute;
-  bottom: calc(100% + 8px);
+  bottom: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  padding: $space-xs $space-sm;
-  background: var(--bg-main);
-  border: 2px solid var(--primary);
-  border-radius: $radius-sm;
-  font-family: $font-body;
-  font-size: $text-xs;
-  font-weight: $font-medium;
-  color: var(--text-primary);
-  white-space: nowrap;
+  transform: translate(-50%, -8px);
+  display: flex;
+  gap: 0;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
-  z-index: 10;
+  z-index: 100;
   pointer-events: none;
+  width: 60px; // Réduit pour resserrer les étoiles
+  height: 25px; // Réduit aussi
+  justify-content: center;
+  align-items: flex-end;
 }
 
-.lid {
+.skillName {
+  position: absolute; // N'affecte pas la hauteur du skillIcon
+  top: 100%; // Juste en dessous de l'icône
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: $font-body;
+  font-size: 10px; // Réduit de text-xs
+  font-weight: $font-medium;
+  color: var(--text-primary);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  margin-top: 6px;
+  padding: 3px 6px; // Padding réduit
+  border: 2px solid var(--secondary);
+  border-radius: $radius-sm;
+  background: var(--bg-main);
+  white-space: nowrap; // Pas de wrap pour garder compact
+  max-width: 90px;
+}
+
+.star {
+  width: 16px; // Réduit de 20px à 16px
+  height: 16px;
+  opacity: 0;
+  transform: scale(0);
+  position: absolute;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  // Positionnement en arc de cercle resserré
+  &:nth-child(1) {
+    left: 2px;
+    bottom: 6px;
+    transform-origin: center;
+  }
+  
+  &:nth-child(2) {
+    left: 50%;
+    bottom: 14px; // Réduit de 18px à 14px
+    transform: translateX(-50%) scale(0);
+    transform-origin: center;
+  }
+  
+  &:nth-child(3) {
+    right: 2px;
+    bottom: 6px;
+    transform-origin: center;
+  }
+}
+
+@keyframes starAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes starAppearCenter {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+
+.categoryHeader {
   @include reset-button;
   position: absolute;
   top: 0;
@@ -159,19 +268,17 @@
   border: 2px solid var(--border);
   border-radius: $radius-lg;
   cursor: pointer;
-  transform: none;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              right 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--primary);
 
-    .categoryTitle {
-      color: var(--primary);
-    }
-
-    .arrow {
+    .headerIcon {
       background: var(--primary);
       border-color: var(--primary);
       color: white;
@@ -179,7 +286,7 @@
   }
 }
 
-.arrow {
+.headerIcon {
   width: 64px;
   height: 64px;
   display: flex;

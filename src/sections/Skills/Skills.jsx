@@ -7,16 +7,16 @@ import styles from './Skills.module.scss';
 
 function Skills() {
   const [openCategory, setOpenCategory] = useState(null);
-  const containerRef = useRef(null);
+  const skillsContainerRef = useRef(null);
 
   const toggleCategory = (categoryId) => {
     setOpenCategory(openCategory === categoryId ? null : categoryId);
   };
 
-  // ✅ Fermer quand on clique en dehors
+  // Close category when clicking outside the skills container
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
+      if (skillsContainerRef.current && !skillsContainerRef.current.contains(event.target)) {
         setOpenCategory(null);
       }
     };
@@ -31,31 +31,68 @@ function Skills() {
     <section id="skills" className={styles.skills}>
       <div className={styles.container}>
         
-        {/* Partie gauche : Les compétences */}
-        <div className={styles.skillsContainer} ref={containerRef}>
+        {/* Skills categories container */}
+        <div className={styles.skillsContainer} ref={skillsContainerRef}>
           {skillsData.skillCategories.map((category) => (
             <div 
               key={category.id} 
-              className={`${styles.tupperware} ${openCategory === category.id ? styles.open : ''}`}
+              className={`${styles.skillCategory} ${openCategory === category.id ? styles.open : ''}`}
             >
-              {/* Le container transparent avec les icônes (toujours visible) */}
-              <div className={styles.container_}>
+              {/* Category content with skill icons */}
+              <div className={styles.categoryContent}>
                 <div className={styles.iconGrid}>
-                  {category.skills.map((skill) => (
-                    <div key={skill.id} className={styles.skillIcon}>
-                      <img src={skill.icon} alt={skill.name} />
-                      <span className={styles.skillTooltip}>{skill.name}</span>
-                    </div>
-                  ))}
+                  {category.skills.map((skill) => {
+                    // Calculate filled and empty stars based on skill level
+                    const getStars = (level) => {
+                      const stars = { filled: 0, empty: 0 };
+                      if (level === 'beginner') {
+                        stars.filled = 1;
+                        stars.empty = 2;
+                      } else if (level === 'intermediate') {
+                        stars.filled = 2;
+                        stars.empty = 1;
+                      } else if (level === 'advanced') {
+                        stars.filled = 3;
+                        stars.empty = 0;
+                      }
+                      return stars;
+                    };
+                    
+                    const stars = getStars(skill.level);
+                    
+                    return (
+                      <div key={skill.id} className={styles.skillIcon}>
+                        {/* Star rating tooltip */}
+                        <div className={styles.skillTooltip}>
+                          {[...Array(stars.filled)].map((_, i) => (
+                            <div key={`filled-${i}`} className={styles.star}>
+                              <img src="/assets/icons/star_1.webp" alt="" />
+                            </div>
+                          ))}
+                          {[...Array(stars.empty)].map((_, i) => (
+                            <div key={`empty-${i}`} className={styles.star}>
+                              <img src="/assets/icons/star_0.webp" alt="" />
+                            </div>
+                          ))}
+                        </div>
+                        
+                        {/* Skill icon */}
+                        <img src={skill.icon} alt={skill.name} />
+                        
+                        {/* Skill name */}
+                        <span className={styles.skillName}>{skill.name}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* Le couvercle avec le titre (cliquable) */}
+              {/* Category header with toggle button */}
               <button 
-                className={styles.lid}
+                className={styles.categoryHeader}
                 onClick={() => toggleCategory(category.id)}
               >
-                <span className={styles.arrow}>
+                <span className={styles.headerIcon}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M9 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -66,7 +103,7 @@ function Skills() {
           ))}
         </div>
 
-        {/* Partie droite : "Je travaille avec" */}
+        {/* Side panel with description */}
         <div className={styles.sidePanel}>
           <h2>Je travaille avec</h2>
           <p>
