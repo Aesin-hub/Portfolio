@@ -14,7 +14,6 @@
   &.scrolled {
     box-shadow: $shadow-lg;
     backdrop-filter: blur(10px);
-    background: rgba(var(--bg-main-rgb));
   }
 }
 

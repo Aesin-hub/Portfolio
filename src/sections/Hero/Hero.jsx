@@ -72,7 +72,7 @@ function Hero() {
           {/* Partie Droite : Image */}
           <div className={styles.imageWrapper}>
             <img 
-              src='/assets/images/HeroImg.png'
+              src='/assets/images/HeroImg.webp'
               alt="Illustration développeur"
               className={styles.photo}
             />
