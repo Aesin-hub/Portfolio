@@ -1,0 +1,266 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 55vh; // Reduced
+  min-height: 450px; // Reduced
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2000px;
+  padding-bottom: $space-3xl;
+
+  @include respond-to('lg') {
+    height: 60vh; // Reduced
+  }
+}
+
+// Container 3D carousel
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+// Wrapper pour chaque slide
+.slideWrapper {
+  position: absolute;
+  width: 58vw; // Reduced from 65vw
+  max-width: 950px; // Reduced from 1100px
+  
+  @include respond-to('md') {
+    width: 55vw; // Reduced from 60vw
+  }
+
+  @include respond-to('lg') {
+    width: 50vw; // Reduced from 55vw
+  }
+}
+
+// Animation de rotation pour transition entre slides
+@keyframes wheelRotateLeft {
+  0% {
+    transform: translateX(70%) translateY(-15%) translateZ(-300px) scale(0.85);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateX(0) translateY(-30%) translateZ(-150px) scale(0.92);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(-70%) translateY(-15%) translateZ(-300px) scale(0.85);
+    opacity: 0.4;
+  }
+}
+
+@keyframes wheelRotateRight {
+  0% {
+    transform: translateX(-70%) translateY(-15%) translateZ(-300px) scale(0.85);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateX(0) translateY(-30%) translateZ(-150px) scale(0.92);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(70%) translateY(-15%) translateZ(-300px) scale(0.85);
+    opacity: 0.4;
+  }
+}
+
+@keyframes wheelCenter {
+  from {
+    transform: translateX(0) translateY(-30%) translateZ(-150px) scale(0.92);
+    opacity: 0.7;
+  }
+  to {
+    transform: translateX(0) translateY(0) translateZ(0) scale(1);
+    opacity: 1;
+  }
+}
+
+// Slide actuelle (centre)
+.current {
+  z-index: 3;
+  transform: translateX(0) translateY(0) translateZ(0) scale(1);
+  opacity: 1;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Slide précédente (gauche) - arc de cercle
+.prev {
+  z-index: 1;
+  transform: translateX(-70%) translateY(0) translateZ(-300px) scale(0.85); // Removed translateY offset
+  opacity: 0.4;
+  pointer-events: none; // Disabled hover on background cards
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @include respond-to('lg') {
+    transform: translateX(-65%) translateY(0) translateZ(-350px) scale(0.85); // Removed translateY offset
+  }
+}
+
+// Slide suivante (droite) - arc de cercle
+.next {
+  z-index: 1;
+  transform: translateX(70%) translateY(0) translateZ(-300px) scale(0.85); // Removed translateY offset
+  opacity: 0.4;
+  pointer-events: none; // Disabled hover on background cards
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @include respond-to('lg') {
+    transform: translateX(65%) translateY(0) translateZ(-350px) scale(0.85); // Removed translateY offset
+  }
+}
+
+// Navigation container (en dessous du slider)
+.navigation {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: $space-xl;
+  z-index: 10;
+}
+
+// Flèches de navigation
+.arrow {
+  @include reset-button;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-card);
+  border: 2px solid var(--secondary);
+  border-radius: $radius-lg;
+  color: var(--secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: $shadow-lg;
+
+  &:hover {
+    background: var(--primary);
+    border-color: var(--secondary);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: $shadow-xl;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// Dots de navigation
+.dots {
+  display: flex;
+  gap: $space-sm;
+  padding: $space-sm $space-lg;
+  backdrop-filter: blur(10px);
+  border-radius: $radius-full;
+}
+
+.dot {
+  @include reset-button;
+  width: 10px;
+  height: 10px;
+  border-radius: $radius-full;
+  background: var(--text-muted);
+  opacity: 0.4;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+
+  &.activeDot {
+    width: 40px;
+    background: rgba(138, 138, 138, 0.3);
+    opacity: 1;
+  }
+}
+
+.progressBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--primary);
+  border-radius: $radius-full;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 8px rgba(var(--primary-rgb, 29, 134, 118), 0.5);
+}
+
+// Message vide
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55vh;
+  min-height: 450px;
+  
+  p {
+    font-size: $text-xl;
+    color: var(--text-muted);
+  }
+}
+
+// Responsive - Mobile
+@include respond-to-max('md') {
+  .slider {
+    height: 50vh;
+    min-height: 400px;
+  }
+
+  .slideWrapper {
+    width: 85vw;
+  }
+
+  .prev,
+  .next {
+    transform: translateX(0) translateZ(-300px) scale(0.75);
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  .arrow {
+    width: 44px;
+    height: 44px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .dots {
+    padding: $space-xs $space-md;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+
+    &.activeDot {
+      width: 24px;
+    }
+  }
+}

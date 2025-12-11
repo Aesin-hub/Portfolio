@@ -28,6 +28,32 @@
   }
 }
 
+// Media query max-width (desktop-first)
+// Usage: @include respond-to-max('md') { ... }
+@mixin respond-to-max($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (max-width: 319px) { @content; }
+  }
+  @else if $breakpoint == 'sm' {
+    @media (max-width: 479px) { @content; }
+  }
+  @else if $breakpoint == 'md' {
+    @media (max-width: 767px) { @content; }
+  }
+  @else if $breakpoint == 'lg' {
+    @media (max-width: 1023px) { @content; }
+  }
+  @else if $breakpoint == 'xl' {
+    @media (max-width: 1279px) { @content; }
+  }
+  @else if $breakpoint == '2xl' {
+    @media (max-width: 1439px) { @content; }
+  }
+  @else if $breakpoint == '3xl' {
+    @media (max-width: 1919px) { @content; }
+  }
+}
+
 // ────────────────────────────────────────────
 // 🎨 FLEXBOX helpers
 // ────────────────────────────────────────────
@@ -127,6 +153,26 @@
   font: inherit;
   cursor: pointer;
   outline: none;
+  
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+// Reset link styles
+@mixin reset-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
   
   &:focus-visible {
     outline: 2px solid var(--primary);

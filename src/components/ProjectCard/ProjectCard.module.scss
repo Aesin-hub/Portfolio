@@ -1,107 +1,119 @@
-// ProjectCard.module.scss
 @import '../../styles/abstracts/variables';
 @import '../../styles/abstracts/mixins';
-@import '../../styles/base/typography';
 
 .card {
   position: relative;
-  background: var(--bg-card);
-  border-radius: $radius-lg;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: $radius-xl;
   overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: $shadow-md;
-  
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: $shadow-xl;
+
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: $shadow-xl;
+    transform: scale(1.04);    
+    border: 3px solid var(--secondary);
   }
 }
 
-// Badge Featured
-.badge {
+// Bandeau titre en haut
+.titleBanner {
   position: absolute;
-  top: $space-md;
-  right: $space-md;
-  background: var(--primary);
-  color: white;
-  padding: $space-xs $space-md;
-  border-radius: $radius-full;
-  font-size: $text-sm;
-  font-weight: $font-bold;
-  z-index: 2;
-  box-shadow: $shadow-md;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $space-md $space-lg;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: $radius-xl $radius-xl 0 0;
 }
 
-// Image
-.imageWrapper {
+.bannerTitle {
+  font-family: $font-heading;
+  font-size: $text-xl;
+  font-weight: $font-bold;
+  color: white;
+  margin: 0;
+}
+
+.bannerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: $radius-md;
+  color: white;
+  transition: all 0.3s ease;
+
+  .card:hover & {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);    
+    border: 1px solid var(--secondary);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
   position: relative;
-  @include aspect-ratio(16, 9);
-  overflow: hidden;
 }
 
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-  
-  .card:hover & {
-    transform: scale(1.05);
-  }
+  display: block;
 }
 
-// Overlay au hover
+// Overlay avec informations
 .overlay {
   position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  @include flex-center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  
-  .card:hover & {
-    opacity: 1;
-  }
-}
-
-.viewButton {
-  @include reset-button;
-  padding: $space-sm $space-lg;
+  top: 0;
+  right: 0;
+  width: 33.33%;
+  height: 100%;
   background: var(--primary);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: $space-xl;
+  padding-top: calc(80px + $space-xs); 
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.visible {
+    transform: translateX(0);
+  }
+}
+
+.info {
   color: white;
-  border-radius: $radius-md;
-  font-weight: $font-semibold;
-  font-size: $text-base;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  
-  .card:hover & {
-    transform: translateY(0);
-  }
-  
-  &:hover {
-    background: var(--secondary);
-    transform: scale(1.05);
-  }
-}
-
-// Content
-.content {
-  padding: $space-lg;
-}
-
-.title {
-  font-family: $font-heading;
-  font-size: $text-2xl;
-  font-weight: $font-bold;
-  color: var(--text-primary);
-  margin-bottom: $space-xs;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $space-lg;
+  overflow: hidden;
 }
 
 .subtitle {
-  font-size: $text-sm;
-  color: var(--text-secondary);
-  margin-bottom: $space-md;
+  font-size: $text-base;
+  font-weight: $font-medium;
+  line-height: $leading-relaxed;
+  color: white;
+  margin: 0;
 }
 
 // Tags
@@ -109,53 +121,107 @@
   display: flex;
   flex-wrap: wrap;
   gap: $space-xs;
-  margin-bottom: $space-md;
 }
 
 .tag {
-  font-size: $text-xs;
-  color: var(--primary);
-  background: rgba(var(--primary-rgb), 0.1);
   padding: $space-xs $space-sm;
-  border-radius: $radius-sm;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-md;
+  font-size: $text-xs;
   font-weight: $font-medium;
+  white-space: nowrap;
 }
 
+// Description
 .description {
   font-size: $text-sm;
-  color: var(--text-secondary);
   line-height: $leading-relaxed;
-  margin-bottom: $space-lg;
-  @include line-clamp(3);
+  opacity: 0.95;
+  margin: 0;
+  flex: 1;
 }
 
 // Footer
 .footer {
-  @include flex-between;
-  padding-top: $space-md;
-  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $space-xs;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: auto;
 }
 
 .date {
-  font-size: $text-xs;
-  color: var(--text-muted);
+  font-size: $text-sm;
+  opacity: 0.9;
 }
 
 .githubLink {
+  @include reset-link;
   display: flex;
   align-items: center;
-  gap: $space-xs;
-  font-size: $text-sm;
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: $radius-full;
+  color: white;
+  transition: all 0.3s ease;
+
   &:hover {
-    color: var(--primary);
+    background: var(--secondary);
   }
-  
+
   svg {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Bouton "Voir le projet" au centre de la carte (outside overlay)
+.viewMoreButton {
+  @include reset-button;
+  position: absolute;
+  top:55%;
+  left: 33.33%; // Start at overlay boundary
+  transform: translate(-50%, -50%);
+  padding: $space-md $space-2xl;
+  background: var(--bg-alt);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--primary);
+  border-radius: $radius-xl;
+  font-size: $text-lg;
+  font-weight: $font-bold;
+  color: var(--secondary);
+  white-space: nowrap;
+  box-shadow: $shadow-2xl;
+  z-index: 20;
+  transition: all 0.3s ease;
+  animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+// Responsive
+@include respond-to('lg') {
+  .bannerTitle {
+    font-size: $text-2xl;
+  }
+
+  .subtitle {
+    font-size: $text-lg;
+  }
+
+  .description {
+    font-size: $text-base;
   }
 }
