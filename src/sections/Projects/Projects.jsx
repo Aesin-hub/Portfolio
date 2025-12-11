@@ -1,23 +1,30 @@
 // Project section //
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import ProjectSlider from '../../components/ProjectSlider/ProjectSlider';
+import ProjectModal from '../../components/ProjectModal/ProjectModal';
 import ScrollIndicator from '../../components/ScrollIndicator/ScrollIndicator';
 import { scrollToSection } from '../../utils/scroll';
 import styles from './Projects.module.scss';
 
 function Projects() {
-  const dispatch = useDispatch();
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
-  // Récupérer les données depuis Redux
-  const { filteredProjects} = useSelector(
-    (state) => state.projects
-  );
+  // Récupérer les projets depuis Redux
+  const { filteredProjects } = useSelector((state) => state.projects);
 
-
-  // Handler pour l'ouverture du modal (à implémenter plus tard)
+  // Handler pour l'ouverture du modal
   const handleProjectClick = (project) => {
-    console.log('Open modal for project:', project);
-    // TODO: Ouvrir le modal avec les détails du projet
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  // Handler pour la fermeture du modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    // Petit délai avant de reset le projet pour l'animation de fermeture
+    setTimeout(() => setSelectedProject(null), 300);
   };
 
   return (
@@ -39,12 +46,19 @@ function Projects() {
         {filteredProjects.length === 0 && (
           <div className={styles.empty}>
             <span className={styles.emptyIcon}>🔍</span>
-            <p>Aucun projet ne correspond à ce filtre.</p>
+            <p>Aucun projet à afficher.</p>
           </div>
         )}
       </div>
 
       <ScrollIndicator onClick={() => scrollToSection('contact')} />
+
+      {/* Modal de détails du projet */}
+      <ProjectModal 
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </section>
   );
 }

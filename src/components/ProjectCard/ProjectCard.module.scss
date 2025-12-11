@@ -112,7 +112,7 @@
   font-size: $text-base;
   font-weight: $font-medium;
   line-height: $leading-relaxed;
-  color: white;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -136,6 +136,8 @@
 .description {
   font-size: $text-sm;
   line-height: $leading-relaxed;
+  
+  color: var(--text-primary);
   opacity: 0.95;
   margin: 0;
   flex: 1;

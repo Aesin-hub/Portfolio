@@ -6,6 +6,7 @@
       "subtitle": "Plateforme de réservation d'hébergements",
       "category": ["html", "css", "responsive"],
       "tags": ["HTML5", "CSS3", "Responsive Design", "Flexbox", "Grid"],
+      "imageLayout": "view4",
       "thumbnail": "/assets/images/projects/booki/thumbnail.webp",
       "images": [
         "/assets/images/projects/booki/screen-1.webp",
@@ -30,6 +31,7 @@
       "subtitle": "Site de réservation de repas en ligne",
       "category": ["html", "css", "sass", "responsive"],
       "tags": ["HTML5", "CSS3", "Sass", "Responsive Design", "Animations CSS"],
+      "imageLayout": "view4",
       "thumbnail": "/assets/images/projects/ohmyfood/thumbnail.webp",
       "images": [
         "/assets/images/projects/ohmyfood/screen-1.webp",
@@ -57,6 +59,7 @@
       "subtitle": "Site d'une imprimerie avec carrousel dynamique",
       "category": ["javascript"],
       "tags": ["JavaScript", "DOM", "Events", "HTML5", "CSS3"],
+      "imageLayout": "view2",
       "thumbnail": "/assets/images/projects/print_it/thumbnail.webp",
       "images": [
         "/assets/images/projects/print_it/screen-1.webp",
@@ -83,6 +86,7 @@
       "subtitle": "Plateforme de location d'appartements entre particuliers",
       "category": ["react"],
       "tags": ["React", "React Router", "JavaScript", "SASS", "Components"],
+      "imageLayout": "view2",
       "thumbnail": "/assets/images/projects/kasa/thumbnail.webp",
       "images": [
         "/assets/images/projects/kasa/screen-1.webp",
@@ -109,6 +113,7 @@
       "subtitle": "Portfolio d'une photographe - Optimisation SEO et performances",
       "category": ["optimization"],
       "tags": ["SEO", "Performance", "Lighthouse", "Accessibilité", "Optimisation"],
+      "imageLayout": "view3",
       "thumbnail": "/assets/images/projects/nina_carducci/thumbnail.webp",
       "images": [
         "/assets/images/projects/nina_carducci/screen-1.webp",
@@ -136,6 +141,7 @@
       "subtitle": "Application bancaire avec gestion d'état Redux",
       "category": ["react"],
       "tags": ["React", "Redux", "API REST", "Authentication", "State Management"],
+      "imageLayout": "view1",
       "thumbnail": "/assets/images/projects/argentbank/thumbnail.webp",
       "images": [
         "/assets/images/projects/argentbank/screen-1.webp",
