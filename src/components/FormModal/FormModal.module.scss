@@ -60,7 +60,7 @@
   height: 44px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
-  border-radius: $radius-lg; // Changed from $radius-full
+  border-radius: $radius-md;
   color: white;
   display: flex;
   align-items: center;
@@ -70,6 +70,8 @@
   &:hover {
     background: rgba(0, 0, 0, 0.7);
     transform: scale(1.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
   }
 }
 

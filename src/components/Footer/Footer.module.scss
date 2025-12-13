@@ -1,150 +1,73 @@
-// Footer.module.scss
 @import '../../styles/abstracts/variables';
 @import '../../styles/abstracts/mixins';
-@import '../../styles/base/typography';
 
 .footer {
-  background: var(--bg-card);
+  background: var(--bg-alt);
   border-top: 1px solid var(--border);
-  padding-top: $space-4xl;
+  padding: $space-lg $space-lg; // Reduced padding
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 $space-lg;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $space-2xl;
-  
-  @include respond-to('md') {
-    grid-template-columns: 2fr 1fr 1fr;
-  }
-}
-
-.column {
   display: flex;
-  flex-direction: column;
-  gap: $space-md;
-}
+  justify-content: center;
+  align-items: center;
+  gap: $space-lg;
+  position: relative; // For absolute positioning of social
 
-.logo {
-  @include flex-center;
-  gap: $space-sm;
-  justify-content: flex-start;
-  margin-bottom: $space-sm;
-}
-
-.logoText {
-  width: 40px;
-  height: 40px;
-  @include flex-center;
-  background: var(--primary);
-  color: white;
-  font-family: $font-display;
-  font-size: $text-xl;
-  font-weight: $font-black;
-  border-radius: $radius-md;
-}
-
-.logoName {
-  font-family: $font-heading;
-  font-size: $text-lg;
-  font-weight: $font-bold;
-  color: var(--text-primary);
-}
-
-.description {
-  font-size: $text-sm;
-  color: var(--text-secondary);
-  line-height: $leading-relaxed;
-}
-
-.columnTitle {
-  font-family: $font-heading;
-  font-size: $text-base;
-  font-weight: $font-bold;
-  color: var(--text-primary);
-  margin-bottom: $space-sm;
-}
-
-.nav {
-  display: flex;
-  flex-direction: column;
-  gap: $space-sm;
-  
-  button {
-    @include reset-button;
-    text-align: left;
-    font-size: $text-sm;
-    color: var(--text-secondary);
-    transition: color 0.3s ease;
-    cursor: pointer;
-    
-    &:hover {
-      color: var(--primary);
-      padding-left: $space-xs;
-    }
-  }
-}
-
-.social {
-  display: flex;
-  flex-direction: column;
-  gap: $space-sm;
-  
-  a {
-    display: flex;
-    align-items: center;
-    gap: $space-sm;
-    font-size: $text-sm;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    
-    svg {
-      width: 20px;
-      height: 20px;
-    }
-    
-    &:hover {
-      color: var(--primary);
-    }
-  }
-}
-
-.bottom {
-  border-top: 1px solid var(--border);
-  margin-top: $space-3xl;
-  padding: $space-lg 0;
-  
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: $space-md;
+  @include respond-to-max('md') {
+    flex-direction: column;
+    text-align: center;
   }
 }
 
 .copyright {
   font-size: $text-sm;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  margin: 0;
+  text-align: center;
+
+  @include respond-to-max('md') {
+    order: 2;
+  }
 }
 
-.scrollTop {
-  @include reset-button;
-  width: 40px;
-  height: 40px;
-  @include flex-center;
-  background: var(--primary);
-  color: white;
-  border-radius: $radius-md;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: $shadow-md;
+.social {
+  position: absolute;
+  right: 0;
+  display: flex;
+  gap: $space-xl;
+  align-items: center;
+
+  @include respond-to-max('md') {
+    position: relative;
+    order: 1;
+    right: auto;
+  }
+
+  a {
+    @include reset-link;
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    color: var(--text-secondary);
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--secondary);
+
+      svg {
+        transform: translateY(-2px);
+      }
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
   }
 }

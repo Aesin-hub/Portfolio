@@ -1,4 +1,58 @@
-// ScrollToTop.module.scss
 @import '../../styles/abstracts/variables';
 @import '../../styles/abstracts/mixins';
-@import '../../styles/base/typography';
+
+.scrollToTop {
+  @include reset-button;
+  position: fixed;
+  bottom: $space-2xl;
+  right: $space-2xl;
+  z-index: $z-fixed;
+  width: 56px;
+  height: 56px;
+  background: var(--primary);
+  color: white;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: $shadow-xl;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-2xl;
+    background: var(--primary-hover, var(--primary));
+    border: 2px solid var(--secondary);
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include respond-to-max('md') {
+    bottom: $space-xl;
+    right: $space-lg;
+    width: 48px;
+    height: 48px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

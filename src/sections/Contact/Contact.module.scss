@@ -2,12 +2,12 @@
 @import '../../styles/abstracts/mixins';
 
 .contact {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: $space-4xl $space-lg;
+  padding: $space-4xl $space-lg $space-2xl; // Reduced bottom padding
   background: var(--bg-main);
+  min-height: 85vh; // Contact takes 85%, footer takes ~15%
 }
 
 .container {
@@ -70,4 +70,3 @@
     border-color: var(--secondary);
   }
 }
-
