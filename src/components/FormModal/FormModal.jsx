@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   nextStep,
@@ -18,30 +18,10 @@ function FormModal({ isOpen, onClose }) {
     currentStep,
     formData,
     isSubmitting,
-    submitSuccess,
+    // submitSuccess removed - not used
   } = useSelector((state) => state.contact);
 
-  // Close modal on Escape key
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape' && isOpen) {
-        handleCloseAttempt();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
+  // Define functions BEFORE useEffect
   const handleInputChange = (field, value) => {
     dispatch(updateFormData({ [field]: value }));
     // Clear error when user types
@@ -98,14 +78,48 @@ function FormModal({ isOpen, onClose }) {
 
   const handleSubmit = async () => {
     dispatch(submitForm());
-    // TODO: Integrate EmailJS here
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    
+    try {
+      // Integrate EmailJS
+      const emailjs = (await import('@emailjs/browser')).default;
+      const { EMAILJS_CONFIG } = await import('../../config/emailjs');
+
+      const templateParams = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        company: formData.company || 'Non renseignée',
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      console.log('Email envoyé avec succès !');
       dispatch(nextStep());
-    }, 2000);
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi:', error);
+      alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+      // Reset submitting state if needed
+    }
   };
 
-  const handleCloseAttempt = () => {
+  const handleConfirmClose = useCallback(() => {
+    setShowCloseConfirm(false);
+    dispatch(resetForm());
+    onClose();
+  }, [dispatch, onClose]);
+
+  const handleCancelClose = useCallback(() => {
+    setShowCloseConfirm(false);
+  }, []);
+
+  const handleCloseAttempt = useCallback(() => {
     // Si on est à l'étape 4 (succès), fermer directement
     if (currentStep === 4) {
       handleConfirmClose();
@@ -114,17 +128,28 @@ function FormModal({ isOpen, onClose }) {
     
     // Sinon, demander confirmation
     setShowCloseConfirm(true);
-  };
+  }, [currentStep, handleConfirmClose]);
 
-  const handleConfirmClose = () => {
-    setShowCloseConfirm(false);
-    dispatch(resetForm());
-    onClose();
-  };
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        handleCloseAttempt();
+      }
+    };
 
-  const handleCancelClose = () => {
-    setShowCloseConfirm(false);
-  };
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, handleCloseAttempt]);
+
+  if (!isOpen) return null;
 
   return (
     <>

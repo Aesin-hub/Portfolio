@@ -60,7 +60,7 @@
   height: 44px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
-  border-radius: $radius-full;
+  border-radius: $radius-lg; // Changed from $radius-full
   color: white;
   display: flex;
   align-items: center;
@@ -236,6 +236,17 @@
     &.errorInput {
       border-color: var(--error);
     }
+
+    // Fix autofill background (Chrome)
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px var(--bg-main) inset !important;
+      -webkit-text-fill-color: var(--text-primary) !important;
+      border: 2px solid var(--border) !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
   }
 
   textarea {
@@ -274,7 +285,7 @@
   background: var(--bg-alt);
   padding: $space-xl;
   border-radius: $radius-lg;
-  border: 1px solid var(--border);
+  border: 2px solid var(--primary); // Changed from var(--border)
 }
 
 .summaryItem {
@@ -282,7 +293,7 @@
   flex-direction: column;
   gap: $space-xs;
   padding-bottom: $space-md;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(var(--primary-rgb), 0.3); // Changed to primary with opacity
 
   &:last-child {
     border-bottom: none;
