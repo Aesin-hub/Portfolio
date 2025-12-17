@@ -1,5 +1,5 @@
-@import '../../styles/abstracts/variables';
-@import '../../styles/abstracts/mixins';
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
 
 .flashBanner {
   position: absolute;
@@ -49,15 +49,6 @@
     z-index: 2;
     pointer-events: none;
   }
-  
-  @media (max-width: 1024px) {
-    width: 70%;
-  }
-  
-  @media (max-width: 768px) {
-    width: 80%;
-    height: 36px;
-  }
 }
 
 .track {
@@ -77,10 +68,6 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: $tracking-wide;
   line-height: 1;
-  
-  @media (max-width: 768px) {
-    font-size: $text-sm;
-  }
 }
 
 @keyframes scroll {
@@ -91,3 +78,14 @@
     transform: translateX(-100%);
   }
 }
+
+// ────────────────────────────────────────────
+// 📱 RESPONSIVE - À REFAIRE DE A À Z
+// ────────────────────────────────────────────
+
+// TODO: Implémenter le responsive pour xs (375px)
+// TODO: Implémenter le responsive pour sm (640px)
+// TODO: Implémenter le responsive pour md (768px)
+// TODO: Implémenter le responsive pour lg (1024px)
+// TODO: Implémenter le responsive pour xl (1920px)
+// TODO: Implémenter le responsive pour 2xl (2560px)

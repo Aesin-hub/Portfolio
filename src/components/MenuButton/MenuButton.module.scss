@@ -1,5 +1,5 @@
-@import '../../styles/abstracts/variables';
-@import '../../styles/abstracts/mixins';
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
 
 .menuButton {
   @include reset-button;
@@ -53,3 +53,14 @@
   border-radius: 20px;
   transition: all 0.3s ease;
 }
+
+// ────────────────────────────────────────────
+// 📱 RESPONSIVE - À REFAIRE DE A À Z
+// ────────────────────────────────────────────
+
+// TODO: Implémenter le responsive pour xs (375px)
+// TODO: Implémenter le responsive pour sm (640px)
+// TODO: Implémenter le responsive pour md (768px)
+// TODO: Implémenter le responsive pour lg (1024px)
+// TODO: Implémenter le responsive pour xl (1920px)
+// TODO: Implémenter le responsive pour 2xl (2560px)

@@ -1,6 +1,6 @@
-@import '../../styles/abstracts/variables';
-@import '../../styles/abstracts/mixins';
-@import '../../styles/base/typography';
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+@use '../../styles/base/typography' as *;
 
 .hero {
   min-height: 100vh;

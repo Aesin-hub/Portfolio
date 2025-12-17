@@ -75,16 +75,15 @@ $space-4xl: 8rem; // 128px
 $space-5xl: 10rem; // 160px
 
 // ────────────────────────────────────────────
-// 📱 BREAKPOINTS (Responsive)
+// 📱 BREAKPOINTS (Responsive) - NOUVEAUX
 // ────────────────────────────────────────────
 
-$breakpoint-xs: 320px; // Mobile petit
-$breakpoint-sm: 480px; // Mobile
-$breakpoint-md: 768px; // Tablet
-$breakpoint-lg: 1024px; // Desktop
-$breakpoint-xl: 1280px; // Desktop large
-$breakpoint-2xl: 1440px; // Desktop très large
-$breakpoint-3xl: 1920px; // Wide screen
+$breakpoint-xs: 375px;  // Mobile small (iPhone SE)
+$breakpoint-sm: 640px;  // Mobile large
+$breakpoint-md: 768px;  // Tablet
+$breakpoint-lg: 1024px; // Laptop
+$breakpoint-xl: 1920px; // Desktop Full HD
+$breakpoint-2xl: 2560px; // Desktop 2K
 
 // ────────────────────────────────────────────
 // 🎨 DESIGN TOKENS (Radius, shadows, etc.)

@@ -2,6 +2,8 @@
 // RESET CSS - Normalize & Base styles
 // ============================================
 
+@use '../abstracts/variables' as *;
+
 // Box sizing
 *,
 *::before,
