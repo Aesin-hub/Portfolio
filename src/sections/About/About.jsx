@@ -6,6 +6,17 @@ import { scrollToSection } from '../../utils/scroll';
 import styles from './About.module.scss';
 
 function About() {
+  const handleDownloadCV = () => {
+    // Crée un lien temporaire
+    const link = document.createElement('a');
+    link.href = '/assets/documents/CV_Lewis_Bock_Developpeur_Frontend.pdf';
+    link.download = 'CV_Lewis_Bock_Developpeur_Frontend.pdf';
+    
+    // Déclenche le téléchargement
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section id="about" className={styles.about}>
@@ -61,7 +72,7 @@ function About() {
             </div>
             
             <div className={styles.actions}>
-              <Button variant="primary" size="large">
+              <Button variant="primary" size="large" onClick={handleDownloadCV}>
                 <svg 
                   width="20" 
                   height="20" 

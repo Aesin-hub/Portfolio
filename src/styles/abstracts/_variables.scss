@@ -5,8 +5,8 @@
 // ────────────────────────────────────────────
 
 // Primary Colors
-$primary-light: #1d8676;
-$secondary-light: #26b29d;
+$primary-light: #0e7767;
+$secondary-light: #007661;
 $accent-light: #13594e;
 
 // Background Colors
@@ -15,9 +15,9 @@ $bg-alt-light: #edf2fb;
 $bg-card-light: #edf2fb;
 
 // Text Colors
-$text-primary-light: #2d2d2d;
-$text-secondary-light: #5a5a5a;
-$text-muted-light: #8a8a8a;
+$text-primary-light: #1a1a1a;
+$text-secondary-light: #3d3d3d; 
+$text-muted-light: #525252;
 
 // Status Colors
 $success-light: #10b981;
@@ -34,9 +34,9 @@ $border-hover-light: #cccccc;
 // ────────────────────────────────────────────
 
 // Primary Colors
-$primary-dark: #478a8b;
-$secondary-dark: #6dd5b8;
-$accent-dark: #75858a;
+$primary-dark: #5fa9aa; 
+$secondary-dark: #7de0c4;
+$accent-dark: #8fa0a5;
 
 // Background Colors
 $bg-main-dark: #0f2027;
@@ -45,8 +45,8 @@ $bg-card-dark: #2c394b;
 
 // Text Colors
 $text-primary-dark: #ffffff;
-$text-secondary-dark: #cccccc;
-$text-muted-dark: #999999;
+$text-secondary-dark: #e0e0e0; 
+$text-muted-dark: #b8b8b8;
 
 // Status Colors
 $success-dark: #10b981;
@@ -78,7 +78,7 @@ $space-5xl: 10rem; // 160px
 // 📱 BREAKPOINTS (Responsive) - NOUVEAUX
 // ────────────────────────────────────────────
 
-$breakpoint-xs: 375px;  // Mobile small (iPhone SE)
+$breakpoint-xs: 375px;  // Mobile small
 $breakpoint-sm: 640px;  // Mobile large
 $breakpoint-md: 768px;  // Tablet
 $breakpoint-lg: 1024px; // Laptop
@@ -152,8 +152,8 @@ $font-code: "JetBrains Mono", monospace; // code blocks
 // ────────────────────────────────────────────
 // Font sizes
 // ────────────────────────────────────────────
-$text-xs: 0.75rem; // 12px
-$text-sm: 0.875rem; // 14px
+$text-xs: 0.875rem; // 14px
+$text-sm: 1rem; // 16px
 $text-base: 1rem; // 16px
 $text-lg: 1.125rem; // 18px
 $text-xl: 1.25rem; // 20px
@@ -189,3 +189,17 @@ $leading-relaxed: 1.75;
 $tracking-tight: -0.02em;
 $tracking-normal: 0;
 $tracking-wide: 0.02em;
+
+// ────────────────────────────────────────────
+// 🔘 BUTTON COLORS
+// ────────────────────────────────────────────
+
+// Light Mode Buttons (white text on colored bg)
+$btn-primary-bg-light: #188171;
+$btn-secondary-bg-light: #008570;
+$btn-accent-bg-light: #13594e;
+
+// Dark Mode Buttons (white text on colored bg)
+$btn-primary-bg-dark: #3d8081;
+$btn-secondary-bg-dark: #1d8568;
+$btn-accent-bg-dark: #66767b;
