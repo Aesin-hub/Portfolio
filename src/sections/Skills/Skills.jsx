@@ -66,18 +66,39 @@ function Skills() {
                         <div className={styles.skillTooltip}>
                           {[...Array(stars.filled)].map((_, i) => (
                             <div key={`filled-${i}`} className={styles.star}>
-                              <img src="/assets/icons/star_1.webp" alt="" />
+                              <img 
+                                src="/assets/icons/star_1.webp" 
+                                alt="Étoile pleine"
+                                title="Niveau de maîtrise"
+                                loading="lazy"
+                                width="16"
+                                height="16"
+                              />
                             </div>
                           ))}
                           {[...Array(stars.empty)].map((_, i) => (
                             <div key={`empty-${i}`} className={styles.star}>
-                              <img src="/assets/icons/star_0.webp" alt="" />
+                              <img 
+                                src="/assets/icons/star_0.webp" 
+                                alt="Étoile vide"
+                                title="Niveau de maîtrise"
+                                loading="lazy"
+                                width="16"
+                                height="16"
+                              />
                             </div>
                           ))}
                         </div>
                         
                         {/* Skill icon */}
-                        <img src={skill.icon} alt={skill.name} />
+                        <img 
+                          src={skill.icon} 
+                          alt={`Logo ${skill.name}`}
+                          title={`Compétence en ${skill.name}`}
+                          loading="lazy"
+                          width="64"
+                          height="64"
+                        />
                         
                         {/* Skill name */}
                         <span className={styles.skillName}>{skill.name}</span>

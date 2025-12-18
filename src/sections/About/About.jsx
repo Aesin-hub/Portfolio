@@ -14,8 +14,12 @@ function About() {
           <div className={styles.photoContainer}>
             <img 
               src='/assets/images/AboutImg.webp'
-              alt="Photo de profil"
+              alt="Photo de profil professionnelle de Lewis Bock, développeur front-end junior spécialisé en React"
+              title="Lewis Bock - Développeur Front-End"
               className={styles.photo}
+              loading="lazy"
+              width="400"
+              height="400"
             />
           </div>
         </div>
@@ -58,7 +62,16 @@ function About() {
             
             <div className={styles.actions}>
               <Button variant="primary" size="large">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <svg 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  role="img"
+                >
+                  <title>Icône téléchargement</title>
                   <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 Télécharger mon CV

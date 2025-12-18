@@ -1,0 +1,25 @@
+# robots.txt pour portfolio-lac-six-22.vercel.app
+# Optimisé pour SEO et crawl efficace
+
+# Règles pour tous les robots
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Googlebot spécifique
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+# Googlebot Image
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /icons/
+
+# Crawl-delay (pour éviter la surcharge serveur)
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://portfolio-lac-six-22.vercel.app/sitemap.xml

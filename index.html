@@ -1,13 +1,144 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- ============================================ -->
+  <!-- META TAGS ESSENTIELLES -->
+  <!-- ============================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ============================================ -->
+  <!-- SEO PRINCIPAL -->
+  <!-- ============================================ -->
+  <title>Lewis Bock | Développeur Front-End Junior • React • JavaScript</title>
+  <meta name="description" content="Développeur Front-End Junior passionné, spécialisé en React, SASS et JavaScript. 15 ans d'expérience en ingénierie industrielle reconverti dans le développement web. Portfolio de projets créatifs et performants." />
+  <meta name="keywords" content="développeur front-end, react developer, javascript, sass, portfolio développeur, développeur web junior, ingénieur reconverti, développeur freelance, intégrateur web" />
+  <meta name="author" content="Lewis Bock" />
+  <meta name="publisher" content="Lewis Bock" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  
+  <!-- ============================================ -->
+  <!-- CANONICAL & ALTERNATE -->
+  <!-- ============================================ -->
+  <link rel="canonical" href="https://portfolio-lac-six-22.vercel.app/" />
+  <link rel="alternate" hreflang="fr" href="https://portfolio-lac-six-22.vercel.app/" />
+  <link rel="alternate" hreflang="en" href="https://portfolio-lac-six-22.vercel.app/en" />
+  <link rel="alternate" hreflang="x-default" href="https://portfolio-lac-six-22.vercel.app/" />
+  
+  <!-- ============================================ -->
+  <!-- OPEN GRAPH (Facebook, LinkedIn) -->
+  <!-- ============================================ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Lewis Bock - Portfolio" />
+  <meta property="og:title" content="Lewis Bock | Développeur Front-End Junior • React • SASS • JavaScript" />
+  <meta property="og:description" content="Développeur Front-End Junior passionné, spécialisé en React, SASS et JavaScript. 15 ans d'expérience en ingénierie industrielle reconverti dans le développement web." />
+  <meta property="og:url" content="https://portfolio-lac-six-22.vercel.app/" />
+  <meta property="og:image" content="https://portfolio-lac-six-22.vercel.app/images/HeroImg.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Illustration 3D du workspace de Lewis Bock, développeur front-end" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  
+  <!-- ============================================ -->
+  <!-- TWITTER CARD -->
+  <!-- ============================================ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@lewisbock" />
+  <meta name="twitter:creator" content="@lewisbock" />
+  <meta name="twitter:title" content="Lewis Bock | Développeur Front-End Junior • React • SASS • JavaScript" />
+  <meta name="twitter:description" content="Développeur Front-End Junior passionné, spécialisé en React, SASS et JavaScript. Portfolio de projets créatifs et performants." />
+  <meta name="twitter:image" content="https://portfolio-lac-six-22.vercel.app/images/HeroImg.webp" />
+  <meta name="twitter:image:alt" content="Illustration 3D du workspace de Lewis Bock, développeur front-end" />
+  
+  <!-- ============================================ -->
+  <!-- FAVICON & ICONS -->
+  <!-- ============================================ -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+  
+  <!-- ============================================ -->
+  <!-- THEME COLOR & PWA -->
+  <!-- ============================================ -->
+  <meta name="theme-color" content="#0a1929" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Lewis Bock" />
+  
+  <!-- ============================================ -->
+  <!-- PRECONNECT & DNS-PREFETCH -->
+  <!-- ============================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  
+  <!-- ============================================ -->
+  <!-- STRUCTURED DATA (JSON-LD) -->
+  <!-- ============================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Lewis Bock",
+    "jobTitle": "Développeur Front-End Junior",
+    "description": "Développeur Front-End spécialisé en React, SASS et JavaScript avec 15 ans d'expérience en ingénierie industrielle",
+    "url": "https://portfolio-lac-six-22.vercel.app",
+    "image": "https://portfolio-lac-six-22.vercel.app/images/AboutImg.webp",
+    "sameAs": [
+      "https://github.com/Aesin-hub",
+      "https://www.linkedin.com/in/lewis-bock-055051177/"
+    ],
+    "knowsAbout": ["React", "JavaScript", "SASS", "HTML5", "CSS3", "Redux", "Git", "Vite", "Responsive Design"],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "OpenClassrooms"
+    },
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "diploma",
+      "name": "Développeur Intégrateur Web"
+    }
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Lewis Bock Portfolio",
+    "url": "https://portfolio-lac-six-22.vercel.app",
+    "description": "Portfolio professionnel de Lewis Bock, développeur front-end junior",
+    "inLanguage": "fr-FR",
+    "author": {
+      "@type": "Person",
+      "name": "Lewis Bock"
+    }
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Lewis Bock",
+      "description": "Développeur Front-End Junior • React • SASS • JavaScript",
+      "image": "https://portfolio-lac-six-22.vercel.app/images/AboutImg.webp",
+      "sameAs": [
+        "https://github.com/Aesin-hub",
+        "https://www.linkedin.com/in/lewis-bock-055051177/"
+      ]
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>

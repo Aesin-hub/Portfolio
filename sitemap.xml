@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://portfolio-lac-six-22.vercel.app/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://portfolio-lac-six-22.vercel.app/images/HeroImg.webp</image:loc>
+      <image:title>Illustration 3D du workspace de Lewis Bock</image:title>
+      <image:caption>Workspace de développeur front-end avec bureau isométrique 3D</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Section À propos -->
+  <url>
+    <loc>https://portfolio-lac-six-22.vercel.app/#about</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://portfolio-lac-six-22.vercel.app/images/AboutImg.webp</image:loc>
+      <image:title>Photo de profil de Lewis Bock</image:title>
+      <image:caption>Développeur Front-End Junior spécialisé en React</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Section Compétences -->
+  <url>
+    <loc>https://portfolio-lac-six-22.vercel.app/#skills</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Section Projets -->
+  <url>
+    <loc>https://portfolio-lac-six-22.vercel.app/#projects</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Projet individuel: Booki -->
+  <url>
+    <loc>https://portfolio-lac-six-22.vercel.app/#projects/booki</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://portfolio-lac-six-22.vercel.app/booki/thumbnail.webp</image:loc>
+      <image:title>Projet Booki - Site de réservation d'hébergements</image:title>
+    </image:image>
+  </url>
+
+  <!-- Projet individuel: OhMyFood -->
+  <url>
+    <loc>https://portfolio-lac-six-22.vercel.app/#projects/ohmyfood</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://portfolio-lac-six-22.vercel.app/ohmyfood/thumbnail.webp</image:loc>
+      <image:title>Projet OhMyFood - Application de réservation de menus</image:title>
+    </image:image>
+  </url>
+
+  <!-- Projet individuel: Argent Bank -->
+  <url>
+    <loc>https://portfolio-lac-six-22.vercel.app/#projects/argentbank</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://portfolio-lac-six-22.vercel.app/argentbank/thumbnail.webp</image:loc>
+      <image:title>Projet Argent Bank - Application bancaire avec React et Redux</image:title>
+    </image:image>
+  </url>
+
+  <!-- Section Contact -->
+  <url>
+    <loc>https://portfolio-lac-six-22.vercel.app/#contact</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://portfolio-lac-six-22.vercel.app/images/contact.webp</image:loc>
+      <image:title>Formulaire de contact Lewis Bock</image:title>
+    </image:image>
+  </url>
+
+</urlset>

@@ -33,7 +33,11 @@ function Header() {
               <ActionButton
                 icon={<img
                   src="/assets/icons/about.webp" 
-                  alt="À propos"
+                  alt="Icône À propos"
+                  title="Section À propos"
+                  loading="lazy"
+                  width="28"
+                  height="28"
                   style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
                 onClick={() => scrollToSection('about')}
                 label="À propos"
@@ -42,7 +46,11 @@ function Header() {
               <ActionButton
                 icon={<img 
                   src="/assets/icons/skill.webp" 
-                  alt="Compétences"
+                  alt="Icône Compétences"
+                  title="Section Compétences"
+                  loading="lazy"
+                  width="28"
+                  height="28"
                   style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
                 onClick={() => scrollToSection('skills')}
                 label="Compétences"
@@ -51,7 +59,11 @@ function Header() {
               <ActionButton
                 icon={<img 
                   src="/assets/icons/project.webp" 
-                  alt="Projets" 
+                  alt="Icône Projets"
+                  title="Section Projets"
+                  loading="lazy"
+                  width="28"
+                  height="28"
                   style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
                 onClick={() => scrollToSection('projects')}
                 label="Projets"
@@ -66,7 +78,11 @@ function Header() {
           <ActionButton
             icon={<img 
               src="/assets/icons/contact.webp" 
-              alt="Contact"
+              alt="Icône Contact"
+              title="Section Contact"
+              loading="lazy"
+              width="28"
+              height="28"
               style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
             onClick={() => scrollToSection('contact')}
             label="Contact"

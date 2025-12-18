@@ -8,6 +8,7 @@
       "tags": ["HTML5", "CSS3", "Responsive Design", "Flexbox", "Grid"],
       "imageLayout": "view4",
       "thumbnail": "/assets/images/projects/booki/thumbnail.webp",
+      "altText": "Capture d'écran du projet Booki - Page d'accueil d'une plateforme de réservation d'hébergements avec grille responsive",
       "images": [
         "/assets/images/projects/booki/screen-1.webp",
         "/assets/images/projects/booki/screen-2.webp",
@@ -33,6 +34,7 @@
       "tags": ["HTML5", "CSS3", "Sass", "Responsive Design", "Animations CSS"],
       "imageLayout": "view4",
       "thumbnail": "/assets/images/projects/ohmyfood/thumbnail.webp",
+      "altText": "Capture d'écran du projet OhMyFood - Application mobile de réservation de repas gastronomiques avec animations CSS",
       "images": [
         "/assets/images/projects/ohmyfood/screen-1.webp",
         "/assets/images/projects/ohmyfood/screen-2.webp",
@@ -61,6 +63,7 @@
       "tags": ["JavaScript", "DOM", "Events", "HTML5", "CSS3"],
       "imageLayout": "view2",
       "thumbnail": "/assets/images/projects/print_it/thumbnail.webp",
+      "altText": "Capture d'écran du projet Print It - Site d'imprimerie avec carrousel JavaScript dynamique",
       "images": [
         "/assets/images/projects/print_it/screen-1.webp",
         "/assets/images/projects/print_it/screen-2.webp"
@@ -88,6 +91,7 @@
       "tags": ["React", "React Router", "JavaScript", "SASS", "Components"],
       "imageLayout": "view2",
       "thumbnail": "/assets/images/projects/kasa/thumbnail.webp",
+      "altText": "Capture d'écran du projet Kasa - Application React de location immobilière entre particuliers",
       "images": [
         "/assets/images/projects/kasa/screen-1.webp",
         "/assets/images/projects/kasa/screen-2.webp"
@@ -115,6 +119,7 @@
       "tags": ["SEO", "Performance", "Lighthouse", "Accessibilité", "Optimisation"],
       "imageLayout": "view3",
       "thumbnail": "/assets/images/projects/nina_carducci/thumbnail.webp",
+      "altText": "Capture d'écran du projet Nina Carducci - Portfolio de photographe optimisé pour le SEO et les performances",
       "images": [
         "/assets/images/projects/nina_carducci/screen-1.webp",
         "/assets/images/projects/nina_carducci/screen-2.webp",
@@ -143,6 +148,7 @@
       "tags": ["React", "Redux", "API REST", "Authentication", "State Management"],
       "imageLayout": "view1",
       "thumbnail": "/assets/images/projects/argentbank/thumbnail.webp",
+      "altText": "Capture d'écran du projet Argent Bank - Application bancaire React avec authentification et Redux",
       "images": [
         "/assets/images/projects/argentbank/screen-1.webp",
         "/assets/images/projects/argentbank/screen-2.webp",
