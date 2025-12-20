@@ -13,11 +13,11 @@
   background: var(--bg-card);
   border: 2px solid var(--primary);
   border-top: none;
-  border-radius: 0 0 16px 16px; // Arrondis uniquement en bas (effet étiquette)
+  border-radius: 0 0 16px 16px;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
-  position: relative ;
+  position: relative;
   top: -4px;
   
   &:hover {
@@ -29,7 +29,7 @@
       background: var(--secondary);
       transform: scale(1.05);
       
-      svg {
+      svg, img {
         color: white;
       }
     }
@@ -39,7 +39,6 @@
     }
   }
   
-  // État actif
   &.active {
     border-color: var(--primary);
     background: rgba(var(--primary-rgb), 0.1);
@@ -47,28 +46,131 @@
     .icon {
       background: var(--secondary);
       
-      svg {
+      svg, img {
         color: white;
       }
     }
   }
   
-  // Variant pour les drapeaux (plus petit, sans label)
   &.flag {
     min-width: 48px;
     height: 48px;
     padding: $space-sm;
     font-size: $text-2xl;
-    border-radius: $radius-md; // Radius normal pour les petits boutons
-    border-top: 2px solid var(--border); // Bordure normale
+    border-radius: $radius-md;
+    border-top: 2px solid var(--border);
     
     &:hover {
       transform: translateY(-2px) scale(1.05);
     }
   }
+  
+  // ────────────────────────────────────────────
+  // 📱 RESPONSIVE - BOUTONS RONDS < 1024px
+  // ────────────────────────────────────────────
+  
+  @include respond-to-max('lg') {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    border-top: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+    
+    &.flag {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+  }
+  
+  @include respond-to-max('xs') {
+    width: 46px;
+    height: 46px;
+    
+    &.flag {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  @include respond-to('xs') {
+    width: 48px;
+    height: 48px;
+    
+    &.flag {
+      width: 42px;
+      height: 42px;
+    }
+  }
+  
+  @include respond-to('sm') {
+    width: 50px;
+    height: 50px;
+    
+    &.flag {
+      width: 44px;
+      height: 44px;
+    }
+  }
+  
+  @include respond-to('md') {
+    width: 50px;
+    height: 50px;
+    
+    &.flag {
+      width: 44px;
+      height: 44px;
+    }
+  }
+  
+  @include respond-to('lg') {
+    width: 56px;
+    height: 72px;
+    padding-bottom: $space-xs;
+    border-radius: 0 0 16px 16px;
+    border-top: none;
+    gap: $space-sm;
+    top: -4px;
+    
+    &:hover {
+      transform: translateY(4px);
+    }
+    
+    &.flag {
+      min-width: 48px;
+      height: 48px;
+      padding: $space-sm;
+      border-radius: $radius-md;
+      border-top: 2px solid var(--border);
+    }
+  }
+  
+  @include respond-to('xl') {
+    width: 60px;
+    height: 76px;
+    border-radius: 0 0 18px 18px;
+    
+    &.flag {
+      min-width: 52px;
+      height: 52px;
+      font-size: $text-3xl;
+    }
+  }
 }
 
-// Conteneur de l'icône (carré 40x40px comme MenuButton)
 .icon {
   width: 40px;
   height: 40px;
@@ -80,30 +182,115 @@
   flex-shrink: 0;
   transition: all 0.3s ease;
   
-  svg {
-    width: 24px;
-    height: 24px;
+  // ────────────────────────────────────────────
+  // 🎯 OVERRIDE INLINE STYLES AVEC !important
+  // ────────────────────────────────────────────
+  // Note: Normalement !important est à éviter, mais ici c'est le seul
+  // moyen d'override les styles inline du JSX (width="28" height="28")
+  // tout en gardant les attributs HTML pour le SEO (éviter CLS)
+  
+  svg, img {
+    width: 24px !important;  // Override inline style
+    height: 24px !important; // Override inline style
     color: white;
+    object-fit: contain;
     transition: all 0.3s ease;
+  }
+  
+  // ────────────────────────────────────────────
+  // 📱 ICÔNES À 80% sur xs et sm
+  // ────────────────────────────────────────────
+  
+  // 📱 Mobile small (< 375px)
+  @include respond-to-max('xs') {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    
+    svg, img {
+      width: 18px !important;
+      height: 18px !important;
+    }
+  }
+  
+  // 📱 Mobile (375px - 640px)
+  @include respond-to('xs') {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    
+    svg, img {
+      width: 18px !important;
+      height: 18px !important;
+    }
+  }
+  
+  // 📱 Mobile large (640px - 768px)
+  @include respond-to('sm') {
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    
+    svg, img {
+      width: 20px !important;  // 20px * 0.8 = 16px + override inline
+      height: 20px !important;
+    }
+  }
+  
+  // 📱 Tablet (768px - 1024px) - Taille normale
+  @include respond-to('md') {
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    
+    svg, img {
+      width: 20px !important;  // Taille normale + override inline
+      height: 20px !important;
+    }
+  }
+  
+  // 💻 Desktop (1024px+)
+  @include respond-to('lg') {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    
+    svg, img {
+      width: 24px !important;  // Override inline
+      height: 24px !important;
+    }
+  }
+  
+  // 🖥️ Large desktop (1920px+)
+  @include respond-to('xl') {
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    
+    svg, img {
+      width: 26px !important;  // Override inline
+      height: 26px !important;
+    }
   }
 }
 
-// Label texte
 .label {
   font-family: $font-display;
   font-size: $text-base;
   font-weight: $font-semibold;
   color: var(--text-primary);
   transition: color 0.3s ease;
+  
+  @include respond-to-max('lg') {
+    display: none;
+  }
+  
+  @include respond-to('lg') {
+    display: block;
+    font-size: $text-base;
+  }
+  
+  @include respond-to('xl') {
+    font-size: $text-lg;
+  }
 }
-
-// ────────────────────────────────────────────
-// 📱 RESPONSIVE - À REFAIRE DE A À Z
-// ────────────────────────────────────────────
-
-// TODO: Implémenter le responsive pour xs (375px)
-// TODO: Implémenter le responsive pour sm (640px)
-// TODO: Implémenter le responsive pour md (768px)
-// TODO: Implémenter le responsive pour lg (1024px)
-// TODO: Implémenter le responsive pour xl (1920px)
-// TODO: Implémenter le responsive pour 2xl (2560px)

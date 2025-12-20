@@ -15,6 +15,16 @@
     box-shadow: $shadow-lg;
     backdrop-filter: blur(10px);
   }
+  
+  // 📱 TOUT < 1024px - Réduire hauteur
+  @include respond-to-max('lg') {
+    height: 68px;
+  }
+  
+  // 📱 Mobile small (< 375px) - Encore plus compact
+  @include respond-to-max('xs') {
+    height: 64px;
+  }
 }
 
 .container {
@@ -25,6 +35,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
+  // ✅ CORRECTION : Position relative pour que FlashBanner soit centré
+  position: relative;
+  
+  // 📱 Mobile - Réduire padding
+  @include respond-to-max('sm') {
+    padding: 0 $space-sm;
+  }
+  
+  // 📱 Tablet - Padding intermédiaire
+  @include respond-to('md') {
+    padding: 0 $space-md;
+  }
 }
 
 .left {
@@ -33,6 +56,12 @@
   gap: $space-sm;
   height: 100%;
   position: relative;
+  
+  // 📱 TOUT < 1024px - Alignement centré pour cascade verticale
+  @include respond-to-max('lg') {
+    gap: $space-xs;
+    align-items: center;
+  }
 }
 
 .icon {
@@ -59,17 +88,39 @@
     object-fit: contain;
     transition: all 0.3s ease;
   }
+  
+  // 📱 TOUT < 1024px - Plus petit
+  @include respond-to-max('lg') {
+    width: 34px;
+    height: 34px;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    img {
+      width: 8px;
+      height: 8px;
+    }
+  }
+  
+  // 📱 Mobile small - Encore plus petit
+  @include respond-to-max('xs') {
+    width: 30px;
+    height: 30px;
+  }
 }
 
-// Boutons en cascade - animation de chute
+// Boutons en cascade
 .cascadeButtons {
   display: flex;
   gap: $space-sm;
   position: absolute;
   top: 0;
-  left: calc(50px + 1rem); // 50px = largeur MenuButton + gap
+  left: calc(50px + 1rem);
   
-  // Animation pour chaque bouton individuellement
+  // Animation pour chaque bouton (desktop)
   > *:nth-child(1) {
     animation: dropDown 0.4s ease-out 0.1s backwards;
   }
@@ -81,13 +132,63 @@
   > *:nth-child(3) {
     animation: dropDown 0.4s ease-out 0.2s backwards;
   }
+  
+  // ────────────────────────────────────────────
+  // 📱 TOUT < 1024px - CASCADE VERTICALE
+  // ────────────────────────────────────────────
+  
+  @include respond-to-max('lg') {
+    flex-direction: column;
+    gap: $space-2xs;
+    top: calc(100%);
+    left: 0;
+    
+    // Animations vers le bas au lieu de la gauche
+    > *:nth-child(1) {
+      animation: dropDownMobile 0.4s ease-out 0.1s backwards;
+    }
+    
+    > *:nth-child(2) {
+      animation: dropDownMobile 0.4s ease-out 0.15s backwards;
+    }
+    
+    > *:nth-child(3) {
+      animation: dropDownMobile 0.4s ease-out 0.2s backwards;
+    }
+  }
+  
+  // 📱 Mobile small (< 375px) - Gap plus petit
+  @include respond-to-max('xs') {
+    gap: 6px;
+    top: calc(100% + 6px);
+  }
+  
+  // 💻 Desktop (1024px+) - HORIZONTAL (design original)
+  @include respond-to('lg') {
+    flex-direction: row;
+    left: calc(50px + 1rem);
+    top: 0;
+    gap: $space-sm;
+  }
 }
 
-// Animation de chute
+// Animation desktop (de haut en bas, horizontal)
 @keyframes dropDown {
   from {
     opacity: 0;
     transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animation mobile (vertical, cascade vers le bas)
+@keyframes dropDownMobile {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -102,6 +203,18 @@
   height: 100%;
   position: relative;
   top: -4px;
+  
+  // 📱 TOUT < 1024px - Réduire gap et alignement centré
+  @include respond-to-max('lg') {
+    gap: $space-2xs;
+    top: 0;
+    align-items: center;
+  }
+  
+  // 📱 Mobile small - Gap encore plus petit
+  @include respond-to-max('xs') {
+    gap: $space-xs;
+  }
 }
 
 .toggleStack {
@@ -110,14 +223,3 @@
   gap: $space-xs;
   align-items: flex-end;
 }
-
-// ────────────────────────────────────────────
-// 📱 RESPONSIVE - À REFAIRE DE A À Z
-// ────────────────────────────────────────────
-
-// TODO: Implémenter le responsive pour xs (375px)
-// TODO: Implémenter le responsive pour sm (640px)
-// TODO: Implémenter le responsive pour md (768px)
-// TODO: Implémenter le responsive pour lg (1024px)
-// TODO: Implémenter le responsive pour xl (1920px)
-// TODO: Implémenter le responsive pour 2xl (2560px)

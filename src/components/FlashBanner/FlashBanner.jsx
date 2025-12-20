@@ -5,9 +5,17 @@ function FlashBanner() {
   
   return (
     <div className={styles.flashBanner}>
-      <div className={styles.track}>
-        <span className={styles.text}>{text}</span>
-        <span className={styles.text}>{text}</span>
+      <div className={styles.ticker}>
+        {/* Répétition du texte pour défilement infini sans coupure */}
+        <div className={styles.tickerContent}>
+          <span className={styles.text}>{text}</span>
+          <span className={styles.separator}>•</span>
+          <span className={styles.text}>{text}</span>
+          <span className={styles.separator}>•</span>
+          <span className={styles.text}>{text}</span>
+          <span className={styles.separator}>•</span>
+          <span className={styles.text}>{text}</span>
+        </div>
       </div>
     </div>
   );

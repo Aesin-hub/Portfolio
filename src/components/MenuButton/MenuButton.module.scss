@@ -11,7 +11,7 @@
   padding-bottom: $space-xs;
   background: var(--bg-card);
   border: 2px solid var(--primary);
-  border-radius: 0 0 16px 16px; // Arrondis uniquement en bas (effet étiquette)
+  border-radius: 0 0 16px 16px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -20,7 +20,7 @@
   &:hover {
     border-color: var(--secondary);
     background: var(--bg-alt);
-    transform: translateY(2px); // Légère descente au hover
+    transform: translateY(2px);
     
     .icon {
       background: var(--secondary);
@@ -36,9 +36,125 @@
       background: var(--secondary);
     }
   }
+  
+  // ────────────────────────────────────────────
+  // 📱 RESPONSIVE - BOUTON ROND < 1024px
+  // ────────────────────────────────────────────
+  
+  @include respond-to-max('lg') {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+    
+    // ────────────────────────────────────────────
+    // 🔄 ROTATION 360° HORAIRE/ANTIHORAIRE
+    // ────────────────────────────────────────────
+    
+    &.open {
+      .icon {
+        // Rotation 360° HORAIRE (sens des aiguilles)
+        animation: rotateClockwise 0.5s ease-out forwards;
+      }
+    }
+    
+    &:not(.open) {
+      .icon {
+        // Rotation 360° ANTIHORAIRE (retour)
+        animation: rotateCounterClockwise 0.5s ease-out forwards;
+      }
+    }
+  }
+  
+  @include respond-to-max('xs') {
+    width: 46px;
+    height: 46px;
+  }
+  
+  @include respond-to('xs') {
+    width: 48px;
+    height: 48px;
+  }
+  
+  @include respond-to('sm') {
+    width: 50px;
+    height: 50px;
+  }
+  
+  @include respond-to('md') {
+    width: 50px;
+    height: 50px;
+  }
+  
+  @include respond-to('lg') {
+    width: 56px;
+    height: 72px;
+    padding-bottom: $space-xs;
+    border-radius: 0 0 16px 16px;
+    top: -4px;
+    
+    &:hover {
+      transform: translateY(2px);
+    }
+    
+    // Pas de rotation sur desktop
+    &.open {
+      .icon {
+        animation: none;
+        transform: scale(1.05);
+      }
+    }
+    
+    &:not(.open) {
+      .icon {
+        animation: none;
+      }
+    }
+  }
+  
+  @include respond-to('xl') {
+    width: 60px;
+    height: 76px;
+    border-radius: 0 0 18px 18px;
+  }
 }
 
-// Icône LB (carré 40x40px)
+// ────────────────────────────────────────────
+// 🔄 ANIMATIONS ROTATION (< 1024px uniquement)
+// ────────────────────────────────────────────
+
+// Rotation 360° HORAIRE (ouverture)
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Rotation 360° ANTIHORAIRE (fermeture)
+@keyframes rotateCounterClockwise {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
 .icon {
   width: 40px;
   height: 40px;
@@ -51,16 +167,47 @@
   font-size: $text-lg;
   font-weight: $font-black;
   border-radius: 20px;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
+  
+  @include respond-to-max('xs') {
+    width: 30px;
+    height: 30px;
+    font-size: $text-sm;
+    border-radius: 15px;
+  }
+  
+  @include respond-to('xs') {
+    width: 32px;
+    height: 32px;
+    font-size: $text-base;
+    border-radius: 16px;
+  }
+  
+  @include respond-to('sm') {
+    width: 34px;
+    height: 34px;
+    font-size: $text-base;
+    border-radius: 17px;
+  }
+  
+  @include respond-to('md') {
+    width: 34px;
+    height: 34px;
+    font-size: $text-lg;
+    border-radius: 17px;
+  }
+  
+  @include respond-to('lg') {
+    width: 40px;
+    height: 40px;
+    font-size: $text-lg;
+    border-radius: 20px;
+  }
+  
+  @include respond-to('xl') {
+    width: 44px;
+    height: 44px;
+    font-size: $text-xl;
+    border-radius: 22px;
+  }
 }
-
-// ────────────────────────────────────────────
-// 📱 RESPONSIVE - À REFAIRE DE A À Z
-// ────────────────────────────────────────────
-
-// TODO: Implémenter le responsive pour xs (375px)
-// TODO: Implémenter le responsive pour sm (640px)
-// TODO: Implémenter le responsive pour md (768px)
-// TODO: Implémenter le responsive pour lg (1024px)
-// TODO: Implémenter le responsive pour xl (1920px)
-// TODO: Implémenter le responsive pour 2xl (2560px)

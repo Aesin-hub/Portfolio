@@ -1,91 +1,289 @@
 @use '../../styles/abstracts/variables' as *;
 @use '../../styles/abstracts/mixins' as *;
 
+// ────────────────────────────────────────────
+// 📺 FLASH BANNER - STYLE BANDEAU TV
+// ────────────────────────────────────────────
+
 .flashBanner {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   
-  width: 40%;
-  max-width: 800px;
-  height: 40px;
+  width: 45%;
+  max-width: 900px;
+  height: 42px;
   
+  // Design bandeau TV moderne
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  border-radius: 0;
+  border-radius: $radius-md;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   
   overflow: hidden;
   
+  // Effet de brillance animé (optionnel - comme les bandeaux TV)
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 15%;
+    left: -100%;
+    width: 50%;
     height: 100%;
     background: linear-gradient(
-      90deg, 
-      var(--bg-main) 0%,
-      var(--bg-main) 30%,
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
       transparent 100%
     );
-    z-index: 2;
+    animation: shine 3s ease-in-out infinite;
+    z-index: 1;
     pointer-events: none;
   }
   
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 15%;
-    height: 100%;
-    background: linear-gradient(
-      90deg, 
-      transparent 0%,
-      var(--bg-main) 70%,
-      var(--bg-main) 100%
-    );
-    z-index: 2;
-    pointer-events: none;
+  // ────────────────────────────────────────────
+  // 📱 RESPONSIVE
+  // ────────────────────────────────────────────
+  
+  // 📱 Mobile small (< 375px)
+  @include respond-to-max('xs') {
+    width: 35%;
+    min-width: 120px;
+    height: 32px;
+    border-radius: $radius-sm;
+  }
+  
+  // 📱 Mobile (375px - 640px)
+  @include respond-to('xs') {
+    width: 38%;
+    min-width: 130px;
+    height: 36px;
+  }
+  
+  // 📱 Mobile large (640px - 768px)
+  @include respond-to('sm') {
+    width: 48%;
+    height: 38px;
+  }
+  
+  // 📱 Tablet (768px - 1024px)
+  @include respond-to('md') {
+    width: 46%;
+    height: 40px;
+  }
+  
+  // 💻 Desktop (1024px+)
+  @include respond-to('lg') {
+    width: 45%;
+    height: 42px;
+  }
+  
+  // 🖥️ Large desktop (1920px+)
+  @include respond-to('xl') {
+    width: 40%;
+    max-width: 1000px;
+    height: 48px;
   }
 }
 
-.track {
+// ────────────────────────────────────────────
+// 🎬 TICKER - Container du défilement
+// ────────────────────────────────────────────
+
+.ticker {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
-  height: 100%;
-  gap: 6rem;
-  white-space: nowrap;
-  animation: scroll 20s linear infinite;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
 }
+
+// ────────────────────────────────────────────
+// 📜 TICKER CONTENT - Contenu qui défile
+// ────────────────────────────────────────────
+
+.tickerContent {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  
+  // ✅ CORRECTION : Plus de padding-left
+  // Le texte démarre directement visible dans le bandeau
+  
+  // Animation infinie fluide
+  animation: tickerScroll 40s linear infinite;
+  
+  // 📱 Mobile - Plus rapide
+  @include respond-to-max('xs') {
+    animation: tickerScroll 50s linear infinite;
+  }
+  
+  @include respond-to('xs') {
+    animation: tickerScroll 50s linear infinite;
+  }
+  
+  @include respond-to('sm') {
+    animation: tickerScroll 50s linear infinite;
+  }
+  
+  // 💻 Desktop - Vitesse normale
+  @include respond-to('lg') {
+    animation: tickerScroll 50s linear infinite;
+  }
+  
+  // 🖥️ Large desktop - Plus lent
+  @include respond-to('xl') {
+    animation: tickerScroll 50s linear infinite;
+  }
+}
+
+// ────────────────────────────────────────────
+// 📝 TEXT - Style du texte
+// ────────────────────────────────────────────
 
 .text {
   font-family: $font-display;
   font-size: $text-base;
   font-weight: $font-bold;
-  color: var(--text-primary);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   letter-spacing: $tracking-wide;
   line-height: 1;
+  
+  // 📱 Mobile small
+  @include respond-to-max('xs') {
+    font-size: $text-sm;
+    letter-spacing: $tracking-normal;
+  }
+  
+  // 📱 Mobile (375px - 640px)
+  @include respond-to('xs') {
+    font-size: $text-sm;
+  }
+  
+  // 📱 Mobile large (640px - 768px)
+  @include respond-to('sm') {
+    font-size: $text-base;
+  }
+  
+  // 📱 Tablet (768px - 1024px)
+  @include respond-to('md') {
+    font-size: $text-base;
+  }
+  
+  // 💻 Desktop (1024px+)
+  @include respond-to('lg') {
+    font-size: $text-base;
+  }
+  
+  // 🖥️ Large desktop
+  @include respond-to('xl') {
+    font-size: $text-lg;
+  }
 }
 
-@keyframes scroll {
+// ────────────────────────────────────────────
+// • SEPARATOR - Séparateurs entre répétitions
+// ────────────────────────────────────────────
+
+.separator {
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-weight: $font-bold;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 2rem;
+  
+  // 📱 Mobile - Moins d'espace
+  @include respond-to-max('sm') {
+    margin: 0 1.5rem;
+    font-size: $text-base;
+  }
+  
+  // 🖥️ Large desktop - Plus d'espace
+  @include respond-to('xl') {
+    margin: 0 2.5rem;
+    font-size: $text-xl;
+  }
+}
+
+// ────────────────────────────────────────────
+// 🎬 ANIMATIONS
+// ────────────────────────────────────────────
+
+// Animation défilement infini (droite → gauche)
+// ✅ CORRECTION : Animation de 0 à -50% (au lieu de 100% à -50%)
+@keyframes tickerScroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%); // Boucle parfaite avec 4 répétitions
+  }
+}
+
+// Animation brillance (effet TV)
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
   }
 }
 
 // ────────────────────────────────────────────
-// 📱 RESPONSIVE - À REFAIRE DE A À Z
+// 🎯 ACCESSIBILITÉ
 // ────────────────────────────────────────────
 
-// TODO: Implémenter le responsive pour xs (375px)
-// TODO: Implémenter le responsive pour sm (640px)
-// TODO: Implémenter le responsive pour md (768px)
-// TODO: Implémenter le responsive pour lg (1024px)
-// TODO: Implémenter le responsive pour xl (1920px)
-// TODO: Implémenter le responsive pour 2xl (2560px)
+@media (prefers-reduced-motion: reduce) {
+  .tickerContent {
+    animation: none;
+  }
+  
+  .flashBanner::before {
+    animation: none;
+    display: none;
+  }
+}
+
+// ────────────────────────────────────────────
+// 🎨 VARIANTES DE STYLE (optionnelles)
+// ────────────────────────────────────────────
+
+// Si tu veux tester d'autres styles, décommente :
+
+// Style 1 : Bordure lumineuse
+/*
+.flashBanner {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 0 20px rgba(var(--primary-rgb), 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+*/
+
+// Style 2 : Effet néon
+/*
+.flashBanner {
+  box-shadow: 
+    0 0 10px var(--primary),
+    0 0 20px var(--secondary),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+*/
+
+// Style 3 : Effet glassmorphism
+/*
+.flashBanner {
+  background: rgba(var(--primary-rgb), 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+*/

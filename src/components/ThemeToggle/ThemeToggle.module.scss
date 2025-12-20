@@ -1,7 +1,6 @@
 //ThemeToggle.module.scss
 @use '../../styles/abstracts/variables' as *;
 @use '../../styles/abstracts/mixins' as *;
-@use '../../styles/base/typography' as *;
 
 .toggle {
   @include reset-button;
@@ -21,8 +20,53 @@
     border-color: var(--secondary);
 
     .icon {
-    color: var(--secondary);
+      color: var(--secondary);
     }
+  }
+  
+  // ────────────────────────────────────────────
+  // 📱 RESPONSIVE - BOUTON ROND < 1024px
+  // ────────────────────────────────────────────
+  
+  @include respond-to-max('lg') {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    
+    &:hover {
+      background: var(--bg-alt);
+      transform: scale(1.05);
+    }
+    
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+  
+  @include respond-to-max('xs') {
+    width: 46px;
+    height: 46px;
+  }
+  
+  @include respond-to('xs') {
+    width: 48px;
+    height: 48px;
+  }
+  
+  @include respond-to('lg') {
+    width: 60px;
+    height: 32px;
+    border-radius: $radius-full;
+    background: var(--bg-alt);
+  }
+  
+  @include respond-to('xl') {
+    width: 66px;
+    height: 36px;
   }
 }
 
@@ -42,10 +86,90 @@
     left: calc(100% - 26px);
     background: var(--bg-main);
   }
+  
+  // ────────────────────────────────────────────
+  // 📱 RESPONSIVE - ICÔNE CENTRÉE < 1024px
+  // ────────────────────────────────────────────
+  
+  @include respond-to-max('lg') {
+    position: static;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    box-shadow: none;
+    
+    .dark & {
+      left: auto;
+      background: transparent;
+    }
+  }
+  
+  @include respond-to('lg') {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: white;
+    box-shadow: $shadow-sm;
+    
+    .dark & {
+      left: calc(100% - 26px);
+      background: var(--bg-main);
+    }
+  }
+  
+  @include respond-to('xl') {
+    width: 28px;
+    height: 28px;
+    top: 2px;
+    
+    .dark & {
+      left: calc(100% - 30px);
+    }
+  }
 }
 
 .icon {
   width: 16px;
   height: 16px;
   color: var(--primary);
+  
+  // ────────────────────────────────────────────
+  // 📱 ICÔNE À 80% sur xs et sm
+  // ────────────────────────────────────────────
+  
+  // 📱 Mobile small (< 375px) - 80%
+  @include respond-to-max('xs') {
+    width: 14px;  // 18px * 0.8 ≈ 14px
+    height: 14px;
+  }
+  
+  // 📱 Mobile (375px - 640px) - 80%
+  @include respond-to('xs') {
+    width: 16px;  // 20px * 0.8 = 16px
+    height: 16px;
+  }
+  
+  // 📱 Mobile large (640px - 768px) - 80%
+  @include respond-to('sm') {
+    width: 16px;  // 20px * 0.8 = 16px
+    height: 16px;
+  }
+  
+  // 📱 Tablet (768px - 1024px) - Taille normale
+  @include respond-to('md') {
+    width: 20px;
+    height: 20px;
+  }
+  
+  // 💻 Desktop (1024px+)
+  @include respond-to('lg') {
+    width: 16px;
+    height: 16px;
+  }
+  
+  // 🖥️ Large desktop (1920px+)
+  @include respond-to('xl') {
+    width: 18px;
+    height: 18px;
+  }
 }

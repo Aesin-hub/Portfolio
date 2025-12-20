@@ -34,39 +34,33 @@ function Header() {
                 icon={<img
                   src="/assets/icons/about.webp" 
                   alt="Icône À propos"
-                  title="Section À propos"
                   loading="lazy"
                   width="28"
-                  height="28"
-                  style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
+                  height="28" />}
                 onClick={() => scrollToSection('about')}
-                label="À propos"
+                ariaLabel="Aller à la section À propos"
               />
               
               <ActionButton
                 icon={<img 
                   src="/assets/icons/skill.webp" 
                   alt="Icône Compétences"
-                  title="Section Compétences"
                   loading="lazy"
                   width="28"
-                  height="28"
-                  style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
+                  height="28" />}
                 onClick={() => scrollToSection('skills')}
-                label="Compétences"
+                ariaLabel="Aller à la section Compétences"
               />
               
               <ActionButton
                 icon={<img 
                   src="/assets/icons/project.webp" 
                   alt="Icône Projets"
-                  title="Section Projets"
                   loading="lazy"
                   width="28"
-                  height="28"
-                  style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
+                  height="28" />}
                 onClick={() => scrollToSection('projects')}
-                label="Projets"
+                ariaLabel="Aller à la section Projets"
               />
             </div>
           )}
@@ -79,13 +73,11 @@ function Header() {
             icon={<img 
               src="/assets/icons/contact.webp" 
               alt="Icône Contact"
-              title="Section Contact"
               loading="lazy"
               width="28"
-              height="28"
-              style={{ width: '28px', height: '28px', objectFit: 'contain' }} />}
+              height="28" />}
             onClick={() => scrollToSection('contact')}
-            label="Contact"
+            ariaLabel="Aller à la section Contact"
           />
           
           <div className={styles.toggleStack}>
