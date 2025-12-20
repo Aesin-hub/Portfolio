@@ -1,5 +1,5 @@
 import Header from './components/Header/Header.jsx';
-// import Hero from './sections/Hero/Hero.jsx';
+import Hero from './sections/Hero/Hero.jsx';
 // import About from './sections/About/About.jsx';
 // import Skills from './sections/Skills/Skills.jsx';       
 // import Projects from './sections/Projects/Projects.jsx';
@@ -13,7 +13,7 @@ function App() {
       <Header />
       
       <main>
-        {/*<Hero />*/}
+        <Hero />
         {/*<About />*/}
         {/*<Skills />*/}
         {/*<Projects />*/}

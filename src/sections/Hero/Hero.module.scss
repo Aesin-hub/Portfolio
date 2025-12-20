@@ -2,97 +2,221 @@
 @use '../../styles/abstracts/mixins' as *;
 @use '../../styles/base/typography' as *;
 
+// ────────────────────────────────────────────
+// 🎯 HERO SECTION - 100VH RESPONSIVE
+// ────────────────────────────────────────────
+
 .hero {
-  min-height: 100vh;
+  height: 100vh;  // TOUJOURS 100vh (pas min-height)
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg-main);
-  padding: $space-2xl 0;
   position: relative;
+  overflow: hidden;
+  
+  // 📱 Mobile portrait - Image en arrière-plan
+  @include respond-to-max('md') {
+    // Dégradé overlay pour lisibilité
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(var(--bg-main-rgb), 0.65) 0%,
+        rgba(var(--bg-main-rgb), 0.55) 50%,
+        rgba(var(--bg-main-rgb), 0.45) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+}
+
+// Image de fond mobile (< 768px)
+.hero::after {
+  @include respond-to-max('md') {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/images/HeroImg.webp');
+    background-size: contain;  // Contient toute l'image (pas de crop)
+    background-position: center bottom;  // Centrée en bas
+    background-repeat: no-repeat;
+    opacity: 0.5;  // Semi-transparent pour ne pas écraser le texte
+    z-index: 0;
+    pointer-events: none;
+  }
 }
 
 .container {
   @include container;
   width: 100%;
-}
-
-// Contenu : Texte à gauche || Image à droite
-.content {
-  display: grid;
-  grid-template-columns: 1fr 1fr; // Deux colonnes égales
-  gap: $space-4xl;
+  height: 100%;
+  display: flex;
   align-items: center;
+  position: relative;
+  z-index: 2;  // Au-dessus du background
   
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr; // Une colonne sur mobile/tablette
-    gap: $space-2xl;
+  // 📱 Mobile - Padding réduit pour 100vh
+  @include respond-to-max('md') {
+    padding: $space-xl $space-md;
+  }
+  
+  @include respond-to-max('xs') {
+    padding: $space-lg $space-sm;
   }
 }
 
-// Partie Gauche : Nom + Texte + Boutons + Social
+// ────────────────────────────────────────────
+// 📐 LAYOUT CONTENT
+// ────────────────────────────────────────────
+
+.content {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  
+  // 💻 Desktop/Tablet paysage (≥ 768px) - 2 colonnes
+  @include respond-to('md') {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-4xl;
+  }
+  
+  @include respond-to('lg') {
+    gap: $space-5xl;
+  }
+  
+  // 📱 Mobile portrait (< 768px) - 1 colonne
+  @include respond-to-max('md') {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+// ────────────────────────────────────────────
+// 📝 TEXT CONTENT
+// ────────────────────────────────────────────
+
 .textContent {
   display: flex;
   flex-direction: column;
   gap: $space-lg;
+  
+  // 📱 Mobile - Gaps réduits pour tenir en 100vh
+  @include respond-to-max('md') {
+    gap: $space-md;
+  }
+  
+  @include respond-to-max('xs') {
+    gap: $space-sm;
+  }
 }
 
-// Nom principal (intégré à gauche)
+// ────────────────────────────────────────────
+// 🔤 TYPOGRAPHY
+// ────────────────────────────────────────────
+
 .title {
   font-family: $font-display;
-  font-size: $text-6xl;
   font-weight: $font-black;
   color: var(--text-primary);
   margin: 0;
   line-height: $leading-tight;
   
-  @media (max-width: 768px) {
-    font-size: $text-4xl;
+  // 💻 Desktop
+  font-size: $text-6xl;  // 60px
+  
+  // 📱 Tablet
+  @include respond-to-max('lg') {
+    font-size: $text-5xl;  // 48px
+  }
+  
+  // 📱 Mobile
+  @include respond-to-max('md') {
+    font-size: $text-4xl;  // 36px
+  }
+  
+  @include respond-to-max('xs') {
+    font-size: $text-3xl;  // 30px
   }
 }
 
 .subtitle {
   font-family: $font-display;
-  font-size: $text-3xl;
   font-weight: $font-bold;
   color: var(--primary);
   margin: 0;
   
-  @media (max-width: 768px) {
-    font-size: $text-2xl;
+  // 💻 Desktop
+  font-size: $text-3xl;  // 30px
+  
+  // 📱 Tablet
+  @include respond-to-max('lg') {
+    font-size: $text-2xl;  // 24px
+  }
+  
+  // 📱 Mobile
+  @include respond-to-max('md') {
+    font-size: $text-xl;  // 20px
+  }
+  
+  @include respond-to-max('xs') {
+    font-size: $text-lg;  // 18px
   }
 }
 
 .description {
   font-family: $font-body;
-  font-size: $text-lg;
   color: var(--text-secondary);
   line-height: $leading-relaxed;
   margin: 0;
   
-  @media (max-width: 768px) {
-    font-size: $text-base;
+  // 💻 Desktop
+  font-size: $text-lg;  // 18px
+  
+  // 📱 Mobile
+  @include respond-to-max('md') {
+    font-size: $text-base;  // 16px
+    line-height: $leading-normal;
+  }
+  
+  @include respond-to-max('xs') {
+    font-size: $text-sm;  // 14px
   }
 }
 
-// Boutons CTA
+// ────────────────────────────────────────────
+// 🔘 ACTIONS (Boutons)
+// ────────────────────────────────────────────
+
 .actions {
   display: flex;
   gap: $space-md;
   flex-wrap: wrap;
   margin-top: $space-md;
   
-  @media (max-width: 480px) {
+  // 📱 Mobile - Boutons en colonne
+  @include respond-to-max('xs') {
     flex-direction: column;
     width: 100%;
+    margin-top: $space-sm;
   }
 }
 
-// Social Links
+// ────────────────────────────────────────────
+// 🔗 SOCIAL LINKS
+// ────────────────────────────────────────────
+
 .social {
   display: flex;
   gap: $space-md;
   margin-top: $space-sm;
+  
+  @include respond-to-max('xs') {
+    gap: $space-sm;
+  }
 }
 
 .socialLink {
@@ -114,16 +238,36 @@
     transform: translateY(-2px);
     box-shadow: $shadow-md;
   }
+  
+  // 📱 Mobile - Légèrement plus petit
+  @include respond-to-max('xs') {
+    width: 44px;
+    height: 44px;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
 
-// Partie Droite : Image
+// ────────────────────────────────────────────
+// 🖼️ IMAGE WRAPPER & PHOTO
+// ────────────────────────────────────────────
+
 .imageWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   
-  @media (max-width: 1024px) {
-    order: -1; // Met l'image en premier sur mobile
+  // 📱 Mobile - Caché (image en background)
+  @include respond-to-max('md') {
+    display: none;
+  }
+  
+  // 💻 Desktop/Tablet - Visible
+  @include respond-to('md') {
+    display: flex;
   }
 }
 
@@ -133,47 +277,81 @@
   height: auto;
   object-fit: contain;
   
-  @media (max-width: 768px) {
-    max-width: 350px;
+  // 📱 Tablet
+  @include respond-to-max('lg') {
+    max-width: 400px;
   }
-}
-
-// Scroll Indicator en bas
-.scrollIndicator {
-  @include reset-button;
-  position: absolute;
-  bottom: $space-xl;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-card);
-  border: 2px solid var(--border);
-  border-radius: 50%;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  animation: bounce 2s infinite;
   
-  &:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    transform: translateX(-50%) translateY(-4px);
+  // 💻 Desktop
+  @include respond-to('lg') {
+    max-width: 500px;
+  }
+  
+  @include respond-to('xl') {
+    max-width: 600px;
   }
 }
 
-// Animation bounce pour le scroll indicator
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
+// ────────────────────────────────────────────
+// 📍 SCROLL INDICATOR
+// ────────────────────────────────────────────
+
+// Note: Le ScrollIndicator est un composant séparé
+// On le cache sur mobile via le parent .hero
+
+// Caché sur mobile portrait (< 768px)
+@include respond-to-max('md') {
+  :global(.scrollIndicator) {
+    display: none !important;
   }
 }
+
+// Visible sur tablet/desktop (≥ 768px)
+@include respond-to('md') {
+  :global(.scrollIndicator) {
+    display: flex !important;
+  }
+}
+
+// ────────────────────────────────────────────
+// 🎨 VARIANTES BACKGROUND MOBILE
+// ────────────────────────────────────────────
+
+// Si l'overlay est trop foncé/clair, ajuste ici :
+
+// Overlay plus transparent (image plus visible)
+/*
+.hero::before {
+  @include respond-to-max('md') {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--bg-main-rgb), 0.85) 0%,
+      rgba(var(--bg-main-rgb), 0.75) 50%,
+      rgba(var(--bg-main-rgb), 0.65) 100%
+    );
+  }
+}
+*/
+
+// Overlay plus opaque (texte plus lisible)
+/*
+.hero::before {
+  @include respond-to-max('md') {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--bg-main-rgb), 0.98) 0%,
+      rgba(var(--bg-main-rgb), 0.92) 50%,
+      rgba(var(--bg-main-rgb), 0.88) 100%
+    );
+  }
+}
+*/
+
+// Background image plus visible
+/*
+.hero::after {
+  @include respond-to-max('md') {
+    opacity: 0.5;  // Au lieu de 0.3
+  }
+}
+*/

@@ -1,11 +1,26 @@
-// Hero section //
+// Hero section - 100vh responsive //
 
+import { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import ScrollIndicator from '../../components/ScrollIndicator/ScrollIndicator';
 import { scrollToSection } from '../../utils/scroll';
 import styles from './Hero.module.scss';
 
 function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Détecte si on est sur mobile (< 768px)
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <section id="hero" className={styles.hero}>
       <div className={styles.container}>
@@ -68,7 +83,7 @@ function Hero() {
             </div>
           </div>
 
-          {/* Partie Droite : Image */}
+          {/* Partie Droite : Image (cachée sur mobile) */}
           <div className={styles.imageWrapper}>
             <img 
               src='/assets/images/HeroImg.webp'
@@ -82,7 +97,10 @@ function Hero() {
         </div>
       </div>
 
-      <ScrollIndicator onClick={() => scrollToSection('about')} />
+      {/* ScrollIndicator : Caché sur mobile (< 768px) */}
+      {!isMobile && (
+        <ScrollIndicator onClick={() => scrollToSection('about')} />
+      )}
     </section>
   );
 }
