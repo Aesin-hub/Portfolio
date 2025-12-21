@@ -1,64 +1,178 @@
 @use "../../styles/abstracts/variables" as *;
 @use "../../styles/abstracts/mixins" as *;
 
+// ═══════════════════════════════════════════════════════════════
+// 📋 SKILLS SECTION - RESPONSIVE ALIGNED WITH ABOUT
+// ═══════════════════════════════════════════════════════════════
+
 .skills {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg-main);
-  padding: $space-xl;
   position: relative;
+  
+  // ─────────────────────────────────────────────
+  // 📱 MOBILE small (< 640px)
+  // ─────────────────────────────────────────────
+  @media (max-width: 639px) {
+    height: auto;
+    margin: $space-0 $space-md $space-xs $space-md;
+  }
+
+  // ─────────────────────────────────────────────
+  // 📱 MOBILE large (< 768px)
+  // ─────────────────────────────────────────────
+  @media (max-width: 767px) {
+    height: auto;
+    margin: $space-0 $space-md $space-xs $space-md;
+  }
+
+  // ─────────────────────────────────────────────
+  // 📱 TABLET (< 1024px)
+  // ─────────────────────────────────────────────
+  @media (min-width: 768px) and (max-width: 1023px) {
+    height: auto;
+    margin: $space-0 $space-md $space-0 $space-0;
+  }
+  
+  // ─────────────────────────────────────────────
+  // 💻 LAPTOP+ (≥ 1024px)
+  // ─────────────────────────────────────────────
+  @media (min-width: 1024px) {
+    margin: $space-0 $space-xl $space-xs $space-xl;
+  }
 }
+
+// ═══════════════════════════════════════════════════════════════
+// 📦 CONTAINER - MARGINS IDENTIQUES ABOUT
+// ═══════════════════════════════════════════════════════════════
 
 .container {
   max-width: $container-max-width;
   margin: 0 auto;
   width: 100%;
-  height: 80vh;
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 0;
   border-radius: $radius-xl;
   overflow: hidden;
   background: var(--bg-card);
   box-shadow: $shadow-2xl;
-
-  @media (max-width: 1024px) {
+  
+  // ─────────────────────────────────────────────
+  // 📱 MOBILE (< 768px)
+  // ─────────────────────────────────────────────
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
     height: auto;
-    min-height: 80vh;
-    grid-template-columns: 1fr;
+    margin: $space-md $space-2xs $space-md $space-2xs;  // ✅ Identique About
+  }
+
+  // ─────────────────────────────────────────────
+  // 📱 TABLET (< 1024px)
+  // ─────────────────────────────────────────────
+  @media (min-width: 768px) and (max-width: 1023px) {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin: $space-md $space-2xs $space-md $space-md;  // ✅ Identique About
+  }
+  
+  // ─────────────────────────────────────────────
+  // 💻 LAPTOP (1024-1439px)
+  // ─────────────────────────────────────────────
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    display: grid;
+    grid-template-columns: 1fr 280px;  // sidePanel 280px
+    height: auto;
+    gap: 0;
+    margin: $space-3xl $space-2xs $space-md $space-2xs;  // ✅ Identique About
+  }
+  
+  // ─────────────────────────────────────────────
+  // 💻 DESKTOP (≥ 1440px) - Grand écran
+  // ─────────────────────────────────────────────
+  @media (min-width: 1440px) {
+    display: grid;
+    grid-template-columns: 1fr 400px;  // sidePanel 400px
+    height: auto;
+    gap: 0;
+    margin: $space-md $space-2xs $space-md $space-2xs;  // ✅ Identique About
   }
 }
+
+// ═══════════════════════════════════════════════════════════════
+// 🎨 SKILLS CONTAINER
+// ═══════════════════════════════════════════════════════════════
 
 .skillsContainer {
   display: flex;
   flex-direction: column;
   gap: $space-lg;
-  padding: $space-3xl;
   overflow-y: auto;
-
-  @media (max-width: 1024px) {
-    padding: $space-xl;
+  overflow-x: hidden;  // ✅ Empêche scrollbar horizontale lors de l'animation
+  
+  // 📱 MOBILE
+  @media (max-width: 767px) {
+    padding: $space-md;
+    order: 2;  // Après sidePanel
+  }
+  
+  // 📱 TABLET
+  @media (min-width: 768px) and (max-width: 1023px) {
+    padding: $space-lg;
+    order: 2;  // Après sidePanel
+  }
+  
+  // 💻 LAPTOP (1024-1439px) - PADDING RÉDUIT
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    padding: $space-lg;  // 24px (réduit de 48px)
+  }
+  
+  // 💻 DESKTOP (≥ 1440px)
+  @media (min-width: 1440px) {
+    padding: $space-3xl;  // 48px (normal)
   }
 }
 
+// ═══════════════════════════════════════════════════════════════
+// 🏷️ SKILL CATEGORY
+// ═══════════════════════════════════════════════════════════════
+
 .skillCategory {
   position: relative;
-  min-height: 120px;
-  overflow: visible; // Allow stars and names to extend outside
+  overflow: visible;
   border-radius: $radius-lg;
+  
+  // 📱 MOBILE - Hauteur adaptative
+  @media (max-width: 767px) {
+    min-height: auto;  // S'adapte au contenu
+  }
+  
+  // 💻 TABLET + LAPTOP+
+  @media (min-width: 768px) {
+    min-height: 120px;
+  }
 
   &.open {
     .categoryHeader {    
-      left: calc(100% - 120px);  
-      width: 120px;
+      @media (max-width: 767px) {
+        left: calc(100% - 80px);  // 80px
+        width: 80px;
+      }
+
+      @media (min-width: 768px) {
+        left: calc(100% - 120px);  // 120px
+        width: 120px;
+      }
+      
       border-radius: $radius-lg;
       justify-content: center;
       align-items: center;
       padding: 0;
       display: flex;
     }
+    
     .headerIcon {
       position: static;
       margin: 0;
@@ -76,24 +190,90 @@
   }
 }
 
+// ═══════════════════════════════════════════════════════════════
+// 📂 CATEGORY CONTENT
+// ═══════════════════════════════════════════════════════════════
+
 .categoryContent {
   background: var(--bg-main);
   border: 2px solid var(--border);
   border-radius: $radius-lg;
-  padding: $space-lg;
-  min-height: 120px;
   opacity: 1;
   position: relative;
   z-index: 1;
-  overflow: visible; // Allow tooltips to extend outside
+  overflow: visible;
+  
+  // 📱 MOBILE - Padding réduit + padding-right pour headerIcon
+  @media (max-width: 767px) {
+    padding: $space-md;
+    padding-right: calc(48px + $space-md + $space-md);  // headerIcon 48px + marges
+    min-height: auto;
+  }
+  
+  // 📱 TABLET - Padding-right pour headerIcon
+  @media (min-width: 768px) and (max-width: 1023px) {
+    padding: $space-lg;
+    padding-right: calc(64px + $space-lg + $space-lg);  // headerIcon 64px + marges
+    min-height: 120px;
+  }
+  
+  // 💻 LAPTOP+ - Padding-right pour headerIcon
+  @media (min-width: 1024px) {
+    padding: $space-lg;
+    padding-right: calc(64px + $space-lg + $space-lg);  // headerIcon 64px + marges
+    min-height: 120px;
+  }
 }
 
+// ═══════════════════════════════════════════════════════════════
+// 🔲 ICON GRID - NOUVEAU BREAKPOINT 470px
+// ═══════════════════════════════════════════════════════════════
+
 .iconGrid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;  // Grid au lieu de flex pour contrôler colonnes
   gap: $space-md;
-  justify-content: flex-start;
+  justify-items: center;
+  align-items: start;
+  position: relative;
+  z-index: 1;  // Base z-index
+  
+  // ─────────────────────────────────────────────
+  // 📱 TRÈS PETIT MOBILE (< 470px) - 3 skills par ligne
+  // ─────────────────────────────────────────────
+  @media (max-width: 469px) {
+    grid-template-columns: repeat(3, 1fr);  // ✅ 3 colonnes au lieu de 4
+    gap: $space-sm;
+  }
+  
+  // ─────────────────────────────────────────────
+  // 📱 MOBILE (470-767px) - 4 skills par ligne
+  // ─────────────────────────────────────────────
+  @media (min-width: 470px) and (max-width: 767px) {
+    grid-template-columns: repeat(4, 1fr);  // 4 colonnes
+    gap: $space-sm;
+  }
+  
+  // ─────────────────────────────────────────────
+  // 📱 TABLET (768-1023px) - 6 skills par ligne
+  // ─────────────────────────────────────────────
+  @media (min-width: 768px) and (max-width: 1023px) {
+    grid-template-columns: repeat(6, 1fr);  // 6 colonnes
+    gap: $space-md;
+  }
+  
+  // ─────────────────────────────────────────────
+  // 💻 LAPTOP+ (≥ 1024px) - Auto (flex-start)
+  // ─────────────────────────────────────────────
+  @media (min-width: 1024px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }
+
+// ═══════════════════════════════════════════════════════════════
+// 🎯 SKILL ICON
+// ═══════════════════════════════════════════════════════════════
 
 .skillIcon {
   position: relative;
@@ -101,8 +281,8 @@
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  width: 48px; // Icon width only
-  height: 48px; // Icon height only
+  width: 48px;
+  height: 48px;
 
   > img {
     width: 48px;
@@ -121,7 +301,7 @@
     .skillTooltip {
       opacity: 1;
       visibility: visible;
-      transform: translate(-50%, -8px);
+      transform: translate(-50%, 0px);
     }
 
     .skillName {
@@ -152,7 +332,7 @@
   position: absolute;
   bottom: 100%;
   left: 50%;
-  transform: translate(-50%, -8px);
+  transform: translate(-50%, -12px);  // ✅ -12px au lieu de -8px (étoiles plus hautes)
   display: flex;
   gap: 0;
   opacity: 0;
@@ -160,19 +340,19 @@
   transition: all 0.3s ease;
   z-index: 100;
   pointer-events: none;
-  width: 60px; // Réduit pour resserrer les étoiles
-  height: 25px; // Réduit aussi
+  width: 60px;
+  height: 25px;
   justify-content: center;
   align-items: flex-end;
 }
 
 .skillName {
-  position: absolute; // N'affecte pas la hauteur du skillIcon
-  top: 100%; // Juste en dessous de l'icône
+  position: absolute;
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   font-family: $font-body;
-  font-size: 10px; // Réduit de text-xs
+  font-size: 10px;
   font-weight: $font-medium;
   color: var(--text-primary);
   text-align: center;
@@ -180,16 +360,17 @@
   visibility: hidden;
   transition: all 0.3s ease;
   margin-top: 6px;
-  padding: 3px 6px; // Padding réduit
+  padding: 3px 6px;
   border: 2px solid var(--secondary);
   border-radius: $radius-sm;
   background: var(--bg-main);
-  white-space: nowrap; // Pas de wrap pour garder compact
+  white-space: nowrap;
   max-width: 90px;
+  z-index: 10;  // ✅ Plus élevé que iconGrid (z-index: 1)
 }
 
 .star {
-  width: 16px; // Réduit de 20px à 16px
+  width: 16px;
   height: 16px;
   opacity: 0;
   transform: scale(0);
@@ -202,7 +383,6 @@
     display: block;
   }
 
-  // Positionnement en arc de cercle resserré
   &:nth-child(1) {
     left: 2px;
     bottom: 6px;
@@ -211,7 +391,7 @@
   
   &:nth-child(2) {
     left: 50%;
-    bottom: 14px; // Réduit de 18px à 14px
+    bottom: 14px;
     transform: translateX(-50%) scale(0);
     transform-origin: center;
   }
@@ -251,6 +431,9 @@
   }
 }
 
+// ═══════════════════════════════════════════════════════════════
+// 🎚️ CATEGORY HEADER
+// ═══════════════════════════════════════════════════════════════
 
 .categoryHeader {
   @include reset-button;
@@ -258,11 +441,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 120px;
+  height: 100%;  // ✅ 100% pour que le flou fasse toute la hauteur
   display: flex;
-  align-items: center;
+  align-items: center;  // ✅ Centre verticalement le headerIcon
   gap: $space-md;
-  padding: 24px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 2px solid var(--border);
@@ -273,6 +455,16 @@
               width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
               padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
+  
+  // 📱 MOBILE - Padding adapté
+  @media (max-width: 767px) {
+    padding: $space-md;
+  }
+  
+  // 💻 TABLET + LAPTOP+
+  @media (min-width: 768px) {
+    padding: 24px;
+  }
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -297,18 +489,28 @@
   border-radius: $radius-md;
   color: var(--text-primary);
   transition: all 0.3s ease;
-  flex-shrink: 0;
+  flex-shrink: 0;  // ✅ IMPORTANT - Ne s'étire JAMAIS
 
   svg {
     width: 24px;
     height: 24px;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  
+  // 📱 MOBILE - Icon réduite
+  @media (max-width: 767px) {
+    width: 48px;
+    height: 48px;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
 
 .categoryTitle {
   font-family: $font-display;
-  font-size: $text-xl;
   font-weight: $font-bold;
   color: var(--text-primary);
   transition: all 0.3s ease;
@@ -316,35 +518,61 @@
   white-space: nowrap;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   flex: 1;
+  
+  // 📱 MOBILE
+  @media (max-width: 767px) {
+    font-size: $text-base;
+  }
 
-  @media (max-width: 768px) {
+  // 📱 TABLET
+  @media (min-width: 768px) and (max-width: 1023px) {
     font-size: $text-lg;
   }
+  
+  // 💻 LAPTOP+
+  @media (min-width: 1024px) {
+    font-size: $text-xl;
+  }
 }
+
+// ═══════════════════════════════════════════════════════════════
+// 📄 SIDE PANEL
+// ═══════════════════════════════════════════════════════════════
 
 .sidePanel {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: $space-lg;
-  padding: $space-2xl;
   background: var(--primary);
-  border-radius: 0 $radius-xl $radius-xl 0;
-
-  @media (max-width: 1024px) {
-    padding: $space-xl;
-    border-radius: 0 0 $radius-xl $radius-xl;
+  
+  // 📱 MOBILE + TABLET - EN HAUT, toute la largeur
+  @media (max-width: 1023px) {
+    order: 1;  // Avant skillsContainer
+    padding: $space-lg $space-md;
+    border-radius: $radius-xl $radius-xl 0 0;  // Coins arrondis en haut
+  }
+  
+  // 💻 LAPTOP+ - À DROITE
+  @media (min-width: 1024px) {
+    padding: $space-lg;
+    border-radius: 0 $radius-xl $radius-xl 0;  // Coins arrondis à droite
   }
 
   h2 {
     font-family: $font-display;
-    font-size: $text-3xl;
     font-weight: $font-black;
     color: var(--bg-main);
     margin: 0;
     line-height: $leading-tight;
-
-    @media (max-width: 768px) {
+    
+    // 📱 MOBILE
+    @media (max-width: 767px) {
+      font-size: $text-2xl;
+    }
+    
+    // 📱 TABLET + LAPTOP+
+    @media (min-width: 768px) {
       font-size: $text-3xl;
     }
   }
@@ -352,8 +580,13 @@
   p {
     font-family: $font-body;
     font-size: $text-base;
-    color: var(--text-primary);
+    color: var(--bg-main);
     line-height: $leading-relaxed;
     margin: 0;
+    
+    // 📱 MOBILE - Texte réduit
+    @media (max-width: 767px) {
+      font-size: $text-sm;
+    }
   }
 }

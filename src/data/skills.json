@@ -54,6 +54,7 @@
           "name": "Tailwind CSS",
           "level": "beginner",
           "icon": "/assets/icons/tailwindcss.webp",
+          "iconDark": "/assets/icons/tailwindcss_dark.webp",
           "description": "Utility-first CSS framework"
         }
       ]

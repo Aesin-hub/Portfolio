@@ -1,8 +1,26 @@
 import styles from './ScrollIndicator.module.scss';
 
-function ScrollIndicator({ onClick }) {
+function ScrollIndicator({ onClick, customBottom, customRight, customLeft }) {
+  // ✅ Construit le style inline avec les props custom
+  const customStyle = {};
+  
+  if (customBottom !== undefined) {
+    customStyle['--custom-bottom'] = customBottom;
+  }
+  if (customRight !== undefined) {
+    customStyle['--custom-right'] = customRight;
+  }
+  if (customLeft !== undefined) {
+    customStyle['--custom-left'] = customLeft;
+  }
+
   return (
-    <button className={styles.scrollButton} onClick={onClick} aria-label="Scroll to next section">
+    <button 
+      className={styles.scrollButton} 
+      onClick={onClick} 
+      style={customStyle}
+      aria-label="Scroll to next section"
+    >
       <svg width="20" height="32" viewBox="0 0 40 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Contour de la souris */}
         <rect 

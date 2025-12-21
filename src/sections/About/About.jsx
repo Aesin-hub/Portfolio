@@ -8,17 +8,28 @@ import styles from './About.module.scss';
 
 function About() {
   const [isDesktop, setIsDesktop] = useState(false);
+  const [screenSize, setScreenSize] = useState('desktop');
 
-  // Détecte si on est sur desktop (≥ 1024px)
+  // Détecte desktop (≥ 1024px) ET taille écran (laptop/desktop)
   useEffect(() => {
-    const checkDesktop = () => {
-      setIsDesktop(window.innerWidth >= 1024);
+    const checkScreen = () => {
+      const width = window.innerWidth;
+      setIsDesktop(width >= 1024);
+      
+      // Détermine laptop ou desktop
+      if (width >= 1440) {
+        setScreenSize('desktop');
+      } else if (width >= 1024) {
+        setScreenSize('laptop');
+      } else {
+        setScreenSize('mobile');
+      }
     };
     
-    checkDesktop();
-    window.addEventListener('resize', checkDesktop);
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
     
-    return () => window.removeEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkScreen);
   }, []);
 
   const handleDownloadCV = () => {
@@ -107,8 +118,14 @@ function About() {
         </div>
       </div>
       
-      {/* ScrollIndicator : Visible SEULEMENT sur desktop ≥ 1024px */}
-      {isDesktop && <ScrollIndicator onClick={() => scrollToSection('skills')} />}
+      {/* ScrollIndicator : Centré, hauteur responsive laptop/desktop */}
+      {isDesktop && (
+        <ScrollIndicator 
+          onClick={() => scrollToSection('skills')}
+          customBottom={screenSize === 'desktop' ? '48px' : '24px'}
+          // customLeft et customRight non définis = centré par défaut
+        />
+      )}
     </section>
   );
 }

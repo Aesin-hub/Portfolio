@@ -34,14 +34,14 @@
   // ─────────────────────────────────────────────
   @media (min-width: 768px) and (max-width: 1023px) {
     height: auto;
-    margin: $space-0 $space-md $space-0 $space-md;
+    margin: $space-0 $space-md $space-0 $space-0;
   }
   
   // ─────────────────────────────────────────────
   // 💻 LAPTOP+ (≥ 1024px)
   // ─────────────────────────────────────────────
   @media (min-width: 1024px) {
-    margin: $space-xl $space-xl $space-xs $space-xl;
+    margin: $space-0 $space-xl $space-xs $space-xl;
   }
 }
 
@@ -84,7 +84,7 @@
   @media (min-width: 1024px) and (max-width: 1439px) {
     grid-template-columns: 280px 1fr;
     height: auto;
-    margin: $space-md $space-2xs $space-md $space-2xs;
+    margin: $space-xl $space-2xs $space-md $space-2xs;
   }
   
   // ─────────────────────────────────────────────
@@ -169,11 +169,11 @@
   }
   
   // ─────────────────────────────────────────────
-  // 💻 LAPTOP (1024-1439px) - OPTIMISÉ
+  // 💻 LAPTOP (1024-1439px) - OPTIMISÉ COMPACT
   // ─────────────────────────────────────────────
   @media (min-width: 1024px) and (max-width: 1439px) {
-    gap: $space-lg;  // 24px (réduit)
-    padding: $space-lg $space-xl;  // 24px 32px (réduit)
+    gap: $space-md;  // 16px (réduit pour éviter débordement)
+    padding: $space-md $space-lg;  // 16px 24px (plus compact)
   }
   
   // ─────────────────────────────────────────────
@@ -196,7 +196,7 @@
   
   // 💻 Laptop - gap réduit
   @media (min-width: 1024px) and (max-width: 1439px) {
-    gap: $space-md;  // 16px
+    gap: $space-sm;  // 12px (encore plus réduit)
   }
   
   h2 {

@@ -4,11 +4,12 @@
 .scrollButton {
   @include reset-button;
   
-  // ✅ Positionnement absolu centré en bas
+  // ✅ Positionnement avec variables CSS custom (fallback sur valeurs par défaut)
   position: absolute;
-  bottom: $space-xl;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: var(--custom-bottom, $space-xl);  // Défaut: 32px
+  left: var(--custom-left, 50%);            // Défaut: centré
+  right: var(--custom-right, auto);         // Défaut: auto
+  transform: translateX(var(--custom-left, -50%));  // Centrage si left: 50%
   
   cursor: pointer;
   color: var(--primary);
@@ -17,7 +18,7 @@
   
   &:hover {
     color: var(--secondary);
-    transform: translateX(-50%) translateY(-4px);
+    transform: translateX(var(--custom-left, -50%)) translateY(-4px);
   }
   
   svg {
