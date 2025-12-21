@@ -1,49 +1,38 @@
 @use '../../styles/abstracts/variables' as *;
 @use '../../styles/abstracts/mixins' as *;
 
+// ═══════════════════════════════════════════════════════════════
+// 📋 FOOTER - SIMPLE & CENTRÉ
+// ═══════════════════════════════════════════════════════════════
+
 .footer {
-  background: var(--bg-alt);
-  border-top: 1px solid var(--border);
-  padding: $space-lg $space-lg; // Reduced padding
+  background: var(--bg-main);  // ✅ Même background que header
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 
+              0 -2px 4px -1px rgba(0, 0, 0, 0.06);  // ✅ Shadow vers le HAUT
+  padding: $space-lg;
+  
+  // 📱 Mobile - Réduire padding
+  @media (max-width: 767px) {
+    padding: $space-md $space-sm;
+  }
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: center;  // ✅ Centré
   align-items: center;
-  gap: $space-lg;
-  position: relative; // For absolute positioning of social
-
-  @include respond-to-max('md') {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-.copyright {
-  font-size: $text-sm;
-  color: var(--text-secondary);
-  margin: 0;
-  text-align: center;
-
-  @include respond-to-max('md') {
-    order: 2;
-  }
 }
 
 .social {
-  position: absolute;
-  right: 0;
   display: flex;
   gap: $space-xl;
   align-items: center;
-
-  @include respond-to-max('md') {
-    position: relative;
-    order: 1;
-    right: auto;
+  
+  // 📱 Mobile - Réduire gap
+  @media (max-width: 767px) {
+    gap: $space-md;
   }
 
   a {
@@ -57,7 +46,7 @@
     transition: all 0.3s ease;
 
     &:hover {
-      color: var(--secondary);
+      color: var(--secondary);  // ✅ Hover secondary comme header
 
       svg {
         transform: translateY(-2px);
@@ -68,6 +57,12 @@
       width: 20px;
       height: 20px;
       transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    span {
+      // Texte visible seulement desktop (géré par React dans JSX)
+      white-space: nowrap;
     }
   }
 }
