@@ -1,11 +1,26 @@
 // about section //
 
+import { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import ScrollIndicator from '../../components/ScrollIndicator/ScrollIndicator';
 import { scrollToSection } from '../../utils/scroll';
 import styles from './About.module.scss';
 
 function About() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Détecte si on est sur desktop (≥ 1024px)
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
   const handleDownloadCV = () => {
     // Crée un lien temporaire
     const link = document.createElement('a');
@@ -72,7 +87,7 @@ function About() {
             </div>
             
             <div className={styles.actions}>
-              <Button variant="primary" size="large" onClick={handleDownloadCV}>
+              <Button variant="primary" size="medium" onClick={handleDownloadCV}>
                 <svg 
                   width="20" 
                   height="20" 
@@ -91,7 +106,9 @@ function About() {
           </div>
         </div>
       </div>
-      <ScrollIndicator onClick={() => scrollToSection('skills')} /> 
+      
+      {/* ScrollIndicator : Visible SEULEMENT sur desktop ≥ 1024px */}
+      {isDesktop && <ScrollIndicator onClick={() => scrollToSection('skills')} />}
     </section>
   );
 }

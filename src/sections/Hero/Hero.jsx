@@ -7,18 +7,18 @@ import { scrollToSection } from '../../utils/scroll';
 import styles from './Hero.module.scss';
 
 function Hero() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   // Détecte si on est sur mobile (< 768px)
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
     };
     
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
     
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkDesktop);
   }, []);
 
   return (
@@ -98,7 +98,7 @@ function Hero() {
       </div>
 
       {/* ScrollIndicator : Caché sur mobile (< 768px) */}
-      {!isMobile && (
+      {isDesktop && (
         <ScrollIndicator onClick={() => scrollToSection('about')} />
       )}
     </section>

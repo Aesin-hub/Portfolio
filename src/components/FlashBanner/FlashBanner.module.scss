@@ -16,7 +16,7 @@
   height: 42px;
   
   // Design bandeau TV moderne
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  background: var(--primary);
   border-radius: $radius-md;
   box-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.15),
@@ -36,7 +36,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.4) 50%,
       transparent 100%
     );
     animation: shine 3s ease-in-out infinite;

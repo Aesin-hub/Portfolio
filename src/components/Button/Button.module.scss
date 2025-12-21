@@ -42,7 +42,7 @@
 // Primary button (filled)
 .primary {
   background: var(--primary);
-  color: white;
+  color: var(--bg-main);
   border: 2px solid var(--primary);
   
   &:hover:not(:disabled) {
