@@ -97,16 +97,6 @@ function ProjectModal({ project, isOpen, onClose }) {
               {/* Subtitle */}
               <p className={styles.subtitle}>{project.subtitle}</p>
 
-              {/* Tags */}
-              {project.tags && project.tags.length > 0 && (
-                <div className={styles.tags}>
-                  {project.tags.map((tag, index) => (
-                    <span key={index} className={styles.tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
 
               {/* Description */}
               {project.description?.long && (
