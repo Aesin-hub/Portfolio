@@ -178,13 +178,12 @@ function Skills() {
         </div>
       </div>
 
-      {/* ScrollIndicator : Position responsive laptop/desktop */}
+      {/* ScrollIndicator : Centré, hauteur responsive laptop/desktop */}
       {isDesktop && (
         <ScrollIndicator 
           onClick={() => scrollToSection('projects')}
-          customBottom={screenSize === 'desktop' ? '64px' : '48px'}
-          customRight={screenSize === 'desktop' ? '64px' : '48px'}
-          customLeft="auto"
+          customBottom={screenSize === 'desktop' ? '48px' : '16px'}
+          // customLeft et customRight non définis = centré par défaut
         />
       )}
     </section>
