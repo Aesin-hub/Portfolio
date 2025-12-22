@@ -12,12 +12,12 @@
   transform: translateX(var(--custom-left, -50%));  // Centrage si left: 50%
   
   cursor: pointer;
-  color: var(--primary);
+  color: var(--secondary);
   transition: all 0.3s ease;
   z-index: 10;
   
   &:hover {
-    color: var(--secondary);
+    color: var(--primary);
     transform: translateX(var(--custom-left, -50%)) translateY(-4px);
   }
   

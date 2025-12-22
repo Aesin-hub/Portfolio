@@ -16,7 +16,7 @@
   height: 42px;
   
   // Design bandeau TV moderne
-  background: var(--primary);
+  background: var(--secondary);
   border-radius: $radius-md;
   box-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.15),
@@ -150,7 +150,7 @@
   font-family: $font-display;
   font-size: $text-base;
   font-weight: $font-bold;
-  color: white;
+  color: var(--bg-main);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   letter-spacing: $tracking-wide;
   line-height: 1;
@@ -195,7 +195,7 @@
   font-family: $font-display;
   font-size: $text-lg;
   font-weight: $font-bold;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--bg-main);
   margin: 0 2rem;
   
   // 📱 Mobile - Moins d'espace

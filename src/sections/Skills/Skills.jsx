@@ -60,6 +60,35 @@ function Skills() {
     return skill.icon;
   };
 
+  // ✅ Composants SVG étoiles (inline pour coloration CSS)
+  const StarFilled = () => (
+    <svg 
+      width="16" 
+      height="16" 
+      viewBox="0 0 24 24" 
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+    </svg>
+  );
+
+  const StarEmpty = () => (
+    <svg 
+      width="16" 
+      height="16" 
+      viewBox="0 0 24 24" 
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+    </svg>
+  );
+
   return (
     <section id="skills" className={styles.skills}>
       <div className={styles.container}>
@@ -95,28 +124,16 @@ function Skills() {
                     return (
                       <div key={skill.id} className={styles.skillIcon}>
                         <div className={styles.skillTooltip}>
+                          {/* ✅ Étoiles pleines SVG */}
                           {[...Array(stars.filled)].map((_, i) => (
                             <div key={`filled-${i}`} className={styles.star}>
-                              <img 
-                                src="/assets/icons/star_1.webp" 
-                                alt="Étoile pleine"
-                                title="Niveau de maîtrise"
-                                loading="lazy"
-                                width="16"
-                                height="16"
-                              />
+                              <StarFilled />
                             </div>
                           ))}
+                          {/* ✅ Étoiles vides SVG */}
                           {[...Array(stars.empty)].map((_, i) => (
                             <div key={`empty-${i}`} className={styles.star}>
-                              <img 
-                                src="/assets/icons/star_0.webp" 
-                                alt="Étoile vide"
-                                title="Niveau de maîtrise"
-                                loading="lazy"
-                                width="16"
-                                height="16"
-                              />
+                              <StarEmpty />
                             </div>
                           ))}
                         </div>
@@ -165,7 +182,9 @@ function Skills() {
       {isDesktop && (
         <ScrollIndicator 
           onClick={() => scrollToSection('projects')}
-          customBottom={screenSize === 'desktop' ? '64px' : '18px'}
+          customBottom={screenSize === 'desktop' ? '64px' : '48px'}
+          customRight={screenSize === 'desktop' ? '64px' : '48px'}
+          customLeft="auto"
         />
       )}
     </section>

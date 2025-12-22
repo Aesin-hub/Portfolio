@@ -10,7 +10,7 @@
   height: 72px;
   padding-bottom: $space-xs;
   background: var(--bg-card);
-  border: 2px solid var(--primary);
+  border: 2px solid var(--secondary);
   border-radius: 0 0 16px 16px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -18,22 +18,24 @@
   top: -4px;
   
   &:hover {
-    border-color: var(--secondary);
+    border-color: var(--primary);
     background: var(--bg-alt);
     transform: translateY(2px);
     
     .icon {
-      background: var(--secondary);
+      background: var(--primary);
       transform: scale(1.05);
+      color: var(--bg-main);
     }
   }
   
   &.open {
-    border-color: var(--secondary);
+    border-color: var(--primary);
     background: var(--bg-alt);
     
     .icon {
-      background: var(--secondary);
+      background: var(--primary);
+      color: var(--bg-main);
     }
   }
   
@@ -161,8 +163,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--primary);
-  color: white;
+  background: var(--secondary);
+  color: var(--bg-main);
   font-family: $font-display;
   font-size: $text-lg;
   font-weight: $font-black;

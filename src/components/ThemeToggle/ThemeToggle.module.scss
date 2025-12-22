@@ -13,14 +13,14 @@
   height: 32px;
   background: var(--bg-alt);
   border-radius: $radius-full;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--secondary);
   transition: all 0.3s ease;
   
   &:hover {
-    border-color: var(--secondary);
+    border-color: var(--primary);
 
     .icon {
-      color: var(--secondary);
+      color: var(--primary);
     }
   }
   
@@ -131,7 +131,7 @@
 .icon {
   width: 16px;
   height: 16px;
-  color: var(--primary);
+  color: var(--secondary);
   
   // ────────────────────────────────────────────
   // 📱 ICÔNE À 80% sur xs et sm

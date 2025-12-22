@@ -41,13 +41,13 @@
 
 // Primary button (filled)
 .primary {
-  background: var(--primary);
+  background: var(--secondary);
   color: var(--bg-main);
-  border: 2px solid var(--primary);
+  border: 2px solid var(--secondary);
   
   &:hover:not(:disabled) {
-    background: var(--secondary);
-    border-color: var(--secondary);
+    background: var(--primary);
+    border-color: var(--primary);
     transform: translateY(-2px);
     box-shadow: $shadow-md;
   }

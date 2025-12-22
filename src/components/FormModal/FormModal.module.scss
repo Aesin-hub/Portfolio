@@ -1,7 +1,14 @@
 @use '../../styles/abstracts/variables' as *;
 @use '../../styles/abstracts/mixins' as *;
 
-// Modal Overlay
+// ═══════════════════════════════════════════════════════════════
+// 📋 FORM MODAL - RESPONSIVE
+// ═══════════════════════════════════════════════════════════════
+
+// ─────────────────────────────────────────────
+// MODAL OVERLAY
+// ─────────────────────────────────────────────
+
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -14,8 +21,17 @@
   align-items: center;
   justify-content: center;
   z-index: $z-modal;
-  padding: $space-lg;
   animation: fadeIn 0.3s ease-out;
+  
+  // 📱 Mobile - Padding réduit
+  @media (max-width: 767px) {
+    padding: $space-md;
+  }
+  
+  // 💻 Tablet+
+  @media (min-width: 768px) {
+    padding: $space-lg;
+  }
 }
 
 @keyframes fadeIn {
@@ -23,19 +39,28 @@
   to { opacity: 1; }
 }
 
-// Modal Content
+// ─────────────────────────────────────────────
+// MODAL CONTENT
+// ─────────────────────────────────────────────
+
 .modalContent {
   position: relative;
   width: 100%;
   max-width: 700px;
   max-height: 90vh;
-  background: var(--bg-card);
+  background: var(--bg-main);
   border-radius: $radius-xl;
   overflow: hidden;
   box-shadow: $shadow-2xl;
   animation: slideUp 0.3s ease-out;
   display: flex;
   flex-direction: column;
+  
+  // 📱 Mobile - Hauteur max réduite
+  @media (max-width: 767px) {
+    max-height: 85vh;
+    border-radius: $radius-lg;
+  }
 }
 
 @keyframes slideUp {
@@ -49,15 +74,16 @@
   }
 }
 
-// Close Button
+// ─────────────────────────────────────────────
+// CLOSE BUTTON
+// ─────────────────────────────────────────────
+
 .closeButton {
   @include reset-button;
   position: absolute;
-  top: $space-lg;
-  right: $space-lg;
+  top: $space-md;
+  right: $space-md;
   z-index: 10;
-  width: 44px;
-  height: 44px;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   border-radius: $radius-md;
@@ -73,30 +99,99 @@
     border: 1px solid var(--primary);
     color: var(--primary);
   }
+  
+  // 📱 Mobile small (< 640px)
+  @media (max-width: 639px) {
+    width: 32px;
+    height: 32px;
+    top: $space-xs;
+    right: $space-xs;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  
+  // 📱 Mobile large (640-767px)
+  @media (min-width: 640px) and (max-width: 767px) {
+    width: 36px;
+    height: 36px;
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  
+  // 💻 Tablet+
+  @media (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
 }
 
-// Stepper
+// ─────────────────────────────────────────────
+// STEPPER
+// ─────────────────────────────────────────────
+
 .stepper {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: $space-md $space-xl $space-sm; // Further reduced padding
   background: var(--bg-alt);
   border-bottom: 1px solid var(--border);
+  
+  // 📱 Mobile small (< 640px) - TRÈS compact + largeur réduite
+  @media (max-width: 639px) {
+    padding: $space-xs $space-3xl;  // Padding latéral important pour réduire largeur
+  }
+  
+  // 📱 Mobile large (640-767px) - Largeur réduite
+  @media (min-width: 640px) and (max-width: 767px) {
+    padding: $space-sm $space-2xl;  // Largeur réduite
+  }
+  
+  // 💻 Tablet (768-1023px) - Hauteur réduite
+  @media (min-width: 768px) and (max-width: 1023px) {
+    padding: $space-sm $space-xl;
+  }
+  
+  // 💻 Laptop (1024-1439px) - Hauteur réduite
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    padding: $space-sm $space-xl;
+  }
+  
+  // 💻 Desktop (≥ 1440px) - Hauteur réduite
+  @media (min-width: 1440px) {
+    padding: $space-sm $space-xl;
+  }
 }
 
 .stepItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $space-xs;
   flex: 1;
   position: relative;
+  
+  // 📱 Mobile small (< 640px) - Pas de gap (labels cachés)
+  @media (max-width: 639px) {
+    gap: 0;
+  }
+  
+  // 📱 Mobile large (640-767px)
+  @media (min-width: 640px) and (max-width: 767px) {
+    gap: $space-2xs;
+  }
+  
+  // 💻 Tablet+
+  @media (min-width: 768px) {
+    gap: $space-xs;
+  }
 }
 
 .stepCircle {
-  width: 40px;
-  height: 40px;
   border-radius: $radius-full;
   background: var(--bg-card);
   border: 2px solid var(--border);
@@ -110,27 +205,70 @@
   position: relative;
 
   &.active {
-    border-color: var(--primary);
-    background: var(--primary);
+    border-color: var(--secondary);
+    background: var(--secondary);
     color: white;
     transform: scale(1.1);
   }
 
   &.completed {
-    border-color: var(--primary);
-    background: var(--primary);
+    border-color: var(--secondary);
+    background: var(--secondary);
     color: white;
+  }
+  
+  // 📱 Mobile small (< 640px) - Petit
+  @media (max-width: 639px) {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    border-width: 2px;
+    
+    svg {
+      width: 12px;
+      height: 12px;
+      stroke-width: 3;
+    }
+  }
+  
+  // 📱 Mobile large (640-767px) - Moyen
+  @media (min-width: 640px) and (max-width: 767px) {
+    width: 36px;
+    height: 36px;
+    font-size: $text-sm;
+    
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  
+  // 💻 Tablet+
+  @media (min-width: 768px) {
+    width: 40px;
+    height: 40px;
   }
 }
 
 .stepLabel {
-  font-size: $text-xs;
+  font-size: $text-sm;
   color: var(--text-muted);
   text-align: center;
   font-weight: $font-medium;
-
-  @include respond-to('md') {
-    font-size: $text-sm;
+  
+  // 📱 Mobile small (< 640px) - CACHÉ
+  @media (max-width: 639px) {
+    display: none;  // ✅ Textes cachés sur 375px
+  }
+  
+  // 📱 Mobile large (640-767px) - Petit
+  @media (min-width: 640px) and (max-width: 767px) {
+    font-size: 10px;
+  }
+  
+  // 💻 Tablet+
+  @media (min-width: 768px) {
+    font-size: $text-xs;
   }
 }
 
@@ -142,6 +280,16 @@
   height: 2px;
   background: var(--border);
   z-index: 1;
+  
+  // 📱 Mobile small (< 640px) - Position ajustée
+  @media (max-width: 639px) {
+    top: 16px;  // Centré sur circle 32px
+  }
+  
+  // 📱 Mobile large (640-767px)
+  @media (min-width: 640px) and (max-width: 767px) {
+    top: 18px;  // Centré sur circle 36px
+  }
 }
 
 .stepItem:last-child .stepLine {
@@ -152,11 +300,28 @@
   background: var(--primary);
 }
 
-// Form Content
+// ─────────────────────────────────────────────
+// FORM CONTENT
+// ─────────────────────────────────────────────
+
 .formContent {
   flex: 1;
   overflow-y: auto;
-  padding: $space-lg $space-xl; // Reduced from $space-2xl
+  
+  // 📱 Mobile small (< 640px) - Padding TRÈS réduit
+  @media (max-width: 639px) {
+    padding: $space-sm $space-md;  // 12px 16px
+  }
+  
+  // 📱 Mobile large (640-767px) - Padding réduit
+  @media (min-width: 640px) and (max-width: 767px) {
+    padding: $space-md;  // 16px
+  }
+  
+  // 💻 Tablet+
+  @media (min-width: 768px) {
+    padding: $space-lg $space-xl;
+  }
 
   // Custom scrollbar
   &::-webkit-scrollbar {
@@ -181,25 +346,45 @@
 .formStep {
   display: flex;
   flex-direction: column;
-  gap: $space-md; // Reduced from $space-lg
+  gap: $space-md;
 }
 
 .stepTitle {
   font-family: $font-heading;
-  font-size: $text-xl; // Reduced from $text-2xl
+  font-size: $text-xl;
   font-weight: $font-bold;
   color: var(--text-primary);
-  margin: 0 0 $space-sm; // Reduced margin
+  margin: 0 0 $space-sm;
+  
+  // 📱 Mobile - Plus petit
+  @media (max-width: 767px) {
+    font-size: $text-lg;
+  }
 }
 
-// Form Elements
+// ─────────────────────────────────────────────
+// FORM ELEMENTS
+// ─────────────────────────────────────────────
+
 .formRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: $space-md;
 
-  @include respond-to-max('sm') {
+  // 📱 Mobile small (< 640px) - 1 colonne
+  @media (max-width: 639px) {
     grid-template-columns: 1fr;
+    gap: $space-sm;
+  }
+  
+  // 📱 Mobile large (640-767px) - 2 colonnes (Nom + Prénom sur même ligne)
+  @media (min-width: 640px) and (max-width: 767px) {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-sm;
+  }
+  
+  // 💻 Tablet+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -216,12 +401,10 @@
 
   input,
   textarea {
-    padding: $space-md;
     background: var(--bg-main);
     border: 2px solid var(--border);
     border-radius: $radius-md;
     color: var(--text-primary);
-    font-size: $text-base;
     font-family: $font-body;
     transition: all 0.3s ease;
 
@@ -249,65 +432,89 @@
       border: 2px solid var(--border) !important;
       transition: background-color 5000s ease-in-out 0s;
     }
+    
+    // 📱 Mobile small (< 640px) - Compact
+    @media (max-width: 639px) {
+      padding: $space-xs $space-sm;  // 8px 12px
+      font-size: 14px;
+    }
+    
+    // 📱 Mobile large (640-767px) - Compact
+    @media (min-width: 640px) and (max-width: 767px) {
+      padding: $space-sm;  // 12px
+      font-size: $text-sm;
+    }
+    
+    // 💻 Tablet (768-1023px) - Hauteur réduite
+    @media (min-width: 768px) and (max-width: 1023px) {
+      padding: $space-sm $space-md;  // 12px 16px
+      font-size: $text-base;
+    }
+    
+    // 💻 Laptop (1024-1439px) - Hauteur réduite
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      padding: $space-sm $space-md;  // 12px 16px
+      font-size: $text-base;
+    }
+    
+    // 💻 Desktop (≥ 1440px) - Hauteur réduite
+    @media (min-width: 1440px) {
+      padding: $space-sm $space-md;  // 12px 16px
+      font-size: $text-base;
+    }
   }
 
   textarea {
     resize: vertical;
     min-height: 120px;
-  }
-}
-
-.errorInput {
-  border-color: var(--error) !important;
-
-  &:focus {
-    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+    
+    // 📱 Mobile - Min-height réduit
+    @media (max-width: 767px) {
+      min-height: 100px;
+    }
   }
 }
 
 .errorMessage {
   font-size: $text-xs;
   color: var(--error);
-  margin-top: $space-xs;
-  display: block;
+  margin-top: $space-2xs;
 }
 
 .charCount {
   font-size: $text-xs;
   color: var(--text-muted);
   text-align: right;
-  margin-top: $space-xs;
 }
 
-// Summary
+// ─────────────────────────────────────────────
+// SUMMARY (Step 3)
+// ─────────────────────────────────────────────
+
 .summary {
   display: flex;
   flex-direction: column;
   gap: $space-md;
+  padding: $space-md;
   background: var(--bg-alt);
-  padding: $space-xl;
-  border-radius: $radius-lg;
-  border: 2px solid var(--primary); // Changed from var(--border)
+  border-radius: $radius-md;
+  
+  // 📱 Mobile - Padding réduit
+  @media (max-width: 767px) {
+    padding: $space-sm;
+    gap: $space-sm;
+  }
 }
 
 .summaryItem {
   display: flex;
   flex-direction: column;
-  gap: $space-xs;
-  padding-bottom: $space-md;
-  border-bottom: 1px solid rgba(var(--primary-rgb), 0.3); // Changed to primary with opacity
-
-  &:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
+  gap: $space-2xs;
 
   strong {
     font-size: $text-sm;
-    font-weight: $font-semibold;
     color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-weight: $font-semibold;
   }
 
   span,
@@ -315,93 +522,158 @@
     font-size: $text-base;
     color: var(--text-primary);
     margin: 0;
-    line-height: $leading-relaxed;
+    word-break: break-word;
+  }
+  
+  // 📱 Mobile - Texte plus petit
+  @media (max-width: 767px) {
+    strong {
+      font-size: $text-xs;
+    }
+    
+    span,
+    p {
+      font-size: $text-sm;
+    }
   }
 }
 
-// Success State
+// ─────────────────────────────────────────────
+// SUCCESS (Step 4)
+// ─────────────────────────────────────────────
+
 .success {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: $space-xl;
-  padding: $space-2xl 0;
+  gap: $space-lg;
   text-align: center;
+  padding: $space-xl 0;
+  
+  // 📱 Mobile - Padding réduit
+  @media (max-width: 767px) {
+    padding: $space-md 0;
+    gap: $space-md;
+  }
 }
 
 .successIcon {
-  width: 80px;
-  height: 80px;
-  background: rgba(var(--primary-rgb), 0.1);
-  border-radius: $radius-full;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--primary);
-  animation: scaleIn 0.5s ease-out;
-
+  
   svg {
     width: 64px;
     height: 64px;
   }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
+  
+  // 📱 Mobile - Plus petit
+  @media (max-width: 767px) {
+    svg {
+      width: 48px;
+      height: 48px;
+    }
   }
 }
 
 .successTitle {
-  font-family: $font-heading;
-  font-size: $text-3xl;
+  font-size: $text-2xl;
   font-weight: $font-bold;
   color: var(--text-primary);
   margin: 0;
+  
+  // 📱 Mobile - Plus petit
+  @media (max-width: 767px) {
+    font-size: $text-xl;
+  }
 }
 
 .successText {
-  font-size: $text-lg;
+  font-size: $text-base;
   color: var(--text-secondary);
   max-width: 400px;
   margin: 0;
-  line-height: $leading-relaxed;
+  
+  // 📱 Mobile - Plus petit
+  @media (max-width: 767px) {
+    font-size: $text-sm;
+  }
 }
 
-// Action Buttons
+// ─────────────────────────────────────────────
+// ACTIONS (Navigation Buttons)
+// ─────────────────────────────────────────────
+
 .actions {
   display: flex;
+  justify-content: space-between;
   gap: $space-md;
-  padding: $space-md $space-xl; // Reduced from $space-xl
   border-top: 1px solid var(--border);
   background: var(--bg-alt);
+  
+  // 📱 Mobile small (< 640px) - Compact
+  @media (max-width: 639px) {
+    padding: $space-sm $space-md;  // 12px 16px
+    gap: $space-sm;
+  }
+  
+  // 📱 Mobile large (640-767px) - Compact
+  @media (min-width: 640px) and (max-width: 767px) {
+    padding: $space-md;
+    gap: $space-sm;
+  }
+  
+  // 💻 Tablet (768-1023px) - Hauteur réduite
+  @media (min-width: 768px) and (max-width: 1023px) {
+    padding: $space-md $space-xl;
+  }
+  
+  // 💻 Laptop (1024-1439px) - Hauteur réduite
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    padding: $space-md $space-xl;
+  }
+  
+  // 💻 Desktop (≥ 1440px) - Hauteur réduite
+  @media (min-width: 1440px) {
+    padding: $space-md $space-xl;
+  }
 }
 
-.primaryButton {
+.primaryButton,
+.secondaryButton,
+.dangerButton {
   @include reset-button;
-  flex: 1;
-  padding: $space-md $space-xl;
-  background: var(--primary);
-  color: white;
-  font-size: $text-base;
   font-weight: $font-semibold;
-  border-radius: $radius-lg;
+  border-radius: $radius-md;
   cursor: pointer;
   transition: all 0.3s ease;
-
-  &:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: $shadow-lg;
-    background: var(--primary-hover, var(--primary));
+  
+  // 📱 Mobile small (< 640px) - Compact
+  @media (max-width: 639px) {
+    padding: $space-xs $space-md;  // 8px 16px
+    font-size: 14px;
   }
-
-  &:active:not(:disabled) {
-    transform: translateY(0);
+  
+  // 📱 Mobile large (640-767px) - Compact
+  @media (min-width: 640px) and (max-width: 767px) {
+    padding: $space-sm $space-lg;
+    font-size: $text-sm;
+  }
+  
+  // 💻 Tablet (768-1023px) - Hauteur réduite
+  @media (min-width: 768px) and (max-width: 1023px) {
+    padding: $space-sm $space-xl;  // 12px 32px
+    font-size: $text-base;
+  }
+  
+  // 💻 Laptop (1024-1439px) - Hauteur réduite
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    padding: $space-sm $space-xl;  // 12px 32px
+    font-size: $text-base;
+  }
+  
+  // 💻 Desktop (≥ 1440px) - Hauteur réduite
+  @media (min-width: 1440px) {
+    padding: $space-sm $space-xl;  // 12px 32px
+    font-size: $text-base;
   }
 
   &:disabled {
@@ -410,132 +682,104 @@
   }
 }
 
-.secondaryButton {
-  @include reset-button;
+.primaryButton {
+  background: var(--secondary);
+  color: white;
   flex: 1;
-  padding: $space-md $space-xl;
-  background: var(--bg-main); // Changed from transparent
+
+  &:hover:not(:disabled) {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.secondaryButton {
+  background: transparent;
   color: var(--text-primary);
-  border: 2px solid var(--border);
-  font-size: $text-base;
-  font-weight: $font-semibold;
-  border-radius: $radius-lg;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border: 2px solid var(--secondary);
 
   &:hover:not(:disabled) {
     border-color: var(--primary);
     color: var(--primary);
   }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
 }
 
 .dangerButton {
-  @include reset-button;
-  flex: 1;
-  padding: $space-md $space-xl;
-  background: #ef4444;
+  background: var(--error);
   color: white;
-  font-size: $text-base;
-  font-weight: $font-semibold;
-  border-radius: $radius-lg;
-  cursor: pointer;
-  transition: all 0.3s ease;
 
   &:hover {
-    background: #dc2626;
-    transform: translateY(-2px);
-    box-shadow: $shadow-lg;
+    background: darken(#ef4444, 10%);
   }
 }
 
-// Confirmation Dialog
+// ─────────────────────────────────────────────
+// CONFIRMATION DIALOG
+// ─────────────────────────────────────────────
+
 .confirmOverlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: calc(#{$z-modal} + 10);
-  padding: $space-lg;
+  z-index: $z-modal + 1;
   animation: fadeIn 0.2s ease-out;
 }
 
 .confirmDialog {
   background: var(--bg-card);
-  border-radius: $radius-xl;
+  border-radius: $radius-lg;
   padding: $space-xl;
-  max-width: 420px; // Increased from 380px
-  width: 100%;
+  max-width: 400px;
+  width: 90%;
   box-shadow: $shadow-2xl;
-  animation: slideUp 0.2s ease-out;
+  
+  // 📱 Mobile - Padding réduit
+  @media (max-width: 767px) {
+    padding: $space-lg;
+  }
 
   h3 {
-    font-family: $font-heading;
-    font-size: $text-lg;
-    font-weight: $font-bold;
+    margin: 0 0 $space-md;
+    font-size: $text-xl;
     color: var(--text-primary);
-    margin: 0 0 $space-sm;
+    
+    // 📱 Mobile - Plus petit
+    @media (max-width: 767px) {
+      font-size: $text-lg;
+    }
   }
 
   p {
-    font-size: $text-sm;
-    color: var(--text-secondary);
     margin: 0 0 $space-lg;
-    line-height: $leading-relaxed;
+    color: var(--text-secondary);
+    font-size: $text-base;
+    
+    // 📱 Mobile - Plus petit
+    @media (max-width: 767px) {
+      font-size: $text-sm;
+    }
   }
 }
 
 .confirmActions {
   display: flex;
   gap: $space-md;
-
-  // Override secondaryButton for confirm dialog (same style)
-  .secondaryButton {
-    background: var(--bg-main);
-  }
-}
-
-// Responsive
-@include respond-to-max('md') {
-  .modalContent {
-    max-height: 95vh;
-  }
-
-  .stepper {
-    padding: $space-lg;
-  }
-
-  .formContent {
-    padding: $space-lg;
-  }
-
-  .stepLabel {
-    display: none;
-  }
-
-  .stepCircle {
-    width: 36px;
-    height: 36px;
-    font-size: $text-sm;
-  }
-}
-
-@include respond-to-max('sm') {
-  .closeButton {
-    top: $space-sm;
-    right: $space-sm;
-  }
-
-  .actions {
+  justify-content: flex-end;
+  
+  // 📱 Mobile - Boutons full width
+  @media (max-width: 767px) {
     flex-direction: column;
+    gap: $space-sm;
+    
+    button {
+      width: 100%;
+    }
   }
 }

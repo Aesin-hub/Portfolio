@@ -146,7 +146,7 @@
 .subtitle {
   font-family: $font-display;
   font-weight: $font-bold;
-  color: var(--primary);
+  color: var(--secondary);
   margin: 0;
   
   // 💻 Desktop
@@ -226,7 +226,7 @@
   align-items: center;
   justify-content: center;
   background: var(--bg-card);
-  border: 2px solid var(--primary);
+  border: 2px solid var(--secondary);
   border-radius: $radius-md;
   color: var(--text-primary);
   transition: all 0.3s ease;
