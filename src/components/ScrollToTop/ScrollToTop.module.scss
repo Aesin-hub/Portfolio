@@ -1,16 +1,24 @@
 @use '../../styles/abstracts/variables' as *;
 @use '../../styles/abstracts/mixins' as *;
 
+// ═══════════════════════════════════════════════════════════════
+// 📋 SCROLL TO TOP - GLASSMORPHISM STYLE
+// ═══════════════════════════════════════════════════════════════
+
 .scrollToTop {
   @include reset-button;
   position: fixed;
-  bottom: $space-2xl;
-  right: $space-2xl;
   z-index: $z-fixed;
-  width: 56px;
-  height: 56px;
-  background: var(--primary);
-  color: white;
+  
+  // ✨ Glassmorphism effect avec bg-main
+  background: var(--bg-main);
+  opacity: 0.85;  // 85% opacité par défaut
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+  
   border-radius: $radius-md;
   display: flex;
   align-items: center;
@@ -18,41 +26,100 @@
   cursor: pointer;
   box-shadow: $shadow-xl;
   transition: all 0.3s ease;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
+  
+  // Animation apparition
+  &:not(.visible) {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+  }
 
   &.visible {
-    opacity: 1;
+    opacity: 0.85;
     visibility: visible;
     transform: translateY(0);
   }
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: $shadow-2xl;
-    background: var(--primary-hover, var(--primary));
-    border: 2px solid var(--secondary);
-  }
-
   &:active {
-    transform: translateY(-2px);
+    transform: scale(0.95);  // Feedback visuel au clic
+    opacity: 0.95;  // Plus opaque au clic
   }
 
   svg {
-    width: 24px;
-    height: 24px;
+    stroke: currentColor;
   }
 
-  @include respond-to-max('md') {
-    bottom: $space-xl;
-    right: $space-lg;
+  // ─────────────────────────────────────────────
+  // 📱 MOBILE (< 640px)
+  // ─────────────────────────────────────────────
+  @media (max-width: 639px) {
+    bottom: $space-lg;     // 24px
+    right: $space-md;      // 16px
+    width: 44px;
+    height: 44px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // ─────────────────────────────────────────────
+  // 📱 MOBILE+ (640-767px)
+  // ─────────────────────────────────────────────
+  @media (min-width: 640px) and (max-width: 767px) {
+    bottom: $space-xl;     // 32px
+    right: $space-lg;      // 24px
     width: 48px;
     height: 48px;
 
     svg {
       width: 20px;
       height: 20px;
+    }
+  }
+
+  // ─────────────────────────────────────────────
+  // 📱 TABLET (768-1023px)
+  // ─────────────────────────────────────────────
+  @media (min-width: 768px) and (max-width: 1023px) {
+    bottom: $space-xl;     // 32px
+    right: $space-xl;      // 32px
+    width: 52px;
+    height: 52px;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  // ─────────────────────────────────────────────
+  // 💻 LAPTOP+ (≥ 1024px) - HOVER activé
+  // ─────────────────────────────────────────────
+  @media (min-width: 1024px) {
+    bottom: $space-2xl;    // 40px
+    right: $space-2xl;     // 40px
+    width: 56px;
+    height: 56px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    // ✅ HOVER uniquement sur desktop
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-2xl;
+      opacity: 0.95;  // Plus opaque au hover
+      border-color: var(--primary);  // Border devient primary
+      color: var(--primary);  // Icône devient primary
+    }
+
+    &:active {
+      transform: translateY(-2px);
+      opacity: 1;  // Complètement opaque au clic
     }
   }
 }

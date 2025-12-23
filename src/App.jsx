@@ -5,7 +5,7 @@ import Skills from './sections/Skills/Skills.jsx';
 import Projects from './sections/Projects/Projects.jsx';
 import Contact from './sections/Contact/Contact.jsx';
 import Footer from './components/Footer/Footer.jsx';
-// import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       </main>
       
       <Footer />
-      {/*<ScrollToTop />*/}
+      <ScrollToTop />
     </>
   );
 }

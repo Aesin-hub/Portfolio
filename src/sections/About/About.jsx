@@ -66,7 +66,7 @@ function About() {
           <div className={styles.textContent}>
             <h2>Developpeur Front-end</h2>
 
-            <h5>Développeur front-end issu d'une reconversion réussie</h5>
+            <h3>Développeur front-end issu d'une reconversion réussie</h3>
 
             <div className={styles.paragraphs}>
               <p>
